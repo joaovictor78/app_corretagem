@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
         android:text="A melhor corretora"
         android:textColor="@color/black"
@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
+        android:layout_marginLeft="20dp"
         android:text="para você!"
         android:textColor="#0B88BD"
         android:textSize="25sp"
@@ -44,15 +44,26 @@
         tools:layout_editor_absoluteX="24dp"></ImageView>
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Escolha uma cotação:"
+        android:layout_marginLeft="20dp"
+        android:text="Escolha uma cotação"
         android:textColor="@color/black"
         android:textSize="15sp"
-        android:textFontWeight="W900"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        tools:layout_editor_absoluteX="24dp"></TextView>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"></TextView>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rowlistview"
+        android:layout_width="match_parent"
+        android:layout_height="331dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
