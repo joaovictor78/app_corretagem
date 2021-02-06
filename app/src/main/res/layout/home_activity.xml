@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,21 +8,20 @@
 
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/titleMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
+        android:layout_marginLeft="24dp"
         android:text="A melhor corretora"
         android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:gravity="start"
+        />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/subtitleMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -31,39 +30,74 @@
         android:textColor="#0B88BD"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_anchor="@id/titleMain"
+        app:layout_anchorGravity="bottom"/>
+
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/banner"
         android:layout_width="match_parent"
         android:layout_height="76dp"
-        android:layout_margin="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="100dp"
         android:background="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        tools:layout_editor_absoluteX="24dp"></ImageView>
+        app:layout_anchor="@id/subtitleMain"
+        app:layout_anchorGravity="bottom"
+        tools:layout_editor_absoluteX="24dp"/>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/categories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="200dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
         android:text="Escolha uma cotação"
         android:textColor="@color/black"
         android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"></TextView>
+        app:layout_anchorGravity="bottom"
+        app:layout_anchor="@id/banner"></TextView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rowlistview"
         android:layout_width="match_parent"
-        android:layout_height="331dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_anchor="@+id/categories"
+        app:layout_anchorGravity="bottom|center"
         tools:ignore="MissingConstraints" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:backgroundTint="@color/black"
+        app:fabCradleMargin="15dp"
+        app:fabCradleRoundedCornerRadius="20dp"
+        app:fabCradleVerticalOffset="22dp"
+        app:hideOnScroll="true"
+        tools:ignore="BottomAppBar,MissingConstraints">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:layout_marginRight="16dp"
+            app:menu="@menu/bottom_navmenu" />
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/bottomNavigationMenuView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/ciano_480"
+        android:src="@drawable/ic_calendar"
+        app:layout_anchor="@id/bottomAppBar"
+        app:rippleColor="@color/white" />
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
