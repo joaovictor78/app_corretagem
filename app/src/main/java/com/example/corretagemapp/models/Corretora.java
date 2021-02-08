@@ -2,7 +2,6 @@ package com.example.corretagemapp.models;
 
 public class Corretora {
     private String name;
-
     public String getName() {
         return name;
     }
@@ -11,12 +10,11 @@ public class Corretora {
         this.name = name;
     }
     public static class CorretoraBuilder{
+        private String name;
         public CorretoraBuilder setName(String name) {
             this.name = name;
             return this;
         }
-
-        private String name;
         private CorretoraBuilder(){}
         public static CorretoraBuilder builder(){
             return new CorretoraBuilder();
