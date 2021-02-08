@@ -5,74 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".homeActivity">
-
-
-    <TextView
-        android:id="@+id/titleMain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginBottom="50dp"
-        android:text="A melhor corretora"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:gravity="start"
-        />
-
-    <TextView
-        android:id="@+id/subtitleMain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginLeft="24dp"
-        android:text="para você!"
-        android:textColor="#0B88BD"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_anchor="@id/titleMain"
-        app:layout_anchorGravity="bottom"/>
-
-
-    <ImageView
-        android:id="@+id/banner"
+    <FrameLayout
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="76dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="120dp"
-        android:background="@color/black"
-        app:layout_anchor="@id/subtitleMain"
-        app:layout_anchorGravity="bottom"
-        tools:layout_editor_absoluteX="24dp"/>
-
-    <TextView
-        android:id="@+id/categories"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="230dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="20dp"
-        android:text="Escolha uma cotação"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_anchorGravity="bottom"
-        app:layout_anchor="@id/banner"></TextView>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rowlistview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="300dp"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_anchor="@+id/categories"
-        app:layout_anchorGravity="bottom|center"
-        tools:ignore="MissingConstraints" />
-
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottomAppBar"/>
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
         android:layout_width="match_parent"
@@ -86,6 +23,7 @@
         tools:ignore="BottomAppBar,MissingConstraints">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/transparent"
@@ -94,13 +32,15 @@
     </com.google.android.material.bottomappbar.BottomAppBar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/bottomNavigationMenuView"
+        android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/ciano_480"
         android:src="@drawable/ic_calendar"
         app:layout_anchor="@id/bottomAppBar"
         app:rippleColor="@color/white" />
+
+
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
