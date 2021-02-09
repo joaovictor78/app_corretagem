@@ -28,6 +28,7 @@
         app:layout_constraintTop_toBottomOf="@+id/title_funcionarios"></androidx.recyclerview.widget.RecyclerView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_addfuncionarios"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

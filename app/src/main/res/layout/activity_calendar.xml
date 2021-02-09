@@ -6,4 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".calendar">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="20dp"
+        android:text="Meus Compromissos"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.applandeo.materialcalendarview.CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        app:type="many_days_picker"
+        android:layout_margin="20dp"
+        app:headerColor="@color/white"
+        app:headerLabelColor="@color/black"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

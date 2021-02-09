@@ -1,5 +1,7 @@
 package com.example.corretagemapp;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,13 +46,25 @@ public class CorretoraAdapter extends RecyclerView.Adapter<CorretoraAdapter.Corr
 
     class CorretoraViewHolder extends RecyclerView.ViewHolder{
         TextView nome;
+
         CorretoraViewHolder(@NonNull View itemView) {
             super(itemView);
             nome = itemView.findViewById(R.id.nameCorretora);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent = new Intent(v.getContext(), Cotacao.class);
+                    v.getContext().startActivity(intent);
+                }
+            });
+
         }
+
         public void bind(Corretora corretora){
             nome.setText(corretora.getName());
         }
+
 
     }
 
