@@ -20,6 +20,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Date;
 
+
+
 public class ValorTotalCotacao extends AppCompatActivity {
 
     @Override
@@ -36,18 +38,19 @@ public class ValorTotalCotacao extends AppCompatActivity {
             }
         });
     }
+
     protected static File takeScreenShot(View view, String fileName){
-        Date date = new Date();
-        CharSequence format = DateFormat.format("yyyy-MM-dd_hh:mm:ss", date);
+        Date now = new Date();
+        CharSequence format =  DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
         try {
-            String dirPath = Environment.getExternalStorageState().toString() + "/images";
+            String dirPath = Environment.getExternalStorageDirectory().toString() + "/" + now + ".jpg";
             File fileDir = new File(dirPath);
             if(!fileDir.exists()){
                  fileDir.mkdirs();
             }
             String path = dirPath + "/" + fileName  + "-" + format + ".jpeg";
             view.setDrawingCacheEnabled(true);
-            Bitmap bitmap = getBitmapFromView(view);
+            Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
             view.setDrawingCacheEnabled(false);
             File imageFile = new File(path);
             FileOutputStream fileOutputStream = new FileOutputStream(imageFile);
@@ -65,13 +68,6 @@ public class ValorTotalCotacao extends AppCompatActivity {
         }
         return null;
 
-    }
-    public static Bitmap getBitmapFromView(View view)
-    {
-        Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        view.draw(canvas);
-        return bitmap;
     }
     private static  final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSION_STORAGE={

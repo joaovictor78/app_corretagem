@@ -21,7 +21,8 @@
     <com.applandeo.materialcalendarview.CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
+        app:eventsEnabled="true"
         app:type="many_days_picker"
         app:headerLabelColor="@color/ciano_481"
         app:pagesColor="@color/white"
@@ -30,6 +31,15 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/ic_add"
+        android:tintMode="@color/white"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
