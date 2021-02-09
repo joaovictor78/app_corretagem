@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="30dp"
         android:text="Meus Compromissos"
         android:textColor="@color/black"
         android:textSize="20dp"
@@ -21,10 +21,12 @@
     <com.applandeo.materialcalendarview.CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
-        app:type="many_days_picker"
         android:layout_margin="20dp"
+        app:type="many_days_picker"
+        app:headerLabelColor="@color/ciano_481"
+        app:pagesColor="@color/white"
         app:headerColor="@color/white"
-        app:headerLabelColor="@color/black"
+        app:todayLabelColor="@color/ciano_480"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
