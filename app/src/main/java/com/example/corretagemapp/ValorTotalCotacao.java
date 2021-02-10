@@ -11,6 +11,7 @@ import android.graphics.Canvas;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -38,6 +39,9 @@ public class ValorTotalCotacao extends AppCompatActivity {
                 if(result != null){
                     Toast.makeText(getApplicationContext(), "Comprovante salvo com sucesso!",
                             Toast.LENGTH_LONG).show();
+                } else{
+                    Toast.makeText(getApplicationContext(), "Ocorreu um erro ao salvar o comprovante!",
+                            Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -47,15 +51,15 @@ public class ValorTotalCotacao extends AppCompatActivity {
         Date now = new Date();
         CharSequence format =  DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
         try {
-            String dirPath = Environment.getExternalStorageDirectory().toString() + "/" + now + ".png";
+            String dirPath = view.getContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath() + "/" + now + ".png";
             File fileDir = new File(dirPath);
             if(!fileDir.exists()){
                  fileDir.mkdirs();
             }
             String path = dirPath + "/" + fileName  + "-" + format + ".png";
-            view.setDrawingCacheEnabled(true);
+            //view.setDrawingCacheEnabled(true);
             Bitmap bitmap = getBitmapFromView(view);
-            view.setDrawingCacheEnabled(false);
+            //view.setDrawingCacheEnabled(false);
             File imageFile = new File(path);
             FileOutputStream fileOutputStream = new FileOutputStream(imageFile);
             int quality = 100;
