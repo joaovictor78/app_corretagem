@@ -12,15 +12,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.corretagemapp.models.Corretora;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CorretoraAdapter extends RecyclerView.Adapter<CorretoraAdapter.CorretoraViewHolder> {
-    private final List<Corretora> corretoras;
+    private final JSONArray corretoras;
 
-    public CorretoraAdapter(ArrayList<Corretora> corretoras) {
+    public CorretoraAdapter(JSONArray corretoras) {
         this.corretoras = corretoras;
     }
 
@@ -35,13 +38,18 @@ public class CorretoraAdapter extends RecyclerView.Adapter<CorretoraAdapter.Corr
 
     @Override
     public void onBindViewHolder(@NonNull CorretoraViewHolder holder, int position) {
-        Corretora corretora = corretoras.get(position);
-        holder.bind(corretora);
+        try {
+            JSONObject corretora = corretoras.getJSONObject(position);
+            holder.bind(corretora);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
 
     }
     @Override
     public int getItemCount() {
-        return corretoras.size();
+        return corretoras.length();
     }
 
     class CorretoraViewHolder extends RecyclerView.ViewHolder{
@@ -61,8 +69,12 @@ public class CorretoraAdapter extends RecyclerView.Adapter<CorretoraAdapter.Corr
 
         }
 
-        public void bind(Corretora corretora){
-            nome.setText(corretora.getName());
+        public void bind(JSONObject corretora){
+            try {
+                nome.setText(corretora.get("nome").toString());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
 
 
