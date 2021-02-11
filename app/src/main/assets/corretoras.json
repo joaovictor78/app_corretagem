@@ -4,5 +4,11 @@
       {"idade_min" : "14", "idade_max" : "25", "valor_por_tipo" : [ {"tipo"  : "Enfermagem", "valor" : 256.3}, {"tipo"  : "Apartamento", "valor" : 256.3}]},
       {"idade_min" : "18", "idade_max" : "10", "valor_por_tipo" : [ {"tipo"  : "Enfermagem", "valor" : 256.3}, {"tipo"  : "Apartamento", "valor" : 256.3}]},
       {"idade_min" : "60", "idade_max" : null, "valor_por_tipo" : [ {"tipo"  : "Enfermagem", "valor" : 256.3}, {"tipo"  : "Apartamento", "valor" : 256.3}]}
+    ]},
+   {"nome" : "Unir",
+    "precos": [
+      {"idade_min" : "14", "idade_max" : "25", "valor_por_tipo" : [ {"tipo"  : "Enfermagem", "valor" : 256.3}, {"tipo"  : "Apartamento", "valor" : 256.3}]},
+      {"idade_min" : "18", "idade_max" : "10", "valor_por_tipo" : [ {"tipo"  : "Enfermagem", "valor" : 256.3}, {"tipo"  : "Apartamento", "valor" : 256.3}]},
+      {"idade_min" : "60", "idade_max" : null, "valor_por_tipo" : [ {"tipo"  : "Enfermagem", "valor" : 256.3}, {"tipo"  : "Apartamento", "valor" : 256.3}]}
     ]}
 ]

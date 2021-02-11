@@ -66,7 +66,7 @@ public class Cotacao extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LayoutInflater layoutInflaterAndroid = LayoutInflater.from(getApplicationContext());
+                LayoutInflater layoutInflaterAndroid = LayoutInflater.from(Cotacao.this);
                 View mView = layoutInflaterAndroid.inflate(R.layout.add_membro, null);
                 AlertDialog.Builder alertDialogBuilderUserInput = new AlertDialog.Builder(Cotacao.this);
                 alertDialogBuilderUserInput.setView(mView);

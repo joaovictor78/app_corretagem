@@ -37,7 +37,9 @@
         android:layout_height="74dp"
         android:layout_margin="24dp"
         android:background="@color/black"
+        android:scaleType="centerCrop"
         app:layout_anchor="@id/subtitleMain"
+        android:src="@drawable/banner"
         app:layout_constraintTop_toBottomOf="@id/subtitleMain"
         tools:layout_editor_absoluteX="25dp" />
 
