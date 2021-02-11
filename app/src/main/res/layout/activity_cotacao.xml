@@ -10,9 +10,8 @@
         android:id="@+id/lista_cotacao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        tools:listitem="@layout/cotacao_card"
-        />
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_marginTop="20dp" />
 
     <LinearLayout
         android:id="@+id/linearLayout"

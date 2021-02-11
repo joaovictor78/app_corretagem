@@ -2,6 +2,7 @@ package com.example.corretagemapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,9 +23,9 @@ import java.util.List;
 
 public class CorretoraAdapter extends RecyclerView.Adapter<CorretoraAdapter.CorretoraViewHolder> {
     private final JSONArray corretoras;
-
     public CorretoraAdapter(JSONArray corretoras) {
         this.corretoras = corretoras;
+
     }
 
     @NonNull
@@ -40,7 +41,7 @@ public class CorretoraAdapter extends RecyclerView.Adapter<CorretoraAdapter.Corr
     public void onBindViewHolder(@NonNull CorretoraViewHolder holder, int position) {
         try {
             JSONObject corretora = corretoras.getJSONObject(position);
-            holder.bind(corretora);
+             holder.bind(corretora);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -54,6 +55,7 @@ public class CorretoraAdapter extends RecyclerView.Adapter<CorretoraAdapter.Corr
 
     class CorretoraViewHolder extends RecyclerView.ViewHolder{
         TextView nome;
+        JSONObject corretoraSelected;
 
         CorretoraViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -63,6 +65,8 @@ public class CorretoraAdapter extends RecyclerView.Adapter<CorretoraAdapter.Corr
                 public void onClick(View v) {
 
                     Intent intent = new Intent(v.getContext(), Cotacao.class);
+                    intent.putExtra("corretoraSelected", corretoraSelected.toString());
+                    Log.i("AAAAAAAAAAAAAAAAA", corretoraSelected.toString());
                     v.getContext().startActivity(intent);
                 }
             });
@@ -71,13 +75,12 @@ public class CorretoraAdapter extends RecyclerView.Adapter<CorretoraAdapter.Corr
 
         public void bind(JSONObject corretora){
             try {
+                corretoraSelected = corretora;
                 nome.setText(corretora.get("nome").toString());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
-
-
     }
 
 }
