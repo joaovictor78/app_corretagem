@@ -1,7 +1,26 @@
 package com.example.corretagemapp.models;
 
 public class CotacaoModel {
-    private  String idade;
+    private String idade;
+
+    public String getIdade_min() {
+        return idade_min;
+    }
+
+    public void setIdade_min(String idade_min) {
+        this.idade_min = idade_min;
+    }
+
+    public String getIdade_max() {
+        return idade_max;
+    }
+
+    public void setIdade_max(String idade_max) {
+        this.idade_max = idade_max;
+    }
+
+    private  String idade_min;
+    private  String idade_max;
     private String enfermaria_preco;
     private String apartamento_preco;
     public String getIdade() {
@@ -28,11 +47,21 @@ public class CotacaoModel {
         this.apartamento_preco = apartamento_preco;
     }
     public static class CotacaoBuilder{
-        private String idade;
+        private String idade = "";
+        private String idade_min;
+        private String idade_max;
         private String enfermaria_preco;
         private String apartamento_preco;
 
+        public CotacaoModel.CotacaoBuilder setIdadeMin(String idade_min) {
+            this.idade_min = idade_min;
+            return this;
+        }
 
+        public CotacaoModel.CotacaoBuilder setIdadeMax(String idade_max) {
+            this.idade_max = idade_max;
+            return this;
+        }
         public CotacaoModel.CotacaoBuilder setEnfermariaPreco(String enfermaria_preco) {
             this.enfermaria_preco = enfermaria_preco;
             return this;
@@ -56,6 +85,8 @@ public class CotacaoModel {
             cotacao.idade = idade;
             cotacao.apartamento_preco = apartamento_preco;
             cotacao.enfermaria_preco = enfermaria_preco;
+            cotacao.idade_min = idade_min;
+            cotacao.idade_max = idade_max;
             return cotacao;
         }
     }

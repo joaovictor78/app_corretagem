@@ -32,6 +32,7 @@ public class homeActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavView);
         bottomNav.getMenu().getItem(1).setEnabled(false);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+        bottomNav.setBackground(null);
         //I added this if statement to keep the selected fragment when rotating the device
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,

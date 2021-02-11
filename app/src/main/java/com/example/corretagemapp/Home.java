@@ -38,7 +38,7 @@ public class Home extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-         String jsonFileString = Utils.getJsonFromAssets(container.getContext(), "corretoras.json");
+        String jsonFileString = Utils.getJsonFromAssets(container.getContext(), "corretoras.json");
         try {
             JSONArray corretoras = new JSONArray(jsonFileString);
              corretoraAdapter = new CorretoraAdapter(corretoras);
