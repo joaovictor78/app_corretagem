@@ -78,12 +78,20 @@ public class Cotacao extends AppCompatActivity {
                             @RequiresApi(api = Build.VERSION_CODES.N)
                             public void onClick(DialogInterface dialogBox, int id) {
                                 Integer user_idade = Integer.parseInt(idade.getText().toString());
-                                List<CotacaoModel> cotacaoEscolhida = listCotacao.stream().filter(cotacaoModel -> user_idade >= Integer.parseInt(cotacaoModel.getIdade_min()) && user_idade <= Integer.parseInt(cotacaoModel.getIdade_max())).collect(Collectors.toList());
+                                Stream<CotacaoModel> lista = listCotacao.stream().filter(cotacaoModel -> filterCorretora(cotacaoModel, user_idade));
+                                List<CotacaoModel> cotacaoEscolhida = lista.collect(Collectors.toList());
 
-                                if(cotacaoEscolhida != null){
+                                if(cotacaoEscolhida.size() != 0){
                                     CotacaoModel cotacao = cotacaoEscolhida.get(0);
                                     cotacao.setIdade(user_idade.toString());
                                     minhasCotacoes.add(cotacao);
+                                } else {
+                                    List<CotacaoModel> cotacaoIdadeMax = listCotacao.stream().filter(cotacaoModel -> cotacaoModel.getIdade_max().equals("null")).collect(Collectors.toList());
+                                   if(cotacaoIdadeMax.size() != 0){
+                                       CotacaoModel cotacao = cotacaoIdadeMax.get(0);
+                                       cotacao.setIdade(user_idade.toString());
+                                       minhasCotacoes.add(cotacao);
+                                   }
                                 }
 
 
@@ -113,7 +121,7 @@ public class Cotacao extends AppCompatActivity {
                 for (int i = 0; i < array.length(); i++) {
                     JSONObject operadora = array.getJSONObject(i);
                     String idade_min = operadora.getString("idade_min");
-                    String idade_max = operadora.getString("idade_max");
+                    String idade_max = operadora.getString("idade_max") != null ?  operadora.getString("idade_max") : null;
                     JSONArray valorPorTipo = operadora.getJSONArray("valor_por_tipo");
                     String preco_enfermaria = valorPorTipo.getJSONObject(0).getString("valor");
                     String preco_apartamento = valorPorTipo.getJSONObject(1).getString("valor");
@@ -127,6 +135,17 @@ public class Cotacao extends AppCompatActivity {
             e.printStackTrace();
         }
         return null;
+    }
+    private Boolean filterCorretora(CotacaoModel cotacaoModel, int user_idade) {
+        if (!cotacaoModel.getIdade_max().equals("null")) {
+            if (user_idade >= Integer.parseInt(cotacaoModel.getIdade_min()) && user_idade <= Integer.parseInt(cotacaoModel.getIdade_max())) {
+                return true;
+
+            }
+        } else {
+            return false;
+        }
+        return false;
     }
 
 }
