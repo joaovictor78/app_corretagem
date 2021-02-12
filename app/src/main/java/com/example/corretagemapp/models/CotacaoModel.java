@@ -23,6 +23,16 @@ public class CotacaoModel {
     private  String idade_max;
     private String enfermaria_preco;
     private String apartamento_preco;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    private String image;
     public String getIdade() {
         return idade;
     }
@@ -53,6 +63,12 @@ public class CotacaoModel {
         private String enfermaria_preco;
         private String apartamento_preco;
 
+        public CotacaoModel.CotacaoBuilder setImage_background(String image_background) {
+            this.image_background = image_background;
+            return this;
+        }
+
+        private String image_background;
         public CotacaoModel.CotacaoBuilder setIdadeMin(String idade_min) {
             this.idade_min = idade_min;
             return this;
@@ -87,6 +103,7 @@ public class CotacaoModel {
             cotacao.enfermaria_preco = enfermaria_preco;
             cotacao.idade_min = idade_min;
             cotacao.idade_max = idade_max;
+            cotacao.image = image_background;
             return cotacao;
         }
     }

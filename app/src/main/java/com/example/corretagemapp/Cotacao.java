@@ -125,6 +125,7 @@ public class Cotacao extends AppCompatActivity {
                     JSONArray valorPorTipo = operadora.getJSONArray("valor_por_tipo");
                     String preco_enfermaria = valorPorTipo.getJSONObject(0).getString("valor");
                     String preco_apartamento = valorPorTipo.getJSONObject(1).getString("valor");
+
                     listCotacoes.add(CotacaoModel.CotacaoBuilder.builder().setIdadeMin(idade_min).setIdadeMax(idade_max).setApartamentoPreco(preco_apartamento).setEnfermariaPreco(preco_enfermaria).build());
                 }
                 return listCotacoes;

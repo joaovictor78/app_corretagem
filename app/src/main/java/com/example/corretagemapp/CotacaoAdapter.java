@@ -2,10 +2,13 @@ package com.example.corretagemapp;
 
 
 
+import android.media.Image;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -51,11 +54,14 @@ public class CotacaoAdapter extends RecyclerView.Adapter<CotacaoAdapter.CotacaoV
              idade = itemView.findViewById(R.id.idade);
              apartamento_preco = itemView.findViewById(R.id.preco_apartamento);
              enfermagem_preco = itemView.findViewById(R.id.preco_enfermagem);
+
          }
          public void bind(CotacaoModel cotacaoModel){
            idade.setText(cotacaoModel.getIdade());
            apartamento_preco.setText(cotacaoModel.getApartamento_preco());
            enfermagem_preco.setText(cotacaoModel.getEnfermaria_preco());
+
+
          }
      }
 }
