@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CorretagemApp">
-        <activity android:name=".ValorTotalCotacao"></activity>
+
         <activity
             android:name=".homeActivity"
             android:label="Angel"
@@ -28,7 +28,12 @@
             android:parentActivityName=".homeActivity" />
         <activity
             android:name=".Cotacao"
-            android:parentActivityName=".homeActivity" />
+            android:label="Minhas cotações"
+            android:parentActivityName=".homeActivity"/>
+        <activity android:name=".ValorTotalCotacao"
+            android:label="Comprovante"
+            android:parentActivityName=".homeActivity"/>
+
     </application>
 
 </manifest>

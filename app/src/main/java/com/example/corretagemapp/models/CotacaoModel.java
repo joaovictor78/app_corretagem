@@ -1,6 +1,9 @@
 package com.example.corretagemapp.models;
 
-public class CotacaoModel {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class CotacaoModel implements Parcelable {
     private String idade;
 
     public String getIdade_min() {
@@ -23,16 +26,13 @@ public class CotacaoModel {
     private  String idade_max;
     private String enfermaria_preco;
     private String apartamento_preco;
-
-    public String getImage() {
-        return image;
+    public CotacaoModel(){ }
+    protected CotacaoModel(Parcel in) {
+        idade = in.readString();
+        idade_max = in.readString();
+        idade_min = in.readString();
     }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    private String image;
     public String getIdade() {
         return idade;
     }
@@ -56,17 +56,36 @@ public class CotacaoModel {
     public void setApartamento_preco(String apartamento_preco) {
         this.apartamento_preco = apartamento_preco;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(idade);
+        dest.writeString(idade_max);
+        dest.writeString(idade_min);
+        dest.writeString(enfermaria_preco);
+        dest.writeString(apartamento_preco);
+    }
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        public CotacaoModel createFromParcel(Parcel in) {
+            return new CotacaoModel(in);
+        }
+
+        public CotacaoModel[] newArray(int size) {
+            return new CotacaoModel[size];
+        }
+    };
+
     public static class CotacaoBuilder{
         private String idade = "";
         private String idade_min;
         private String idade_max;
         private String enfermaria_preco;
         private String apartamento_preco;
-
-        public CotacaoModel.CotacaoBuilder setImage_background(String image_background) {
-            this.image_background = image_background;
-            return this;
-        }
 
         private String image_background;
         public CotacaoModel.CotacaoBuilder setIdadeMin(String idade_min) {
@@ -103,11 +122,7 @@ public class CotacaoModel {
             cotacao.enfermaria_preco = enfermaria_preco;
             cotacao.idade_min = idade_min;
             cotacao.idade_max = idade_max;
-            cotacao.image = image_background;
             return cotacao;
         }
     }
-
-
-
 }

@@ -55,7 +55,9 @@ public class Cotacao extends AppCompatActivity {
         calcularTotalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(getApplicationContext(), ValorTotalCotacao.class);
+                intent.putExtra("dados", minhasCotacoes);
                 startActivity(intent);
             }
         });
@@ -70,7 +72,6 @@ public class Cotacao extends AppCompatActivity {
                 View mView = layoutInflaterAndroid.inflate(R.layout.add_membro, null);
                 AlertDialog.Builder alertDialogBuilderUserInput = new AlertDialog.Builder(Cotacao.this);
                 alertDialogBuilderUserInput.setView(mView);
-
                 final EditText idade = (EditText) mView.findViewById(R.id.userInputIdade);
                 alertDialogBuilderUserInput
                         .setCancelable(false)
