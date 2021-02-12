@@ -9,7 +9,6 @@
     card_view:cardBackgroundColor="@color/black"
     card_view:cardCornerRadius="0dp"
     >
-
         <TextView
             android:id="@+id/nameCorretora"
             android:layout_width="match_parent"
