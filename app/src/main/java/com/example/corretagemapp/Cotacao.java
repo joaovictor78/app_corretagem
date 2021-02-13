@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.corretagemapp.models.CotacaoModel;
 import com.example.corretagemapp.models.CotacoesFake;
@@ -55,10 +56,14 @@ public class Cotacao extends AppCompatActivity {
         calcularTotalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(!minhasCotacoes.isEmpty()){
                 Intent intent = new Intent(getApplicationContext(), ValorTotalCotacao.class);
                 intent.putExtra("dados", minhasCotacoes);
                 startActivity(intent);
+                } else{
+                    Toast.makeText(getApplicationContext(), "Nenhuma cotação adicionada!",
+                            Toast.LENGTH_LONG).show();
+                }
             }
         });
         //Add lines for cotacaoAdapter
@@ -78,23 +83,29 @@ public class Cotacao extends AppCompatActivity {
                         .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                             @RequiresApi(api = Build.VERSION_CODES.N)
                             public void onClick(DialogInterface dialogBox, int id) {
-                                Integer user_idade = Integer.parseInt(idade.getText().toString());
-                                Stream<CotacaoModel> lista = listCotacao.stream().filter(cotacaoModel -> filterCorretora(cotacaoModel, user_idade));
-                                List<CotacaoModel> cotacaoEscolhida = lista.collect(Collectors.toList());
+                                if (idade.getText().length() != 0) {
+                                    Integer user_idade = Integer.parseInt(idade.getText().toString());
+                                    Stream<CotacaoModel> lista = listCotacao.stream().filter(cotacaoModel -> filterCorretora(cotacaoModel, user_idade));
+                                    List<CotacaoModel> cotacaoEscolhida = lista.collect(Collectors.toList());
 
-                                if(cotacaoEscolhida.size() != 0){
-                                    CotacaoModel cotacao = cotacaoEscolhida.get(0);
-                                    cotacao.setIdade(user_idade.toString());
-                                    minhasCotacoes.add(cotacao);
-                                } else {
-                                    List<CotacaoModel> cotacaoIdadeMax = listCotacao.stream().filter(cotacaoModel -> cotacaoModel.getIdade_max().equals("null")).collect(Collectors.toList());
-                                   if(cotacaoIdadeMax.size() != 0){
-                                       CotacaoModel cotacao = cotacaoIdadeMax.get(0);
-                                       cotacao.setIdade(user_idade.toString());
-                                       minhasCotacoes.add(cotacao);
-                                   }
+                                    if (cotacaoEscolhida.size() != 0) {
+                                        CotacaoModel cotacao = cotacaoEscolhida.get(0);
+                                        cotacao.setIdade(user_idade.toString());
+                                        minhasCotacoes.add(cotacao);
+                                    } else {
+                                        List<CotacaoModel> cotacaoIdadeMax = listCotacao.stream().filter(cotacaoModel -> cotacaoModel.getIdade_max().equals("null")).collect(Collectors.toList());
+                                        if (cotacaoIdadeMax.size() != 0) {
+                                            CotacaoModel cotacao = cotacaoIdadeMax.get(0);
+                                            cotacao.setIdade(user_idade.toString());
+                                            minhasCotacoes.add(cotacao);
+                                        }
+                                    }
+
+
                                 }
-
+                                else {
+                                    Toast.makeText(getApplicationContext(), "Nenhuma idade adicionada!",
+                                            Toast.LENGTH_LONG).show();}
 
                             }
                         })
