@@ -34,7 +34,7 @@
     <ImageView
         android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="74dp"
+        android:layout_height="81dp"
         android:layout_margin="24dp"
         android:background="@color/black"
         android:scaleType="centerCrop"

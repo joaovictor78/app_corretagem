@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -39,6 +40,7 @@ public class CorretoraAdapter extends RecyclerView.Adapter<CorretoraAdapter.Corr
         View view = LayoutInflater.from(parent.getContext()).inflate(
                 R.layout.card_item, parent, false
         );
+
         return new CorretoraViewHolder(view);
     }
 
@@ -62,8 +64,7 @@ public class CorretoraAdapter extends RecyclerView.Adapter<CorretoraAdapter.Corr
         TextView nome;
         ImageView image_background;
         JSONObject corretoraSelected;
-
-
+        int id;
         CorretoraViewHolder(@NonNull View itemView) {
             super(itemView);
             nome = itemView.findViewById(R.id.nameCorretora);
@@ -85,18 +86,9 @@ public class CorretoraAdapter extends RecyclerView.Adapter<CorretoraAdapter.Corr
             try {
                 corretoraSelected = corretora;
                 nome.setText(corretora.get("nome").toString());
-                File imgFile = new  File(corretora.get("image_url").toString());
-
-                if(imgFile.exists()){
-
-                    Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-
-
-
-                    image_background.setImageBitmap(myBitmap);
-
-                }
-
+                //image_background.getResources(R.drawable.banner);
+                id = itemView.getContext().getResources().getIdentifier("com.example.corretagemapp:drawable/" + corretora.get("image_url").toString(), null, null);
+                image_background.setImageResource(id);
 
             } catch (JSONException e) {
                 e.printStackTrace();
