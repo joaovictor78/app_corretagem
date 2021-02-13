@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.corretagemapp.models.CotacaoModel;
@@ -50,9 +51,10 @@ public class Cotacao extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-       listCotacao = initListCotacaoOperados();
+        listCotacao = initListCotacaoOperados();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Button calcularTotalButton = findViewById(R.id.calcular_total);
+        TextView textEmpty = findViewById(R.id.textEmpty);
         calcularTotalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,6 +94,14 @@ public class Cotacao extends AppCompatActivity {
                                         CotacaoModel cotacao = cotacaoEscolhida.get(0);
                                         cotacao.setIdade(user_idade.toString());
                                         minhasCotacoes.add(cotacao);
+                                        if (minhasCotacoes.isEmpty()) {
+                                            recyclerView.setVisibility(View.GONE);
+                                            textEmpty.setVisibility(View.VISIBLE);
+                                        }
+                                        else {
+                                            recyclerView.setVisibility(View.VISIBLE);
+                                            textEmpty.setVisibility(View.GONE);
+                                        }
                                     } else {
                                         List<CotacaoModel> cotacaoIdadeMax = listCotacao.stream().filter(cotacaoModel -> cotacaoModel.getIdade_max().equals("null")).collect(Collectors.toList());
                                         if (cotacaoIdadeMax.size() != 0) {
@@ -119,10 +129,12 @@ public class Cotacao extends AppCompatActivity {
 
                 AlertDialog alertDialogAndroid = alertDialogBuilderUserInput.create();
                 alertDialogAndroid.show();
+
             }
         });
 
     }
+
 
     private ArrayList<CotacaoModel> initListCotacaoOperados() {
 

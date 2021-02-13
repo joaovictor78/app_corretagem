@@ -12,6 +12,13 @@
                  android:layout_height="match_parent"
                  app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                  android:layout_marginTop="20dp" />
+              <TextView
+                  android:id="@+id/textEmpty"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Nenhuma cotação encontrada! Adicione novas cotações."
+                  android:textColor="@color/black"
+                  android:layout_centerInParent="true"/>
 
            <LinearLayout
                android:id="@+id/linearLayout"

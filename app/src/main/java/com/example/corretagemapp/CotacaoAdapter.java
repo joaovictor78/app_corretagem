@@ -48,7 +48,6 @@ public class CotacaoAdapter extends RecyclerView.Adapter<CotacaoAdapter.CotacaoV
          TextView idade;
          TextView apartamento_preco;
          TextView enfermagem_preco;
-
          public CotacaoViewHolder(@NonNull View itemView) {
              super(itemView);
              idade = itemView.findViewById(R.id.idade);
