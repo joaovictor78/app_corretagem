@@ -38,6 +38,7 @@ public class ValorTotalCotacao extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         verifyStoragePermission(this);
         ArrayList<CotacaoModel> dados = getIntent().getParcelableArrayListExtra("dados");
+        Log.i("TESTEEE", Integer.toString(dados.size()));
         Button printButton = findViewById(R.id.salve_print);
         printButton.setOnClickListener(new View.OnClickListener() {
             @Override

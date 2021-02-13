@@ -31,6 +31,8 @@ public class CotacaoModel implements Parcelable {
         idade = in.readString();
         idade_max = in.readString();
         idade_min = in.readString();
+        enfermaria_preco = in.readString();
+        apartamento_preco = in.readString();
     }
 
     public String getIdade() {
