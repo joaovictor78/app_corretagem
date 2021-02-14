@@ -6,6 +6,7 @@ public class CompromissoModel {
     private String horario;
     private String descricao;
 
+    public CompromissoModel(){}
     public String getAssunto() {
         return assunto;
     }
@@ -39,48 +40,6 @@ public class CompromissoModel {
     }
 
 
-
-    private CompromissoModel(){}
-    public static class CompromissoModelBuilder{
-        private String assunto;
-        private String data;
-        private String horario;
-        private String descricao;
-        public void setAssunto(String assunto) {
-            this.assunto = assunto;
-        }
-
-
-        public CompromissoModel.CompromissoModelBuilder setData(String data) {
-            this.data = data;
-            return this;
-        }
-
-
-        public CompromissoModel.CompromissoModelBuilder  setHorario(String horario) {
-            this.horario = horario;
-            return this;
-        }
-
-
-        public CompromissoModel.CompromissoModelBuilder  setDescricao(String descricao) {
-            this.descricao = descricao;
-            return this;
-        }
-
-        private CompromissoModelBuilder(){}
-        public static CompromissoModel.CompromissoModelBuilder builder(){
-            return new CompromissoModel.CompromissoModelBuilder();
-        }
-        public CotacaoModel build(){
-            CotacaoModel compromisso = new CotacaoModel();
-            this.assunto = assunto;
-            this.data = data;
-            this.descricao = descricao;
-            this.horario = horario;
-            return compromisso;
-        }
-    }
 
 
 

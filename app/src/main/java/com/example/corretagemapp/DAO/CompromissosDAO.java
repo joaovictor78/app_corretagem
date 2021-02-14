@@ -13,21 +13,19 @@ public class CompromissosDAO {
     public CompromissosDAO(Context context){
         database = new DataBase(context);
     }
-    public String insertCompromisso(CompromissoModel compromisso){
+    public void insertCompromisso(CompromissoModel compromisso) throws Exception {
         ContentValues contentValues;
         long result;
         db = database.getWritableDatabase();
         contentValues = new ContentValues();
         contentValues.put("assunto",compromisso.getAssunto());
         contentValues.put("data", compromisso.getData());
-        contentValues.put("hora", compromisso.getHorario());
+        contentValues.put("horario", compromisso.getHorario());
         contentValues.put("descricao", compromisso.getDescricao());
         result = db.insert("compromisso", null, contentValues);
         db.close();
         if(result == -1){
-            return "Erro ao inserir compromisso!";
-        }else{
-            return "Compromisso salvo com sucesso!";
+            throw new Exception("Número não pode ser menor que zero!");
         }
     }
 }

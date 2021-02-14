@@ -4,7 +4,7 @@ public class ScriptDLL {
     public static String getCreateCompromisso(){
         StringBuilder createTableCompromisso = new StringBuilder();
         createTableCompromisso.append("CREATE TABLE IF NOT EXISTS compromisso(");
-        createTableCompromisso.append("codigo_compromisso INTEGER AUTOINCREMENT PRIMARY KEY,");
+        createTableCompromisso.append("codigo_compromisso INTEGER PRIMARY KEY AUTOINCREMENT,");
         createTableCompromisso.append("assunto TEXT NOT NULL,");
         createTableCompromisso.append("data TEXT NOT NULL,");
         createTableCompromisso.append("horario TEXT NOT NULL,");
