@@ -39,6 +39,7 @@ public class AdicionarCompromisso extends AppCompatActivity {
             public void onClick(View v) {
                 result = compromissosController.salveCompromisso();
                 Toast.makeText(getApplicationContext(), result,   Toast.LENGTH_LONG).show();
+                finish();
             }
         });
 
