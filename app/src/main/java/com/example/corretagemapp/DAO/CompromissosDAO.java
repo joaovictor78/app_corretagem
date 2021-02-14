@@ -45,7 +45,4 @@ public class CompromissosDAO {
     public void deleteCompromissos(){
 
     }
-    public void deleteAllCompromissos(){
-
-    }
 }
