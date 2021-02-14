@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="65dp"
+    android:background="@color/ciano_481"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginVertical="10dp">
+    <TextView
+        android:id="@+id/assunto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Assunto"/>
+
+    <TextView
+        android:id="@+id/assunto_compromisso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_toEndOf="@+id/assunto"
+        android:textColor="@color/white"
+        android:layout_toRightOf="@+id/assunto"
+        android:text="*Not defined*" />
+
+    <TextView
+        android:id="@+id/hora_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/assunto"
+        android:textColor="@color/white"
+        android:layout_marginTop="5dp"
+        android:text="Hora" />
+
+    <TextView
+        android:id="@+id/hora_compromisso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/hora_title"
+        android:textColor="@color/white"
+        android:layout_below="@id/assunto_compromisso"
+        android:layout_toRightOf="@+id/hora_title"
+        android:text="*Not defined*" />
+    <TextView
+        android:id="@+id/descricao_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:layout_alignParentBottom="true"
+        android:text="Descrição" />
+
+    <TextView
+        android:id="@+id/descricao_compromisso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/white"
+        android:layout_toEndOf="@+id/descricao_title"
+        android:layout_toRightOf="@+id/descricao_title"
+        android:text="*Not defined*" />
+
+
+</RelativeLayout>

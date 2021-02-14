@@ -25,7 +25,7 @@ public class homeActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),  calendar.class);
+                Intent intent = new Intent(getApplicationContext(),  Agenda.class);
                 startActivity(intent);
             }
         });

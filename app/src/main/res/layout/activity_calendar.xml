@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".calendar">
+    tools:context=".Agenda">
 
     <TextView
         android:id="@+id/textView"
@@ -33,6 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_agenda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
