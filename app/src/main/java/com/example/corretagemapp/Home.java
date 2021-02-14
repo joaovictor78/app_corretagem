@@ -2,24 +2,15 @@ package com.example.corretagemapp;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.corretagemapp.models.Corretoras;
-
 import org.json.JSONArray;
 import org.json.JSONException;
-
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.ArrayList;
 
 public class Home extends Fragment {
 

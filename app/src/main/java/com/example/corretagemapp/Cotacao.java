@@ -18,15 +18,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.corretagemapp.models.CotacaoModel;
-import com.example.corretagemapp.models.CotacoesFake;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
