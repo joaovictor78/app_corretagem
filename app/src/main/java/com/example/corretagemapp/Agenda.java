@@ -15,6 +15,7 @@ import com.applandeo.materialcalendarview.CalendarUtils;
 import com.applandeo.materialcalendarview.CalendarView;
 import com.applandeo.materialcalendarview.EventDay;
 import com.applandeo.materialcalendarview.listeners.OnDayClickListener;
+import com.example.corretagemapp.controllers.CompromissosController;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -25,11 +26,13 @@ public class Agenda extends AppCompatActivity {
     private CalendarView calendarView;
     private List<EventDay> myEvents = new ArrayList<>();
     private FloatingActionButton fab;
-
+    CompromissosController compromissosController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
+        compromissosController = new CompromissosController(getBaseContext());
+        compromissosController.getAllDates();
         fab = findViewById(R.id.fab_agenda);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         calendarView = (CalendarView) findViewById(R.id.calendarView);

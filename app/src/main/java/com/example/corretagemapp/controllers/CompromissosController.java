@@ -33,4 +33,7 @@ public class CompromissosController {
             return "Erro ao salvar compromisso!";
         }
     }
+    public void getAllDates(){
+        compromissos.getAllDateCompromissos();
+    }
 }

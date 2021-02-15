@@ -13,11 +13,22 @@ public class DataBase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         db.execSQL(ScriptDLL.getCreateCompromisso());
+        db.execSQL(ScriptDLL.getCreateDataCompromisso());
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+    }
+
+    @Override
+    public void onOpen(SQLiteDatabase db) {
+        super.onOpen(db);
+        if(!db.isReadOnly()){
+            db.execSQL("PRAGMA foreign_keys=ON");
+        }
     }
 }

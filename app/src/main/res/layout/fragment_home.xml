@@ -34,10 +34,10 @@
     <ImageView
         android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="81dp"
+        android:layout_height="99dp"
         android:layout_margin="24dp"
         android:background="@color/black"
-        android:scaleType="centerCrop"
+        android:scaleType="fitXY"
         android:src="@drawable/banner"
         app:layout_anchor="@id/subtitleMain"
         app:layout_constraintEnd_toEndOf="parent"
