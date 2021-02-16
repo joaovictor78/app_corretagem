@@ -49,4 +49,7 @@ public class CompromissosDAO {
         cursor.close();
         db.close();
     }
+    public void getAllCompromissos(){
+
+    }
 }
