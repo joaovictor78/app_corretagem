@@ -3,6 +3,8 @@ package view;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +20,7 @@ public class AdicionarCompromisso extends AppCompatActivity {
    EditText hora;
    EditText descricao;
    Button saveCompromisso;
+   private String lastCharacter = "";
    private String result;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +31,38 @@ public class AdicionarCompromisso extends AppCompatActivity {
         data = findViewById(R.id.input_data);
         hora = findViewById(R.id.input_horario);
         descricao = findViewById(R.id.input_descricao);
+        data.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                Integer lengthData = data.getText().length();
+                if(lengthData > 1){
+                    lastCharacter = data.getText().toString().substring(lengthData - 1);
+                }
+            }
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Integer lengthData = data.getText().length();
+                if(lengthData == 2){
+                    if(!lastCharacter.equals("/")) {
+                        data.getText().append("/");
+                    } else{
+                        data.getText().delete(lengthData - 1, lengthData);
+                    }
+                } else if(lengthData == 5){
+                    if(!lastCharacter.equals("/")) {
+                        data.getText().append("/");
+                    } else{
+                        data.getText().delete(lengthData - 1, lengthData);
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         compromissosController = new CompromissosController(getBaseContext());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
