@@ -31,13 +31,14 @@ public class AdicionarCompromisso extends AppCompatActivity {
 
         compromissosController = new CompromissosController(getBaseContext());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        compromissosController.assunto = assunto.getText().toString();
-        compromissosController.data = data.getText().toString();
-        compromissosController.hora = hora.getText().toString();
-        compromissosController.descricao = descricao.getText().toString();
+
         saveCompromisso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                compromissosController.assunto = assunto.getText().toString();
+                compromissosController.data = data.getText().toString();
+                compromissosController.hora = hora.getText().toString();
+                compromissosController.descricao = descricao.getText().toString();
                 result = compromissosController.salveCompromisso();
                 Toast.makeText(getApplicationContext(), result,   Toast.LENGTH_LONG).show();
                 finish();

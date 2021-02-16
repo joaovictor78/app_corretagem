@@ -24,7 +24,7 @@ public class CompromissosDAO {
         db = database.getWritableDatabase();
         contentValuesCompromisso = new ContentValues();
         contentValuesDataCompromisso = new ContentValues();
-        contentValuesCompromisso.put("assunto",compromisso.getAssunto());
+        contentValuesCompromisso.put("assunto", compromisso.getAssunto());
         contentValuesCompromisso.put("horario", compromisso.getHorario());
         contentValuesCompromisso.put("descricao", compromisso.getDescricao());
         resultCompromisso = db.insert("compromisso", null, contentValuesCompromisso);
@@ -42,13 +42,11 @@ public class CompromissosDAO {
         Cursor cursor = db.rawQuery(selectDataAllQuery, null);
 
         while(cursor.moveToNext()){
-
-            String valor = cursor.getString(2);
+            String valor = cursor.getString(cursor.getColumnIndex("data"));
             Log.i("brodiii", valor);
         }
 
         cursor.close();
         db.close();
     }
-
 }
