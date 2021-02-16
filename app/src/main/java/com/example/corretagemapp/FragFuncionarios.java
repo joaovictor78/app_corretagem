@@ -11,6 +11,8 @@ import android.widget.EditText;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.corretagemapp.controllers.FuncionarioController;
+import com.example.corretagemapp.models.Funcionario;
 import com.example.corretagemapp.models.Funcionarios;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -30,6 +32,8 @@ public class FragFuncionarios extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_funcionarios, container, false);
         FloatingActionButton fab = view.findViewById(R.id.fab_addfuncionarios);
+        Funcionario controller = new FuncionarioController();
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,13 +47,15 @@ public class FragFuncionarios extends Fragment {
                 final EditText phone = (EditText) mView.findViewById(R.id.userInputName);
                 alertDialogBuilderUserInput
                         .setCancelable(false)
-                        .setPositiveButton("Add", new DialogInterface.OnClickListener() {
+                        .setPositiveButton("Adicionar", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialogBox, int id) {
-                                // ToDo get user input here
+                                controller.setName().getText().toString();
+                                controller.setEmail().getText().toString();
+                                controller.setPhone().getText().toString();
                             }
                         })
 
-                        .setNegativeButton("Cancell",
+                        .setNegativeButton("Cancelar",
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialogBox, int id) {
                                         dialogBox.cancel();
