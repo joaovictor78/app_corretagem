@@ -32,7 +32,7 @@ public class AdicionarCompromisso extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         compromissosController.assunto = assunto.getText().toString();
         compromissosController.data = data.getText().toString();
-        compromissosController.hora = data.getText().toString();
+        compromissosController.hora = hora.getText().toString();
         compromissosController.descricao = descricao.getText().toString();
         saveCompromisso.setOnClickListener(new View.OnClickListener() {
             @Override

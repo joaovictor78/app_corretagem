@@ -1,4 +1,4 @@
-package com.example.corretagemapp.DAO;
+ package com.example.corretagemapp.DAO;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -29,19 +29,22 @@ public class CompromissosDAO {
         contentValuesCompromisso.put("descricao", compromisso.getDescricao());
         resultCompromisso = db.insert("compromisso", null, contentValuesCompromisso);
         contentValuesDataCompromisso.put("id_compromisso", resultCompromisso);
-        contentValuesDataCompromisso.put("data", compromisso.getData());
+        contentValuesDataCompromisso.put("data_marcada", compromisso.getData());
         resultDataCompromisso = db.insert("data_compromisso", null, contentValuesDataCompromisso);
         if(resultCompromisso == -1 || resultDataCompromisso == -1){
             throw new Exception("Erro ao cadastrar compromisso!");
         }
+        db.close();
     }
     public void getAllDateCompromissos(){
         db = database.getReadableDatabase();
-        String selectDataAllQuery = "SELECT data FROM data_compromisso;";
+        String selectDataAllQuery = "SELECT * FROM data_compromisso;";
         Cursor cursor = db.rawQuery(selectDataAllQuery, null);
-        Log.i("TESTEIIIIIII", "oiii");
+
         while(cursor.moveToNext()){
-            Log.i("BIXOOO", cursor.getString(cursor.getColumnIndex("data")));
+
+            String valor = cursor.getString(2);
+            Log.i("brodiii", valor);
         }
 
         cursor.close();

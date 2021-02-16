@@ -15,7 +15,7 @@ public class ScriptDLL {
         createTableDataCompromisso.append("CREATE TABLE IF NOT EXISTS data_compromisso(");
         createTableDataCompromisso.append("id_data INTEGER PRIMARY KEY AUTOINCREMENT,");
         createTableDataCompromisso.append("id_compromisso INTEGER NOT NULL,");
-        createTableDataCompromisso.append("data TEXT NOT NULL,");
+        createTableDataCompromisso.append("data_marcada TEXT NOT NULL,");
         createTableDataCompromisso.append("FOREIGN KEY (id_compromisso) REFERENCES compromisso(codigo_compromisso) );");
         return createTableDataCompromisso.toString();
     }
