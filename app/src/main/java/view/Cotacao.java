@@ -1,4 +1,4 @@
-package com.example.corretagemapp;
+package view;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.corretagemapp.R;
 import com.example.corretagemapp.models.CotacaoModel;
 
 import org.json.JSONArray;

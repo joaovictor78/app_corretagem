@@ -1,4 +1,4 @@
-package com.example.corretagemapp;
+package view;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.corretagemapp.models.Corretora;
+import com.example.corretagemapp.R;
 import com.example.corretagemapp.models.Funcionario;
 
 import java.util.ArrayList;

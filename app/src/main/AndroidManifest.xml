@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CorretagemApp">
         <activity
-            android:name=".homeActivity"
+            android:name="view.homeActivity"
             android:label="Angel"
             android:launchMode="singleTop">
             <intent-filter>
@@ -24,19 +24,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Agenda"
+            android:name="view.Agenda"
             android:label="Compromissos"
-            android:parentActivityName=".homeActivity" />
+            android:parentActivityName="view.homeActivity" />
         <activity
-            android:name=".Cotacao"
+            android:name="view.Cotacao"
             android:label="Minhas cotações"
-            android:parentActivityName=".homeActivity" />
+            android:parentActivityName="view.homeActivity" />
         <activity
-            android:name=".ValorTotalCotacao"
+            android:name="view.ValorTotalCotacao"
             android:label="Comprovante"
-            android:parentActivityName=".homeActivity" />
-        <activity android:name=".CompromissosAgendados" android:label="Compromissos Agendados" android:parentActivityName=".Agenda"></activity>
-        <activity android:name=".AdicionarCompromisso" android:label="Adicionar Compromisso" android:parentActivityName=".CompromissosAgendados"/>
+            android:parentActivityName="view.homeActivity" />
+        <activity android:name="view.CompromissosAgendados" android:label="Compromissos Agendados" android:parentActivityName="view.Agenda"></activity>
+        <activity android:name="view.AdicionarCompromisso" android:label="Adicionar Compromisso" android:parentActivityName="view.CompromissosAgendados"/>
     </application>
 
 </manifest>

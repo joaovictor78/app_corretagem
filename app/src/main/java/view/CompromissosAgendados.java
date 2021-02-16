@@ -1,8 +1,10 @@
-package com.example.corretagemapp;
+package view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.corretagemapp.R;
 
 public class CompromissosAgendados extends AppCompatActivity {
 

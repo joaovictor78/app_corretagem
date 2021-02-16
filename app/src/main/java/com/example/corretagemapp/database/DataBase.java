@@ -16,6 +16,7 @@ public class DataBase extends SQLiteOpenHelper {
 
         db.execSQL(ScriptDLL.getCreateCompromisso());
         db.execSQL(ScriptDLL.getCreateDataCompromisso());
+        db.execSQL(ScriptDLL.getCreatFuncionario());
 
     }
 

@@ -1,4 +1,4 @@
-package com.example.corretagemapp;
+package view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.corretagemapp.R;
 import com.example.corretagemapp.controllers.CompromissosController;
 
 public class AdicionarCompromisso extends AppCompatActivity {
