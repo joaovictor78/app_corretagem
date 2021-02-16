@@ -1,4 +1,4 @@
-package com.example.corretagemapp;
+package view;
 
 import android.os.Bundle;
 
@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.corretagemapp.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;

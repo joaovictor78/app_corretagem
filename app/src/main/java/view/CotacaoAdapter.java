@@ -1,23 +1,17 @@
-package com.example.corretagemapp;
+package view;
 
 
 
-import android.media.Image;
-import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.corretagemapp.R;
 import com.example.corretagemapp.models.CotacaoModel;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.List;
 

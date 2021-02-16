@@ -1,4 +1,4 @@
-package com.example.corretagemapp;
+package view;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -11,6 +11,7 @@ import android.widget.EditText;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.corretagemapp.R;
 import com.example.corretagemapp.controllers.FuncionarioController;
 import com.example.corretagemapp.models.Funcionario;
 import com.example.corretagemapp.models.Funcionarios;
@@ -22,18 +23,13 @@ public class FragFuncionarios extends Fragment {
     // Add RecyclerView member
     private RecyclerView recyclerView;
     private FuncionarioAdapter funcionarioAdapter;
+    private FuncionarioController controller;
     @Override
-    public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState
-    ) {
-
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
+        controller = new FuncionarioController(getActivity().getBaseContext());
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_funcionarios, container, false);
         FloatingActionButton fab = view.findViewById(R.id.fab_addfuncionarios);
-        Funcionario controller = new FuncionarioController(getActivity().getBaseContext());
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,15 +43,16 @@ public class FragFuncionarios extends Fragment {
                 final EditText phone = (EditText) mView.findViewById(R.id.userInputName);
                 alertDialogBuilderUserInput
                         .setCancelable(false)
-                        .setPositiveButton("Adicionar", new DialogInterface.OnClickListener() {
+                        .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialogBox, int id) {
-                                controller.setName().getText().toString();
-                                controller.setEmail().getText().toString();
-                                controller.setPhone().getText().toString();
+                                controller.nome = name.getText().toString();
+                                controller.email = email.getText().toString();
+                                controller.numero = phone.getText().toString();
+                                controller.salveFuncionario();
                             }
                         })
 
-                        .setNegativeButton("Cancelar",
+                        .setNegativeButton("Cancell",
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialogBox, int id) {
                                         dialogBox.cancel();
@@ -68,7 +65,7 @@ public class FragFuncionarios extends Fragment {
         });
 
         recyclerView = view.findViewById(R.id.lista_funcionarios);
-        funcionarioAdapter = new FuncionarioAdapter(new ArrayList<>(Funcionarios.listFuncionario()));
+        funcionarioAdapter = new FuncionarioAdapter((ArrayList<Funcionario>) controller.buscarFuncionario());
         recyclerView.setAdapter(funcionarioAdapter);
         return view;
     }

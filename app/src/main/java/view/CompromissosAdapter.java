@@ -1,4 +1,4 @@
-package com.example.corretagemapp;
+package view;
 
 import android.view.View;
 import android.view.ViewGroup;

@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DataBase extends SQLiteOpenHelper {
     public DataBase(@Nullable Context context) {
-        super(context, "USUARIOS", null, 1);
+        super(context, "USUARIOS", null, 3);
     }
 
     @Override
@@ -16,6 +16,7 @@ public class DataBase extends SQLiteOpenHelper {
 
         db.execSQL(ScriptDLL.getCreateCompromisso());
         db.execSQL(ScriptDLL.getCreateDataCompromisso());
+        db.execSQL(ScriptDLL.getCreatFuncionario());
 
     }
 

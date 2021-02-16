@@ -1,4 +1,4 @@
-package com.example.corretagemapp;
+package view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.corretagemapp.R;
 import com.example.corretagemapp.controllers.CompromissosController;
 
 public class AdicionarCompromisso extends AppCompatActivity {
@@ -32,7 +33,7 @@ public class AdicionarCompromisso extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         compromissosController.assunto = assunto.getText().toString();
         compromissosController.data = data.getText().toString();
-        compromissosController.hora = data.getText().toString();
+        compromissosController.hora = hora.getText().toString();
         compromissosController.descricao = descricao.getText().toString();
         saveCompromisso.setOnClickListener(new View.OnClickListener() {
             @Override

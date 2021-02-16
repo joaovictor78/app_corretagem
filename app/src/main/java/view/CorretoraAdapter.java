@@ -1,11 +1,6 @@
-package com.example.corretagemapp;
+package view;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,16 +11,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.corretagemapp.models.Corretora;
+import com.example.corretagemapp.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 public class CorretoraAdapter extends RecyclerView.Adapter<CorretoraAdapter.CorretoraViewHolder> {
     private final JSONArray corretoras;

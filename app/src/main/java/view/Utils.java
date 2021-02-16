@@ -1,4 +1,4 @@
-package com.example.corretagemapp;
+package view;
 
 import android.content.Context;
 import android.util.Log;

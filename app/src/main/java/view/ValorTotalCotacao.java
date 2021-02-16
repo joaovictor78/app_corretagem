@@ -1,4 +1,4 @@
-package com.example.corretagemapp;
+package view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.corretagemapp.R;
 import com.example.corretagemapp.models.CotacaoModel;
 
 import java.io.File;
