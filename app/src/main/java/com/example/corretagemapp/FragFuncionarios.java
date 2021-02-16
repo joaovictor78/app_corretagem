@@ -32,7 +32,7 @@ public class FragFuncionarios extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_funcionarios, container, false);
         FloatingActionButton fab = view.findViewById(R.id.fab_addfuncionarios);
-        Funcionario controller = new FuncionarioController();
+        Funcionario controller = new FuncionarioController(getActivity().getBaseContext());
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
