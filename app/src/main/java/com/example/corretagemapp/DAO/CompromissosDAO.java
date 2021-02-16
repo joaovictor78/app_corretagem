@@ -10,7 +10,10 @@ import com.example.corretagemapp.database.DataBase;
 import com.example.corretagemapp.models.CompromissoModel;
 import com.example.corretagemapp.models.DataCompromissoModel;
 
-public class CompromissosDAO {
+import java.util.ArrayList;
+import java.util.List;
+
+ public class CompromissosDAO {
     private SQLiteDatabase db;
     private DataBase database;
     public CompromissosDAO(Context context){
@@ -36,20 +39,21 @@ public class CompromissosDAO {
         }
         db.close();
     }
-    public void getAllDateCompromissos(){
+    public List<DataCompromissoModel> getAllDateCompromissos(){
         db = database.getReadableDatabase();
         String selectDataAllQuery = "SELECT * FROM data_compromisso;";
         Cursor cursor = db.rawQuery(selectDataAllQuery, null);
-
+        List<DataCompromissoModel> dataCompromisso = new ArrayList();
         while(cursor.moveToNext()){
             String valor = cursor.getString(cursor.getColumnIndex("data"));
-            Log.i("brodiii", valor);
+            String dia = valor.substring(0, 2);
+            String mes = valor.substring(3, 5);
+            String ano = valor.substring(6, 10);
+            DataCompromissoModel data = new DataCompromissoModel(dia, mes, ano);
+            dataCompromisso.add(data);
         }
-
         cursor.close();
         db.close();
-    }
-    public void getAllCompromissos(){
-
+        return dataCompromisso;
     }
 }
