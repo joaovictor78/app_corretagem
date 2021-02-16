@@ -29,7 +29,7 @@ public class DataBase extends SQLiteOpenHelper {
     public void onOpen(SQLiteDatabase db) {
         super.onOpen(db);
         if(!db.isReadOnly()){
-            db.execSQL("PRAGMA foreign_keys=ON");
+            db.execSQL("PRAGMA foreign_keys=1");
         }
     }
 }

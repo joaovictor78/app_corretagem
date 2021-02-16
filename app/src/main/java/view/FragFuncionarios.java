@@ -39,8 +39,8 @@ public class FragFuncionarios extends Fragment {
                 alertDialogBuilderUserInput.setView(mView);
 
                 final EditText name = (EditText) mView.findViewById(R.id.userInputName);
-                final EditText email = (EditText) mView.findViewById(R.id.userInputName);
-                final EditText phone = (EditText) mView.findViewById(R.id.userInputName);
+                final EditText email = (EditText) mView.findViewById(R.id.userInputEmail);
+                final EditText phone = (EditText) mView.findViewById(R.id.userInputPhone);
                 alertDialogBuilderUserInput
                         .setCancelable(false)
                         .setPositiveButton("Add", new DialogInterface.OnClickListener() {

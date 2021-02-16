@@ -24,12 +24,12 @@ public class CompromissosDAO {
         db = database.getWritableDatabase();
         contentValuesCompromisso = new ContentValues();
         contentValuesDataCompromisso = new ContentValues();
-        contentValuesCompromisso.put("assunto",compromisso.getAssunto());
+        contentValuesCompromisso.put("assunto", compromisso.getAssunto());
         contentValuesCompromisso.put("horario", compromisso.getHorario());
         contentValuesCompromisso.put("descricao", compromisso.getDescricao());
         resultCompromisso = db.insert("compromisso", null, contentValuesCompromisso);
         contentValuesDataCompromisso.put("id_compromisso", resultCompromisso);
-        contentValuesDataCompromisso.put("data_marcada", compromisso.getData());
+        contentValuesDataCompromisso.put("data", compromisso.getData());
         resultDataCompromisso = db.insert("data_compromisso", null, contentValuesDataCompromisso);
         if(resultCompromisso == -1 || resultDataCompromisso == -1){
             throw new Exception("Erro ao cadastrar compromisso!");
@@ -42,13 +42,11 @@ public class CompromissosDAO {
         Cursor cursor = db.rawQuery(selectDataAllQuery, null);
 
         while(cursor.moveToNext()){
-
-            String valor = cursor.getString(2);
+            String valor = cursor.getString(cursor.getColumnIndex("data"));
             Log.i("brodiii", valor);
         }
 
         cursor.close();
         db.close();
     }
-
 }
