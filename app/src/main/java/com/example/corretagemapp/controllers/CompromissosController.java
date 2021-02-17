@@ -5,6 +5,9 @@ import android.content.Context;
 
 import com.example.corretagemapp.DAO.CompromissosDAO;
 import com.example.corretagemapp.models.CompromissoModel;
+import com.example.corretagemapp.models.DataCompromissoModel;
+
+import java.util.List;
 
 public class CompromissosController {
     private CompromissosDAO compromissos;
@@ -33,7 +36,7 @@ public class CompromissosController {
             return "Erro ao salvar compromisso!";
         }
     }
-    public void getAllDates(){
-        compromissos.getAllDateCompromissos();
+    public List<DataCompromissoModel> getAllDates(){
+        return compromissos.getAllDateCompromissos();
     }
 }

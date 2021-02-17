@@ -1,8 +1,10 @@
 package view;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +14,7 @@ import com.applandeo.materialcalendarview.EventDay;
 import com.applandeo.materialcalendarview.listeners.OnDayClickListener;
 import com.example.corretagemapp.R;
 import com.example.corretagemapp.controllers.CompromissosController;
+import com.example.corretagemapp.models.DataCompromissoModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -22,19 +25,19 @@ public class Agenda extends AppCompatActivity {
     private CalendarView calendarView;
     private List<EventDay> myEvents = new ArrayList<>();
     private FloatingActionButton fab;
+    private List<DataCompromissoModel> listDataCompromissos;
     CompromissosController compromissosController;
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
         compromissosController = new CompromissosController(getBaseContext());
-        compromissosController.getAllDates();
+        listDataCompromissos = compromissosController.getAllDates();
         fab = findViewById(R.id.fab_agenda);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         calendarView = (CalendarView) findViewById(R.id.calendarView);
-        Calendar c = Calendar.getInstance();
-        c.set(2021, Calendar.FEBRUARY, 28);
-        myEvents.add(new EventDay( c, R.drawable.cicle_avatar));
+        listDataCompromissos.forEach(dataCompromissoModel -> setDateCompromisso(dataCompromissoModel));
         calendarView.setEvents(myEvents);
         calendarView.setOnDayClickListener(new OnDayClickListener() {
             @Override
@@ -56,5 +59,9 @@ public class Agenda extends AppCompatActivity {
             }
         });
     }
-
+    private void setDateCompromisso(DataCompromissoModel compromisso){
+        Calendar c = Calendar.getInstance();
+        c.set(Integer.parseInt(compromisso.ano), Integer.parseInt(compromisso.mes) - 1, Integer.parseInt(compromisso.dia));
+        myEvents.add(new EventDay( c, R.drawable.cicle_avatar));
+    }
 }
