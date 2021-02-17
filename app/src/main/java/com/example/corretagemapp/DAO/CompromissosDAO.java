@@ -56,4 +56,13 @@ import java.util.List;
         db.close();
         return dataCompromisso;
     }
+    public List<CompromissoModel> getCompromissos(String date){
+        db = database.getReadableDatabase();
+        String seletAllCompromissosByDate = "SELECT * FROM compromisso INNER JOIN data_compromisso ON compromisso.codigo_compromisso = data_compromisso.id_compromisso WHERE data_compromisso.data =" + "'" + date + "';";
+        Cursor cursor = db.rawQuery(seletAllCompromissosByDate, null);
+        while(cursor.moveToNext()){
+            Log.i("Buscandoo compromisso", "ENCONTROU");
+        }
+        return null;
+    }
 }

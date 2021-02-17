@@ -39,4 +39,7 @@ public class CompromissosController {
     public List<DataCompromissoModel> getAllDates(){
         return compromissos.getAllDateCompromissos();
     }
+    public void getAllCompromissos(){
+        compromissos.getCompromissos("16/02/2021");
+    }
 }
