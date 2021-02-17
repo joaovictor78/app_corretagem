@@ -44,7 +44,8 @@ public class Agenda extends AppCompatActivity {
             public void onDayClick(EventDay eventDay) {
                 if(myEvents.contains(eventDay)){
                     Log.i("Estee", "È o evento bixo");
-                    Log.i("Calendario", String.valueOf(eventDay.getCalendar().get(Calendar.YEAR)));
+                    String dia =  String.valueOf(eventDay.getCalendar().get(Calendar.DAY_OF_MONTH));
+                    Log.i("ESTA É MES", String.valueOf(eventDay.getCalendar().get(Calendar.DATE)));
                     Intent intent = new Intent(getApplicationContext(),  CompromissosAgendados.class);
                     startActivity(intent);
                 }

@@ -60,9 +60,18 @@ import java.util.List;
         db = database.getReadableDatabase();
         String seletAllCompromissosByDate = "SELECT * FROM compromisso INNER JOIN data_compromisso ON compromisso.codigo_compromisso = data_compromisso.id_compromisso WHERE data_compromisso.data =" + "'" + date + "';";
         Cursor cursor = db.rawQuery(seletAllCompromissosByDate, null);
+        List<CompromissoModel> listCompromisso = new ArrayList();
         while(cursor.moveToNext()){
-            Log.i("Buscandoo compromisso", "ENCONTROU");
+            String id_compromisso = cursor.getString(cursor.getColumnIndex("codigo_compromisso"));
+            String assunto = cursor.getString(cursor.getColumnIndex("assunto"));
+            String horario = cursor.getString(cursor.getColumnIndex("horario"));
+            String descricao = cursor.getString(cursor.getColumnIndex("descricao"));
+            CompromissoModel compromisso = new CompromissoModel();
+            compromisso.setAssunto(assunto);
+            compromisso.setHorario(horario);
+            compromisso.setDescricao(descricao);
+            listCompromisso.add(compromisso);
         }
-        return null;
+        return listCompromisso;
     }
 }

@@ -39,8 +39,4 @@ public class CompromissoModel {
         this.descricao = descricao;
     }
 
-
-
-
-
 }
