@@ -77,6 +77,6 @@ public class Agenda extends AppCompatActivity {
     private void setDateCompromisso(DataCompromissoModel compromisso){
         Calendar c = Calendar.getInstance();
         c.set(Integer.parseInt(compromisso.ano), Integer.parseInt(compromisso.mes) - 1, Integer.parseInt(compromisso.dia));
-        myEvents.add(new EventDay( c, R.drawable.cicle_avatar));
+        myEvents.add(new EventDay( c, R.drawable.ic_breakpoint));
     }
 }
