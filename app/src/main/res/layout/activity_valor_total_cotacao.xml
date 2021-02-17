@@ -21,7 +21,8 @@
         android:layout_below="@+id/total"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"
-        android:background="@color/orange_pure"></LinearLayout>
+        android:background="@color/orange_pure"
+        android:orientation="horizontal"></LinearLayout>
 
     <Button
         android:id="@+id/salve_print"
@@ -35,6 +36,7 @@
         android:layout_centerInParent="true"
         android:text="Salvar Comprovante"
         android:textSize="15sp"
-        android:background="@drawable/custom_bottomblack" />
+        android:backgroundTint="#090000"
+        android:background= "@drawable/custom_bottomblack"/>
 
 </RelativeLayout>
