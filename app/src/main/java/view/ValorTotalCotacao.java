@@ -44,13 +44,23 @@ public class ValorTotalCotacao extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         verifyStoragePermission(this);
         ArrayList<CotacaoModel> cotacoes = getIntent().getParcelableArrayListExtra("dados");
+
         List listPrecosEnfermaria = new ArrayList();
+        List listaPrecosApartamento = new ArrayList();
+
         for(int count = 0; count < cotacoes.size(); count ++){
             Log.i("Verificando lista", cotacoes.get(count).getEnfermaria_preco());
             listPrecosEnfermaria.add(Float.parseFloat(cotacoes.get(count).getEnfermaria_preco()));
         }
+        for(int count = 0; count < cotacoes.size(); count ++){
+            Log.i("Verificando lista", cotacoes.get(count).getEnfermaria_preco());
+            listaPrecosApartamento.add(Float.parseFloat(cotacoes.get(count).getApartamento_preco()));
+        }
         float soma = somarEnfermaria(listPrecosEnfermaria);
-        Log.i("A soma é", String.valueOf(soma));
+        Log.i("A Soma Enferemair: ", String.valueOf(soma));
+
+        float somaP = somarApartamento(listaPrecosApartamento);
+        Log.i("A Soma Apartamento", String.valueOf(somaP));
 
         Button printButton = findViewById(R.id.salve_print);
         printButton.setOnClickListener(new View.OnClickListener() {
@@ -136,5 +146,12 @@ public class ValorTotalCotacao extends AppCompatActivity {
         }
         return soma;
     }
-
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public Float somarApartamento(List<Float> listPrecoApartamento){
+        float somaP = 0;
+        for(int count = 0; count < listPrecoApartamento.size(); count++){
+            somaP = somaP + listPrecoApartamento.get(count);
+        }
+        return somaP;
+}
 }
