@@ -83,7 +83,7 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/custom_bottom_orange"
         android:text="ADICIONAR"
-        app:backgroundTint="#FF9800"
+        app:backgroundTint="#FB8500"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
