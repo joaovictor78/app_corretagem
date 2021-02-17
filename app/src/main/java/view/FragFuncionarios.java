@@ -43,7 +43,7 @@ public class FragFuncionarios extends Fragment {
                 final EditText phone = (EditText) mView.findViewById(R.id.userInputPhone);
                 alertDialogBuilderUserInput
                         .setCancelable(false)
-                        .setPositiveButton("Add", new DialogInterface.OnClickListener() {
+                        .setPositiveButton("Adicionar", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialogBox, int id) {
                                 controller.nome = name.getText().toString();
                                 controller.email = email.getText().toString();
@@ -52,7 +52,7 @@ public class FragFuncionarios extends Fragment {
                             }
                         })
 
-                        .setNegativeButton("Cancell",
+                        .setNegativeButton("Cancelar",
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialogBox, int id) {
                                         dialogBox.cancel();

@@ -1,6 +1,6 @@
 [
   {"nome" : "Unimed Vertente do Caparáo",
-    "image_url" : "banner",
+    "image_url" : "unimed2",
     "precos": [
       {"idade_min" : "00", "idade_max" : "18", "valor_por_tipo" : [ {"tipo"  : "Enfermagem", "valor" : 288.72}, {"tipo"  : "Apartamento", "valor" : 373.25}]},
       {"idade_min" : "19", "idade_max" : "23", "valor_por_tipo" : [ {"tipo"  : "Enfermagem", "valor" : 352.53}, {"tipo"  : "Apartamento", "valor" : 455.75}]},
@@ -14,7 +14,7 @@
       {"idade_min" : "59", "idade_max" : "99", "valor_por_tipo" : [ {"tipo"  : "Enfermagem", "valor" : 1707.69}, {"tipo"  : "Apartamento", "valor" : 2207.73}]}
     ]},
   {"nome" : "Seguros Unimed",
-    "image_url" : "banner",
+    "image_url" : "seguros",
     "precos": [
       {"idade_min" : "00", "idade_max" : "18", "valor_por_tipo" : [ {"tipo"  : "Enfermagem", "valor" : 348.50}, {"tipo"  : "Apartamento", "valor" : 378.20}]},
       {"idade_min" : "19", "idade_max" : "23", "valor_por_tipo" : [ {"tipo"  : "Enfermagem", "valor" : 388.90}, {"tipo"  : "Apartamento", "valor" : 410.20}]},
@@ -28,7 +28,7 @@
       {"idade_min" : "59", "idade_max" : "99", "valor_por_tipo" : [ {"tipo"  : "Enfermagem", "valor" : 1580.70}, {"tipo"  : "Apartamento", "valor" : 1790.50}]}
     ]},
   {"nome" : "Unimed Rio de Janeiro",
-    "image_url" : "banner",
+    "image_url" : "unimed1",
     "precos": [
       {"idade_min" : "00", "idade_max" : "18", "valor_por_tipo" : [ {"tipo"  : "Enfermagem", "valor" :200.00 }, {"tipo"  : "Apartamento", "valor" : 378.20}]},
       {"idade_min" : "19", "idade_max" : "23", "valor_por_tipo" : [ {"tipo"  : "Enfermagem", "valor" : 388.90}, {"tipo"  : "Apartamento", "valor" : 410.20}]},
@@ -42,7 +42,7 @@
       {"idade_min" : "59", "idade_max" : "99", "valor_por_tipo" : [ {"tipo"  : "Enfermagem", "valor" : 1580.70}, {"tipo"  : "Apartamento", "valor" : 1790.50}]}
     ]},
   {"nome" : "Bradesco Saúde",
-    "image_url" : "banner",
+    "image_url" : "bradesco1",
     "precos": [
       {"idade_min" : "00", "idade_max" : "18", "valor_por_tipo" : [ {"tipo"  : "Enfermagem", "valor" : 437.80}, {"tipo"  : "Apartamento", "valor" : 506.50}]},
       {"idade_min" : "19", "idade_max" : "23", "valor_por_tipo" : [ {"tipo"  : "Enfermagem", "valor" : 530.50}, {"tipo"  : "Apartamento", "valor" : 617.90}]},
@@ -56,7 +56,7 @@
       {"idade_min" : "59", "idade_max" : "99", "valor_por_tipo" : [ {"tipo"  : "Enfermagem", "valor" : 1690.00}, {"tipo"  : "Apartamento", "valor" : 1890.00}]}
     ]},
   {"nome" : "Bradesco QualyCorp",
-    "image_url" : "banner",
+    "image_url" : "bradesco2",
     "precos": [
       {"idade_min" : "00", "idade_max" : "18", "valor_por_tipo" : [ {"tipo"  : "Enfermagem", "valor" : 369.31}, {"tipo"  : "Apartamento", "valor" : 434.5}]},
       {"idade_min" : "19", "idade_max" : "23", "valor_por_tipo" : [ {"tipo"  : "Enfermagem", "valor" : 459.47}, {"tipo"  : "Apartamento", "valor" : 540.54}]},
@@ -70,7 +70,7 @@
       {"idade_min" : "59", "idade_max" : "99", "valor_por_tipo" : [ {"tipo"  : "Enfermagem", "valor" : 2215.73}, {"tipo"  : "Apartamento", "valor" : 2606.8}]}
     ]},
   {"nome" : "Ameron Comerciário",
-    "image_url" : "banner",
+    "image_url" : "ameron1",
     "precos": [
       {"idade_min" : "00", "idade_max" : "18", "valor_por_tipo" : [ {"tipo"  : "Enfermagem Municipal", "valor" : 151.01}, {"tipo"  : "Apartamento Municipal", "valor" : 181.16},{"tipo" : "Enfermagem Estadual", "valor" : 179.63},{"tipo" : "Apartamento Estadual", "valor" : 215.50}]},
       {"idade_min" : "19", "idade_max" : "23", "valor_por_tipo" : [ {"tipo"  : "Enfermagem Municipal", "valor" : 172.15}, {"tipo"  : "Apartamento Municipal", "valor" : 206.52},{"tipo" : "Enfermagem Estadual", "valor" : 204.76},{"tipo" : "Apartamento Estadual", "valor" : 243.34}]},
@@ -85,7 +85,7 @@
 
     ]},
   {"nome" : "Ameron Estudantes",
-    "image_url" : "banner",
+    "image_url" : "ameron2",
     "precos": [
       {"idade_min" : "00", "idade_max" : "18", "valor_por_tipo" : [ {"tipo"  : "Enfermagem Municipal", "valor" : 147.70}, {"tipo"  : "Apartamento Municipal", "valor" : 177.19},{"tipo" : "Enfermagem Estadual", "valor" : 175.68},{"tipo" : "Apartamento Estadual", "valor" : 210.81}]},
       {"idade_min" : "19", "idade_max" : "23", "valor_por_tipo" : [ {"tipo"  : "Enfermagem Municipal", "valor" : 168.37}, {"tipo"  : "Apartamento Municipal", "valor" : 201.98},{"tipo" : "Enfermagem Estadual", "valor" : 200.26},{"tipo" : "Apartamento Estadual", "valor" : 240.28}]},
@@ -99,8 +99,8 @@
       {"idade_min" : "59", "idade_max" : "99", "valor_por_tipo" : [ {"tipo"  : "Enfermagem Municipal", "valor" : 880.71}, {"tipo"  : "Apartamento Municipal", "valor" : 1056.67},{"tipo" : "Enfermagem Estadual", "valor" : 1047.63},{"tipo" : "Apartamento Estadual", "valor" : 1256.92}]}
 
     ]},
-  {"nome" : "Ameron Servidores Públicos",
-    "image_url" : "banner",
+  {"nome" : "Ameron Servidore Público",
+    "image_url" : "ameron4",
     "precos": [
       {"idade_min" : "00", "idade_max" : "18", "valor_por_tipo" : [ {"tipo"  : "Enfermagem Municipal", "valor" : 134.25}, {"tipo"  : "Apartamento Municipal", "valor" : 161.04},{"tipo" : "Enfermagem Estadual", "valor" : 159.68},{"tipo" : "Apartamento Estadual", "valor" : 191.57}]},
       {"idade_min" : "19", "idade_max" : "23", "valor_por_tipo" : [ {"tipo"  : "Enfermagem Municipal", "valor" : 153.02}, {"tipo"  : "Apartamento Municipal", "valor" : 183.58},{"tipo" : "Enfermagem Estadual", "valor" : 182.01},{"tipo" : "Apartamento Estadual", "valor" : 218.38}]},
@@ -115,7 +115,7 @@
 
     ]},
   {"nome" : "Ameron Profissional Liberal",
-    "image_url" : "banner",
+    "image_url" : "ameron3",
     "precos": [
       {"idade_min" : "00", "idade_max" : "18", "valor_por_tipo" : [ {"tipo"  : "Enfermagem Municipal", "valor" : 144.65}, {"tipo"  : "Apartamento Municipal", "valor" : 173.53},{"tipo" : "Enfermagem Estadual", "valor" : 178.95},{"tipo" : "Apartamento Estadual", "valor" : 214.68}]},
       {"idade_min" : "19", "idade_max" : "23", "valor_por_tipo" : [ {"tipo"  : "Enfermagem Municipal", "valor" : 164.90}, {"tipo"  : "Apartamento Municipal", "valor" : 197.83},{"tipo" : "Enfermagem Estadual", "valor" : 203.98},{"tipo" : "Apartamento Estadual", "valor" : 244.74}]},

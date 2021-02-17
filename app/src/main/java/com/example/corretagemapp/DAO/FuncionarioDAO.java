@@ -52,9 +52,7 @@ public class FuncionarioDAO {
         cursor.close();
         return listFuncionarios;
     }
-    public void selectAllFuncionario(){
 
-    }
     public void deleteFuncionario(){
 
     }
