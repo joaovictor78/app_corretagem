@@ -1,5 +1,6 @@
 package view;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,9 @@ public class FuncionarioAdapter extends RecyclerView.Adapter<FuncionarioAdapter.
         Funcionario funcionario = funcionarios.get(position);
         holder.bind(funcionario);
     }
+    public void deleteItem(){
+        Log.i("DELETE", "EXECUTADO COM SUCESSO!");
+    }
 
     @Override
     public int getItemCount() {
@@ -63,23 +67,6 @@ public class FuncionarioAdapter extends RecyclerView.Adapter<FuncionarioAdapter.
             email.setText(funcionario.getEmail());
             phone.setText(funcionario.getPhone());
             text_icon.setText(String.valueOf(funcionario.getName().charAt(0)));
-        }
-
-
-    }
-
-    public static class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
-        public RecyclerItemTouchHelper(int dragDirs, int swipeDirs) {
-            super(dragDirs, swipeDirs);
-    }
-        @Override
-        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-            return false;
-        }
-
-        @Override
-        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-
         }
     }
 }

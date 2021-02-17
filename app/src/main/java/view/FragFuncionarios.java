@@ -8,24 +8,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.corretagemapp.R;
 import com.example.corretagemapp.controllers.FuncionarioController;
 import com.example.corretagemapp.models.Funcionario;
-import com.example.corretagemapp.models.Funcionarios;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
 public class FragFuncionarios extends Fragment {
     // Add RecyclerView member
-    private RecyclerView recyclerView;
+    private RecyclerView recyclerViewFuncionario;
     private FuncionarioAdapter funcionarioAdapter;
     private FuncionarioController controller;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         controller = new FuncionarioController(getActivity().getBaseContext());
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_funcionarios, container, false);
@@ -64,9 +66,24 @@ public class FragFuncionarios extends Fragment {
             }
         });
 
-        recyclerView = view.findViewById(R.id.lista_funcionarios);
+        recyclerViewFuncionario = view.findViewById(R.id.lista_funcionarios);
         funcionarioAdapter = new FuncionarioAdapter((ArrayList<Funcionario>) controller.buscarFuncionario());
-        recyclerView.setAdapter(funcionarioAdapter);
+        recyclerViewFuncionario.setAdapter(funcionarioAdapter);
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT){
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+
+                funcionarioAdapter.deleteItem();
+            }
+        }).attachToRecyclerView(recyclerViewFuncionario);
         return view;
+
     }
+
+
 }
