@@ -17,6 +17,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.WeakHashMap;
+
 public class CorretoraAdapter extends RecyclerView.Adapter<CorretoraAdapter.CorretoraViewHolder> {
     private final JSONArray corretoras;
     public CorretoraAdapter(JSONArray corretoras) {
@@ -79,6 +81,7 @@ public class CorretoraAdapter extends RecyclerView.Adapter<CorretoraAdapter.Corr
                 //image_background.getResources(R.drawable.banner);
                 id = itemView.getContext().getResources().getIdentifier("com.example.corretagemapp:drawable/" + corretora.get("image_url").toString(), null, null);
                 image_background.setImageResource(id);
+
 
             } catch (JSONException e) {
                 e.printStackTrace();

@@ -34,20 +34,22 @@
                    android:layout_width="0dp"
                    android:layout_height="wrap_content"
                    android:layout_margin="10dp"
-                   android:textSize="15sp"
                    android:layout_weight="1"
-                   android:background = "@drawable/custom_bottomblack"
-                   android:text="ADICIONAR" />
+                   android:background="@drawable/custom_bottomblack"
+                   android:text="ADICIONAR"
+                   android:textSize="15sp"
+                   app:backgroundTint="#050000" />
 
                <Button
                    android:id="@+id/calcular_total"
                    android:layout_width="0dp"
                    android:layout_height="wrap_content"
                    android:layout_margin="10dp"
-                   android:textSize="15sp"
-                   android:background = "@drawable/custom_bottom_orange"
                    android:layout_weight="1"
-                   android:text="CALCULAR"/>
+                   android:background="@drawable/custom_bottom_orange"
+                   android:text="CALCULAR"
+                   android:textSize="15sp"
+                   app:backgroundTint="#FF9800" />
 
            </LinearLayout>
 

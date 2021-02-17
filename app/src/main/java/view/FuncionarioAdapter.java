@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.corretagemapp.R;
@@ -20,6 +21,7 @@ public class FuncionarioAdapter extends RecyclerView.Adapter<FuncionarioAdapter.
     public FuncionarioAdapter(ArrayList<Funcionario> funcionarios) {
         this.funcionarios = funcionarios;
     }
+
     @NonNull
     @Override
     public FuncionarioViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -45,19 +47,39 @@ public class FuncionarioAdapter extends RecyclerView.Adapter<FuncionarioAdapter.
         TextView nome;
         TextView email;
         TextView phone;
+        TextView text_icon;
 
         FuncionarioViewHolder(@NonNull View itemView) {
             super(itemView);
             nome = itemView.findViewById(R.id.name_funcionario);
             email = itemView.findViewById(R.id.email_funcionario);
             phone = itemView.findViewById(R.id.phone_funcionario);
+            text_icon = itemView.findViewById(R.id.text_circlericon);
 
         }
+
         public void bind(Funcionario funcionario) {
             nome.setText(funcionario.getName());
             email.setText(funcionario.getEmail());
             phone.setText(funcionario.getPhone());
+            text_icon.setText(String.valueOf(funcionario.getName().charAt(0)));
         }
 
+
+    }
+
+    public static class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
+        public RecyclerItemTouchHelper(int dragDirs, int swipeDirs) {
+            super(dragDirs, swipeDirs);
+    }
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+
+        }
     }
 }
