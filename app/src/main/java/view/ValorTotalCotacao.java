@@ -1,17 +1,16 @@
 package view;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
-import android.app.ActionBar;
 import android.app.Activity;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.format.DateFormat;
@@ -20,14 +19,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.corretagemapp.R;
 import com.example.corretagemapp.models.CotacaoModel;
-
-import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -35,19 +30,28 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
-
+import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 
 public class ValorTotalCotacao extends AppCompatActivity {
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_valor_total_cotacao);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         verifyStoragePermission(this);
-        ArrayList<CotacaoModel> dados = getIntent().getParcelableArrayListExtra("dados");
-        Log.i("TESTEEE", Integer.toString(dados.size()));
+        ArrayList<CotacaoModel> cotacoes = getIntent().getParcelableArrayListExtra("dados");
+        List listPrecosEnfermaria = new ArrayList();
+        for(int count = 0; count < cotacoes.size(); count ++){
+            Log.i("Verificando lista", cotacoes.get(count).getEnfermaria_preco());
+            listPrecosEnfermaria.add(Float.parseFloat(cotacoes.get(count).getEnfermaria_preco()));
+        }
+        float soma = somarEnfermaria(listPrecosEnfermaria);
+        Log.i("A soma é", String.valueOf(soma));
+
         Button printButton = findViewById(R.id.salve_print);
         printButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,6 +127,14 @@ public class ValorTotalCotacao extends AppCompatActivity {
                 R.layout.cotacao_card, parent, false
         );
         return new CotacaoAdapter.CotacaoViewHolder(view);
+    }
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public Float somarEnfermaria(List<Float> listPrecoEnfermaria){
+        float soma = 0;
+        for(int count = 0; count < listPrecoEnfermaria.size(); count++){
+            soma = soma + listPrecoEnfermaria.get(count);
+        }
+        return soma;
     }
 
 }

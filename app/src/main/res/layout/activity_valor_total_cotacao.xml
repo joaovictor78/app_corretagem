@@ -21,7 +21,8 @@
         android:layout_below="@+id/total"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"
-        android:background="@color/orange_pure"></LinearLayout>
+        android:background="@color/orange_pure"
+        android:orientation="horizontal"></LinearLayout>
 
     <Button
         android:id="@+id/salve_print"
