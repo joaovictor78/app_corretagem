@@ -43,10 +43,24 @@ public class Agenda extends AppCompatActivity {
             @Override
             public void onDayClick(EventDay eventDay) {
                 if(myEvents.contains(eventDay)){
-                    Log.i("Estee", "È o evento bixo");
+                    String data;
                     String dia =  String.valueOf(eventDay.getCalendar().get(Calendar.DAY_OF_MONTH));
-                    Log.i("ESTA É MES", String.valueOf(eventDay.getCalendar().get(Calendar.MONTH) +1)); //Colocando o 1 para acertar o mês
+                    //O metodo Calendar.Month retorna o mes com sempre -1 ex: Mes 2 ele retorna mes 1.
+                    String mes = String.valueOf(eventDay.getCalendar().get(Calendar.MONTH) + 1);
+                    String ano =  String.valueOf(eventDay.getCalendar().get(Calendar.YEAR));
+                    if(Integer.parseInt(mes) <= 9){
+                        if(Integer.parseInt(dia) <= 9){
+                            data =  "0" + dia + "/"  + "0" + mes + "/" + ano;
+                        }
+                        else{
+                            data =   dia + "/"  + "0" + mes + "/" + ano;
+                        }
+                    }
+                    else{
+                        data = dia + "/"  +  mes + "/" + ano;
+                    }
                     Intent intent = new Intent(getApplicationContext(),  CompromissosAgendados.class);
+                    intent.putExtra("data", data);
                     startActivity(intent);
                 }
 
@@ -63,6 +77,6 @@ public class Agenda extends AppCompatActivity {
     private void setDateCompromisso(DataCompromissoModel compromisso){
         Calendar c = Calendar.getInstance();
         c.set(Integer.parseInt(compromisso.ano), Integer.parseInt(compromisso.mes) - 1, Integer.parseInt(compromisso.dia));
-        myEvents.add(new EventDay( c, R.drawable.cicle_avatar));
+        myEvents.add(new EventDay( c, R.drawable.ic_breakpoint));
     }
 }

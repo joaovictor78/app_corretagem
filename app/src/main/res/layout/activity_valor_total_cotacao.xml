@@ -27,14 +27,15 @@
         android:id="@+id/salve_print"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
         android:layout_marginLeft="80dp"
         android:layout_marginRight="80dp"
         android:layout_marginBottom="50dp"
+        android:background="@drawable/custom_bottomblack"
         android:paddingVertical="9dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
         android:text="Salvar Comprovante"
         android:textSize="15sp"
-        android:background="@drawable/custom_bottomblack" />
+        app:backgroundTint="#090000" />
 
 </RelativeLayout>
