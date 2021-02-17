@@ -67,7 +67,7 @@ public class CorretoraAdapter extends RecyclerView.Adapter<CorretoraAdapter.Corr
 
                     Intent intent = new Intent(v.getContext(), Cotacao.class);
                     intent.putExtra("corretoraSelected", corretoraSelected.toString());
-                    Log.i("AAAAAAAAAAAAAAAAA", corretoraSelected.toString());
+                    Log.i("", corretoraSelected.toString());
                     v.getContext().startActivity(intent);
                 }
             });
