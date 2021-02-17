@@ -43,13 +43,24 @@ public class Agenda extends AppCompatActivity {
             @Override
             public void onDayClick(EventDay eventDay) {
                 if(myEvents.contains(eventDay)){
+                    String data;
                     String dia =  String.valueOf(eventDay.getCalendar().get(Calendar.DAY_OF_MONTH));
                     //O metodo Calendar.Month retorna o mes com sempre -1 ex: Mes 2 ele retorna mes 1.
                     String mes = String.valueOf(eventDay.getCalendar().get(Calendar.MONTH) + 1);
                     String ano =  String.valueOf(eventDay.getCalendar().get(Calendar.YEAR));
-                    String data = dia + "/" + mes + "/" + ano;
-                    Log.i("Esta a data selecionada", data);
+                    if(Integer.parseInt(mes) <= 9){
+                        if(Integer.parseInt(dia) <= 9){
+                            data =  "0" + dia + "/"  + "0" + mes + "/" + ano;
+                        }
+                        else{
+                            data =   dia + "/"  + "0" + mes + "/" + ano;
+                        }
+                    }
+                    else{
+                        data = dia + "/"  +  mes + "/" + ano;
+                    }
                     Intent intent = new Intent(getApplicationContext(),  CompromissosAgendados.class);
+                    intent.putExtra("data", data);
                     startActivity(intent);
                 }
 
