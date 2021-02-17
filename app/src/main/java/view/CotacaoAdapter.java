@@ -38,7 +38,7 @@ public class CotacaoAdapter extends RecyclerView.Adapter<CotacaoAdapter.CotacaoV
     public int getItemCount() {
         return cotacoes.size();
     }
-     class CotacaoViewHolder extends RecyclerView.ViewHolder{
+     static class CotacaoViewHolder extends RecyclerView.ViewHolder{
          TextView idade;
          TextView apartamento_preco;
          TextView enfermagem_preco;
