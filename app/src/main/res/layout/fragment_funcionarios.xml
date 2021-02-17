@@ -36,7 +36,7 @@
         android:layout_marginBottom="90dp"
         app:tint="@color/white"
         android:src="@drawable/ic_add"
-        android:backgroundTint="@color/ciano_481"
+        android:backgroundTint="@color/black"
         android:layout_marginRight= "20dp"
         />
 
