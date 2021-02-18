@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.corretagemapp.R;
@@ -35,7 +36,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 
 public class ValorTotalCotacao extends AppCompatActivity {
-
+    ImageView imageViewBanner;
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +44,12 @@ public class ValorTotalCotacao extends AppCompatActivity {
         setContentView(R.layout.activity_valor_total_cotacao);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         verifyStoragePermission(this);
+        Bundle args = new Bundle();
+        Bundle extras = getIntent().getExtras();
+        int id_image = extras.getInt("id_image");
+        imageViewBanner = findViewById(R.id.id_imageOperadoraSelecionada);
+        imageViewBanner.setImageResource(id_image);
         ArrayList<CotacaoModel> cotacoes = getIntent().getParcelableArrayListExtra("dados");
-
         List listPrecosEnfermaria = new ArrayList();
         List listaPrecosApartamento = new ArrayList();
 

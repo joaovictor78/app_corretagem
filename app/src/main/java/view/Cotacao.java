@@ -34,6 +34,7 @@ public class Cotacao extends AppCompatActivity {
     JSONObject jsonObjectCorretora;
     ArrayList<CotacaoModel> listCotacao;
     ArrayList<CotacaoModel>  minhasCotacoes = new ArrayList<>();
+    int id_image;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +44,7 @@ public class Cotacao extends AppCompatActivity {
             Bundle extras = getIntent().getExtras();
             if (extras != null) {
                 String value = extras.getString("corretoraSelected");
+                id_image = extras.getInt("id_image");
                 jsonObjectCorretora = new JSONObject(value);
                 Log.i("Teste", jsonObjectCorretora.toString());
             }
@@ -59,6 +61,7 @@ public class Cotacao extends AppCompatActivity {
                 if(!minhasCotacoes.isEmpty()){
                 Intent intent = new Intent(getApplicationContext(), ValorTotalCotacao.class);
                 intent.putExtra("dados", minhasCotacoes);
+                intent.putExtra("id_image", id_image);
                 startActivity(intent);
                 } else{
                     Toast.makeText(getApplicationContext(), "Nenhuma cotação adicionada!",

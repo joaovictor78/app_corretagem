@@ -66,6 +66,7 @@ public class CorretoraAdapter extends RecyclerView.Adapter<CorretoraAdapter.Corr
                 public void onClick(View v) {
 
                     Intent intent = new Intent(v.getContext(), Cotacao.class);
+                    intent.putExtra("id_image", id);
                     intent.putExtra("corretoraSelected", corretoraSelected.toString());
                     Log.i("", corretoraSelected.toString());
                     v.getContext().startActivity(intent);

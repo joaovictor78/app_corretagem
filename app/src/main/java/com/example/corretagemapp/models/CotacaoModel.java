@@ -5,6 +5,19 @@ import android.os.Parcelable;
 
 public class CotacaoModel implements Parcelable {
     private String idade;
+    private  String idade_min;
+    private  String idade_max;
+    private String enfermaria_preco;
+    private String apartamento_preco;
+    private String imageUrl;
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
     public String getIdade_min() {
         return idade_min;
@@ -22,10 +35,6 @@ public class CotacaoModel implements Parcelable {
         this.idade_max = idade_max;
     }
 
-    private  String idade_min;
-    private  String idade_max;
-    private String enfermaria_preco;
-    private String apartamento_preco;
     public CotacaoModel(){ }
     protected CotacaoModel(Parcel in) {
         idade = in.readString();
@@ -33,6 +42,7 @@ public class CotacaoModel implements Parcelable {
         idade_min = in.readString();
         enfermaria_preco = in.readString();
         apartamento_preco = in.readString();
+        imageUrl = in.readString();
     }
 
     public String getIdade() {
@@ -71,6 +81,7 @@ public class CotacaoModel implements Parcelable {
         dest.writeString(idade_min);
         dest.writeString(enfermaria_preco);
         dest.writeString(apartamento_preco);
+        dest.writeString(imageUrl);
     }
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
         public CotacaoModel createFromParcel(Parcel in) {
@@ -89,6 +100,11 @@ public class CotacaoModel implements Parcelable {
         private String enfermaria_preco;
         private String apartamento_preco;
 
+        public  CotacaoModel.CotacaoBuilder setImage_url(String image_url) {
+            this.image_url = image_url;
+            return this;
+        }
+        private String image_url;
         private String image_background;
         public CotacaoModel.CotacaoBuilder setIdadeMin(String idade_min) {
             this.idade_min = idade_min;
@@ -124,6 +140,7 @@ public class CotacaoModel implements Parcelable {
             cotacao.enfermaria_preco = enfermaria_preco;
             cotacao.idade_min = idade_min;
             cotacao.idade_max = idade_max;
+            cotacao.imageUrl = image_url;
             return cotacao;
         }
     }
