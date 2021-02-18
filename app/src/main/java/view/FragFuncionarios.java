@@ -82,7 +82,6 @@ public class FragFuncionarios extends Fragment {
             }
         }).attachToRecyclerView(recyclerViewFuncionario);
         return view;
-
     }
 
 
