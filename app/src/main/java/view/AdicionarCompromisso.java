@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +21,7 @@ public class AdicionarCompromisso extends AppCompatActivity {
    EditText hora;
    EditText descricao;
    Button saveCompromisso;
+   private boolean isDateValidate = false;
    private String lastCharacterDate = "";
     private String lastCharacterHora = "";
    private String result;
@@ -97,12 +99,24 @@ public class AdicionarCompromisso extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 compromissosController.assunto = assunto.getText().toString();
-                compromissosController.data = data.getText().toString();
+                if(data.getText().toString().matches("(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/\\d{4}")){
+                    Log.i("TESTE", "fala ai brow");
+                    compromissosController.data = data.getText().toString();
+                    isDateValidate = true;
+                }else{
+                    Log.i("TESTE", "HELLO WORD");
+                    Toast.makeText(getApplicationContext(), "Formato da data invalido!", Toast.LENGTH_LONG).show();
+                    isDateValidate = false;
+                }
                 compromissosController.hora = hora.getText().toString();
                 compromissosController.descricao = descricao.getText().toString();
-                result = compromissosController.salveCompromisso();
-                Toast.makeText(getApplicationContext(), result,   Toast.LENGTH_LONG).show();
-                finish();
+                if(isDateValidate == true){
+                    result = compromissosController.salveCompromisso();
+                    Toast.makeText(getApplicationContext(), result,   Toast.LENGTH_LONG).show();
+                    finish();
+                }
+
+
             }
         });
 
