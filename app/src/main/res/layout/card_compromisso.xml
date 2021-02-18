@@ -10,7 +10,7 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/custom_border_arround"
+        android:background="@drawable/custom_border"
         ></androidx.appcompat.widget.LinearLayoutCompat>
     <TextView
         android:id="@+id/assunto"
@@ -19,18 +19,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:text="Assunto"/>
+        android:text="Assunto:"/>
 
     <TextView
         android:id="@+id/assunto_compromisso"
-        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/assunto"
-        android:textColor="@color/white"
         android:layout_toRightOf="@+id/assunto"
-        android:text="*Not defined*" />
+        android:text="*Not defined*"
+        android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/hora_title"
@@ -40,14 +41,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/assunto"
         android:textColor="@color/white"
-        android:text="Hora" />
+        android:text="Hora:" />
 
     <TextView
         android:id="@+id/hora_compromisso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/assunto_compromisso"
-        android:layout_marginStart="42dp"
+        android:layout_below="@+id/assunto_compromisso"
         android:layout_marginLeft="42dp"
         android:layout_marginTop="8dp"
         android:layout_toEndOf="@+id/hora_title"
@@ -64,17 +64,15 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:layout_alignParentBottom="true"
-        android:text="Descrição" />
+        android:text="Descrição:" />
 
     <TextView
         android:id="@+id/descricao_compromisso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_marginStart="9dp"
         android:layout_marginLeft="9dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="6dp"
+        android:layout_marginTop="64dp"
         android:layout_toEndOf="@+id/descricao_title"
         android:layout_toRightOf="@+id/descricao_title"
         android:text="*Not defined*"

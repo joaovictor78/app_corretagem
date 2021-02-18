@@ -20,10 +20,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.corretagemapp.R;
 import com.example.corretagemapp.models.CotacaoModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -37,6 +40,8 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class ValorTotalCotacao extends AppCompatActivity {
     ImageView imageViewBanner;
+    TextView textViewenfermaria;
+    TextView textViewapartamento;
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,8 @@ public class ValorTotalCotacao extends AppCompatActivity {
         setContentView(R.layout.activity_valor_total_cotacao);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         verifyStoragePermission(this);
+        textViewenfermaria = findViewById(R.id.valor_enfe);
+        textViewapartamento = findViewById(R.id.valor_apt);
         Bundle args = new Bundle();
         Bundle extras = getIntent().getExtras();
         int id_image = extras.getInt("id_image");
@@ -52,7 +59,6 @@ public class ValorTotalCotacao extends AppCompatActivity {
         ArrayList<CotacaoModel> cotacoes = getIntent().getParcelableArrayListExtra("dados");
         List listPrecosEnfermaria = new ArrayList();
         List listaPrecosApartamento = new ArrayList();
-
         for(int count = 0; count < cotacoes.size(); count ++){
             Log.i("Verificando lista", cotacoes.get(count).getEnfermaria_preco());
             listPrecosEnfermaria.add(Float.parseFloat(cotacoes.get(count).getEnfermaria_preco()));
@@ -61,11 +67,13 @@ public class ValorTotalCotacao extends AppCompatActivity {
             Log.i("Verificando lista", cotacoes.get(count).getEnfermaria_preco());
             listaPrecosApartamento.add(Float.parseFloat(cotacoes.get(count).getApartamento_preco()));
         }
-        float soma = somarEnfermaria(listPrecosEnfermaria);
-        Log.i("A Soma Enferemair: ", String.valueOf(soma));
+        float soma_enfermaria = somarEnfermaria(listPrecosEnfermaria);
+        Log.i("A Soma Enfermaria: ", String.valueOf(soma_enfermaria));
 
-        float somaP = somarApartamento(listaPrecosApartamento);
-        Log.i("A Soma Apartamento", String.valueOf(somaP));
+        float soma_apartamento = somarApartamento(listaPrecosApartamento);
+        Log.i("A Soma Apartamento", String.valueOf(soma_apartamento));
+        textViewenfermaria.setText(String.valueOf(soma_enfermaria));
+        textViewapartamento.setText(String.valueOf(soma_apartamento));
 
         Button printButton = findViewById(R.id.salve_print);
         printButton.setOnClickListener(new View.OnClickListener() {
@@ -145,18 +153,19 @@ public class ValorTotalCotacao extends AppCompatActivity {
     }
     @RequiresApi(api = Build.VERSION_CODES.N)
     public Float somarEnfermaria(List<Float> listPrecoEnfermaria){
-        float soma = 0;
+        float soma_enfermaria = 0;
         for(int count = 0; count < listPrecoEnfermaria.size(); count++){
-            soma = soma + listPrecoEnfermaria.get(count);
+            soma_enfermaria = soma_enfermaria + listPrecoEnfermaria.get(count);
         }
-        return soma;
+        return soma_enfermaria;
     }
     @RequiresApi(api = Build.VERSION_CODES.N)
     public Float somarApartamento(List<Float> listPrecoApartamento){
-        float somaP = 0;
+        float soma_apartamento = 0;
         for(int count = 0; count < listPrecoApartamento.size(); count++){
-            somaP = somaP + listPrecoApartamento.get(count);
+            soma_apartamento = soma_apartamento + listPrecoApartamento.get(count);
         }
-        return somaP;
+        return soma_apartamento;
+
 }
 }

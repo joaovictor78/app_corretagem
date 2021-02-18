@@ -7,11 +7,11 @@
     tools:context="view.ValorTotalCotacao">
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/valor_apt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="195dp"
+        android:layout_marginTop="240dp"
         android:layout_toEndOf="@+id/textView3"
         android:layout_toRightOf="@+id/textView3"
         android:fontFamily="sans-serif"
@@ -21,11 +21,11 @@
         android:textSize="15sp" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/valor_enfe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="220dp"
         android:layout_toEndOf="@+id/textView4"
         android:layout_toRightOf="@+id/textView4"
         android:fontFamily="sans-serif"
@@ -38,7 +38,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="220dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="20dp"
         android:fontFamily="sans-serif"
@@ -53,8 +53,11 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
+        android:fontFamily="sans-serif"
         android:text="Valores"
-        android:textColor="@color/black"></TextView>
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="bold"></TextView>
 
     <ImageView
         android:id="@+id/id_imageOperadoraSelecionada"
@@ -87,9 +90,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="195dp"
+        android:layout_marginTop="240dp"
         android:fontFamily="sans-serif"
         android:text="O Plano Apartamento R$"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -100,7 +102,7 @@
         android:id="@+id/carencia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="240dp"
+        android:layout_marginTop="270dp"
         android:fontFamily="sans-serif"
         android:text="Carências"
         android:layout_alignParentLeft="true"
@@ -119,7 +121,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="270dp"
+        android:layout_marginTop="295dp"
         android:fontFamily="sans-serif"
         android:text="Carencias dos planos"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
