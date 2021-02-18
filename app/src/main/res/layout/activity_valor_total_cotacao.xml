@@ -16,9 +16,11 @@
         android:layout_toRightOf="@+id/textView3"
         android:fontFamily="sans-serif"
         android:text="00,000"
+        android:textAllCaps="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="#100000"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/valor_enfe"
@@ -32,7 +34,8 @@
         android:text="00,000"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="#100000"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView4"
@@ -54,7 +57,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
         android:fontFamily="sans-serif"
-        android:text="Valores"
+        android:text="Valores:"
         android:textColor="@color/black"
         android:textSize="17sp"
         android:textStyle="bold"></TextView>

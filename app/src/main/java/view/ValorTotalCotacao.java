@@ -42,6 +42,7 @@ public class ValorTotalCotacao extends AppCompatActivity {
     ImageView imageViewBanner;
     TextView textViewenfermaria;
     TextView textViewapartamento;
+    TextView textViewcarencia;
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,7 @@ public class ValorTotalCotacao extends AppCompatActivity {
         verifyStoragePermission(this);
         textViewenfermaria = findViewById(R.id.valor_enfe);
         textViewapartamento = findViewById(R.id.valor_apt);
+        textViewcarencia = findViewById(R.id.carencia_text);
         Bundle args = new Bundle();
         Bundle extras = getIntent().getExtras();
         int id_image = extras.getInt("id_image");
@@ -74,6 +76,7 @@ public class ValorTotalCotacao extends AppCompatActivity {
         Log.i("A Soma Apartamento", String.valueOf(soma_apartamento));
         textViewenfermaria.setText(String.valueOf(soma_enfermaria));
         textViewapartamento.setText(String.valueOf(soma_apartamento));
+        textViewcarencia.setText(String.valueOf(soma_apartamento));
 
         Button printButton = findViewById(R.id.salve_print);
         printButton.setOnClickListener(new View.OnClickListener() {

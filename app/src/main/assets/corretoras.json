@@ -1,6 +1,6 @@
 [
   {"nome" : "Unimed Vertente do Caparáo",
-    "image_url" : "unimed2",
+    "image_url" : "unimed1",
     "precos": [
       {"idade_min" : "00", "idade_max" : "18", "valor_por_tipo" : [ {"tipo"  : "Enfermagem", "valor" : 288.72}, {"tipo"  : "Apartamento", "valor" : 373.25}]},
       {"idade_min" : "19", "idade_max" : "23", "valor_por_tipo" : [ {"tipo"  : "Enfermagem", "valor" : 352.53}, {"tipo"  : "Apartamento", "valor" : 455.75}]},
@@ -28,7 +28,7 @@
       {"idade_min" : "59", "idade_max" : "99", "valor_por_tipo" : [ {"tipo"  : "Enfermagem", "valor" : 1580.70}, {"tipo"  : "Apartamento", "valor" : 1790.50}]}
     ]},
   {"nome" : "Unimed Rio de Janeiro",
-    "image_url" : "unimed1",
+    "image_url" : "unimed2",
     "precos": [
       {"idade_min" : "00", "idade_max" : "18", "valor_por_tipo" : [ {"tipo"  : "Enfermagem", "valor" :200.00 }, {"tipo"  : "Apartamento", "valor" : 378.20}]},
       {"idade_min" : "19", "idade_max" : "23", "valor_por_tipo" : [ {"tipo"  : "Enfermagem", "valor" : 388.90}, {"tipo"  : "Apartamento", "valor" : 410.20}]},
