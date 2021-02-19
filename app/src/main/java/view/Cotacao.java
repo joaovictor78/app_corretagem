@@ -158,7 +158,6 @@ public class Cotacao extends AppCompatActivity {
         if (!cotacaoModel.getIdade_max().equals("null")) {
             if (user_idade >= Integer.parseInt(cotacaoModel.getIdade_min()) && user_idade <= Integer.parseInt(cotacaoModel.getIdade_max())) {
                 return true;
-
             }
         } else {
             return false;
