@@ -115,8 +115,6 @@ public class AdicionarCompromisso extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), result,   Toast.LENGTH_LONG).show();
                     finish();
                 }
-
-
             }
         });
 

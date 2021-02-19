@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -65,9 +66,9 @@ public class FragFuncionarios extends Fragment {
                 alertDialogAndroid.show();
             }
         });
-
+        ArrayList<Funcionario> funcionarios = (ArrayList<Funcionario>) controller.buscarFuncionario();
         recyclerViewFuncionario = view.findViewById(R.id.lista_funcionarios);
-        funcionarioAdapter = new FuncionarioAdapter((ArrayList<Funcionario>) controller.buscarFuncionario());
+        funcionarioAdapter = new FuncionarioAdapter(funcionarios);
         recyclerViewFuncionario.setAdapter(funcionarioAdapter);
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT){
             @Override
@@ -78,7 +79,8 @@ public class FragFuncionarios extends Fragment {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
 
-                funcionarioAdapter.deleteItem();
+                String result = controller.deleteFuncionarioById(funcionarios.get(viewHolder.getAdapterPosition()).getId());
+                Toast.makeText(getActivity().getApplicationContext(), result, Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(recyclerViewFuncionario);
         return view;

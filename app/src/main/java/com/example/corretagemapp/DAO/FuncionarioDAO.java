@@ -39,21 +39,27 @@ public class FuncionarioDAO {
 
         List<Funcionario> listFuncionarios = new ArrayList();
         while(cursor.moveToNext()){
-
+            String id = cursor.getString(cursor.getColumnIndex("codigo_funcionario"));
             String nome = cursor.getString(cursor.getColumnIndex("nome_funcionario"));
             String email = cursor.getString(cursor.getColumnIndex("email_funcionario"));
             String numero = cursor.getString(cursor.getColumnIndex("numero_funcionario"));
 
-            Funcionario funcionario = Funcionario.FuncionarioBuilder.builder().setName(nome).setEmail(email).setPhone(numero).build();
+            Funcionario funcionario = Funcionario.FuncionarioBuilder.builder().setName(nome).setEmail(email).setPhone(numero).setId(id).build();
             listFuncionarios.add(funcionario);
-
         }
         db.close();
         cursor.close();
         return listFuncionarios;
     }
 
-    public void deleteFuncionario(){
-
+    public void deleteFuncionarioById(String id_funcionario){
+        db = database.getWritableDatabase();
+        String deleteFuncionario = "DELETE FROM funcionario WHERE codigo_funcionario =" + "'" + id_funcionario + "';";
+        try{
+            db.execSQL(deleteFuncionario);
+        } catch(Exception error){
+            Log.i("ERRO AO DELETAR",error.toString());
+            throw error;
+        }
     }
 }
