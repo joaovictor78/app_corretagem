@@ -88,7 +88,7 @@ public class Cotacao extends AppCompatActivity {
                             public void onClick(DialogInterface dialogBox, int id) {
                                 if (idade.getText().length() != 0) {
                                     String user_idade = idade.getText().toString();
-                                    if(idade.getText().toString().matches("\\d{2}")){
+                                    if(idade.getText().toString().matches("(\\d{1,2})")){
                                         Stream<CotacaoModel> lista = listCotacao.stream().filter(cotacaoModel -> filterCorretora(cotacaoModel, Integer.parseInt(user_idade)));
                                         List<CotacaoModel> cotacaoEscolhida = lista.collect(Collectors.toList());
                                         CotacaoModel cotacao = cotacaoEscolhida.get(0);
