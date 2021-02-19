@@ -34,7 +34,6 @@ public class Cotacao extends AppCompatActivity {
     JSONObject jsonObjectCorretora;
     ArrayList<CotacaoModel> listCotacao;
     ArrayList<CotacaoModel>  minhasCotacoes = new ArrayList<>();
-    boolean isIdade;
     int id_image;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,20 +87,17 @@ public class Cotacao extends AppCompatActivity {
                             @RequiresApi(api = Build.VERSION_CODES.N)
                             public void onClick(DialogInterface dialogBox, int id) {
                                 if (idade.getText().length() != 0) {
-                                    Integer user_idade = Integer.parseInt(idade.getText().toString());
-                                    if(idade.getText().toString().matches("/\\d{2}")){
-                                        isIdade = true;
-                                    }else{
-                                        Toast.makeText(getApplicationContext(), "Idade Incorreta!!", Toast.LENGTH_LONG).show();
-                                        isIdade = false;
-                                    }
-                                    Stream<CotacaoModel> lista = listCotacao.stream().filter(cotacaoModel -> filterCorretora(cotacaoModel, user_idade));
-                                    List<CotacaoModel> cotacaoEscolhida = lista.collect(Collectors.toList());
-
-                                    if (cotacaoEscolhida.size() != 0) {
+                                    String user_idade = idade.getText().toString();
+                                    if(idade.getText().toString().matches("\\d{2}")){
+                                        Stream<CotacaoModel> lista = listCotacao.stream().filter(cotacaoModel -> filterCorretora(cotacaoModel, Integer.parseInt(user_idade)));
+                                        List<CotacaoModel> cotacaoEscolhida = lista.collect(Collectors.toList());
                                         CotacaoModel cotacao = cotacaoEscolhida.get(0);
                                         cotacao.setIdade(user_idade.toString());
                                         minhasCotacoes.add(cotacao);
+                                    }else{
+                                        Toast.makeText(getApplicationContext(), "Idade Incorreta!!", Toast.LENGTH_LONG).show();
+
+                                    }
                                         if (minhasCotacoes.isEmpty()) {
                                             recyclerView.setVisibility(View.GONE);
                                             textEmpty.setVisibility(View.VISIBLE);
@@ -110,21 +106,10 @@ public class Cotacao extends AppCompatActivity {
                                             recyclerView.setVisibility(View.VISIBLE);
                                             textEmpty.setVisibility(View.GONE);
                                         }
-                                    } else {
-                                        List<CotacaoModel> cotacaoIdadeMax = listCotacao.stream().filter(cotacaoModel -> cotacaoModel.getIdade_max().equals("null")).collect(Collectors.toList());
-                                        if (cotacaoIdadeMax.size() != 0) {
-                                            CotacaoModel cotacao = cotacaoIdadeMax.get(0);
-                                            cotacao.setIdade(user_idade.toString());
-                                            minhasCotacoes.add(cotacao);
-                                        }
-                                    }
-
-
                                 }
                                 else {
                                     Toast.makeText(getApplicationContext(), "Nenhuma idade adicionada!",
                                             Toast.LENGTH_LONG).show();}
-
                             }
                         })
 
@@ -153,7 +138,7 @@ public class Cotacao extends AppCompatActivity {
                 for (int i = 0; i < array.length(); i++) {
                     JSONObject operadora = array.getJSONObject(i);
                     String idade_min = operadora.getString("idade_min");
-                    String idade_max = operadora.getString("idade_max") != null ?  operadora.getString("idade_max") : null;
+                    String idade_max = operadora.getString("idade_max");
                     JSONArray valorPorTipo = operadora.getJSONArray("valor_por_tipo");
                     String preco_enfermaria = valorPorTipo.getJSONObject(0).getString("valor");
                     String preco_apartamento = valorPorTipo.getJSONObject(1).getString("valor");
