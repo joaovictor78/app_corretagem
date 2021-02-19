@@ -34,6 +34,7 @@ public class Cotacao extends AppCompatActivity {
     JSONObject jsonObjectCorretora;
     ArrayList<CotacaoModel> listCotacao;
     ArrayList<CotacaoModel>  minhasCotacoes = new ArrayList<>();
+    boolean isIdade;
     int id_image;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,11 +84,17 @@ public class Cotacao extends AppCompatActivity {
                 final EditText idade = (EditText) mView.findViewById(R.id.userInputIdade);
                 alertDialogBuilderUserInput
                         .setCancelable(false)
-                        .setPositiveButton("Add", new DialogInterface.OnClickListener() {
+                        .setPositiveButton("Adicionar", new DialogInterface.OnClickListener() {
                             @RequiresApi(api = Build.VERSION_CODES.N)
                             public void onClick(DialogInterface dialogBox, int id) {
                                 if (idade.getText().length() != 0) {
                                     Integer user_idade = Integer.parseInt(idade.getText().toString());
+                                    if(idade.getText().toString().matches("/\\d{2}")){
+                                        isIdade = true;
+                                    }else{
+                                        Toast.makeText(getApplicationContext(), "Idade Incorreta!!", Toast.LENGTH_LONG).show();
+                                        isIdade = false;
+                                    }
                                     Stream<CotacaoModel> lista = listCotacao.stream().filter(cotacaoModel -> filterCorretora(cotacaoModel, user_idade));
                                     List<CotacaoModel> cotacaoEscolhida = lista.collect(Collectors.toList());
 
@@ -121,7 +128,7 @@ public class Cotacao extends AppCompatActivity {
                             }
                         })
 
-                        .setNegativeButton("Cancell",
+                        .setNegativeButton("Cancelar",
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialogBox, int id) {
                                         dialogBox.cancel();

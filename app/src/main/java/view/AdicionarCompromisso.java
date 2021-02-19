@@ -22,6 +22,7 @@ public class AdicionarCompromisso extends AppCompatActivity {
    EditText descricao;
    Button saveCompromisso;
    private boolean isDateValidate = false;
+   private boolean isHoraValidate = false;
    private String lastCharacterDate = "";
     private String lastCharacterHora = "";
    private String result;
@@ -100,7 +101,6 @@ public class AdicionarCompromisso extends AppCompatActivity {
             public void onClick(View v) {
                 compromissosController.assunto = assunto.getText().toString();
                 if(data.getText().toString().matches("(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/\\d{4}")){
-                    Log.i("TESTE", "fala ai brow");
                     compromissosController.data = data.getText().toString();
                     isDateValidate = true;
                 }else{
@@ -109,8 +109,15 @@ public class AdicionarCompromisso extends AppCompatActivity {
                     isDateValidate = false;
                 }
                 compromissosController.hora = hora.getText().toString();
+                if(hora.getText().toString().matches("^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$")){
+                    compromissosController.hora = hora.getText().toString();
+                    isHoraValidate = true;
+                }else{
+                    Toast.makeText(getApplicationContext(), "Formato de hora invalido!", Toast.LENGTH_LONG).show();
+                    isHoraValidate = false;
+                }
                 compromissosController.descricao = descricao.getText().toString();
-                if(isDateValidate == true){
+                if(isHoraValidate == true && isDateValidate == true){
                     result = compromissosController.salveCompromisso();
                     Toast.makeText(getApplicationContext(), result,   Toast.LENGTH_LONG).show();
                     finish();
