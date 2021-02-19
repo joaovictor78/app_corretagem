@@ -6,6 +6,15 @@ public class Funcionario {
     private String email;
     private boolean select;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    private String id;
     public boolean getSelect() {return select;}
 
     public  void setSelect(boolean select) {this.select = select;}
@@ -25,6 +34,13 @@ public class Funcionario {
         private String name;
         private String email;
         private String phone;
+
+        public Funcionario.FuncionarioBuilder setId(String id) {
+            this.id = id;
+            return  this;
+        }
+
+        private  String id;
         private boolean select;
 
         public Funcionario.FuncionarioBuilder setName(String name) {
@@ -54,6 +70,7 @@ public class Funcionario {
             funcionario.email = email;
             funcionario.phone = phone;
             funcionario.select = select;
+            funcionario.id = id;
             return funcionario;
         }
     }

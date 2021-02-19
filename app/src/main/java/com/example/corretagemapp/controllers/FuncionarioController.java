@@ -36,5 +36,13 @@ public class FuncionarioController {
     public List<Funcionario> buscarFuncionario() {
         return  funcionario.selectFuncionario();
     }
+    public String deleteFuncionarioById(String id){
+        try{
+            funcionario.deleteFuncionarioById(id);
+            return "Funcionario apagado com sucesso!";
+        } catch (Exception e) {
+            return "Erro ao apagar funcionario!";
+        }
 
+    }
 }
