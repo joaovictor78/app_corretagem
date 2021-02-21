@@ -12,7 +12,8 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CorretagemApp">
+        android:theme="@style/Theme.Splash">
+
         <activity
             android:name="view.homeActivity"
             android:label="Corretagem"

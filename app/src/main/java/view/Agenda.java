@@ -31,6 +31,7 @@ public class Agenda extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.Theme_CorretagemApp);
         setContentView(R.layout.activity_calendar);
         compromissosController = new CompromissosController(getBaseContext());
         listDataCompromissos = compromissosController.getAllDates();

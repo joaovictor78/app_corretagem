@@ -29,6 +29,7 @@ public class AdicionarCompromisso extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.Theme_CorretagemApp);
         setContentView(R.layout.activity_adicionar_compromisso);
         saveCompromisso = findViewById(R.id.salvar_compromisso);
         assunto = findViewById(R.id.input_assunto);

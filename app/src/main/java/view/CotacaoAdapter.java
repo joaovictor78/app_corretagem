@@ -19,6 +19,7 @@ import java.util.List;
 
 public class CotacaoAdapter extends RecyclerView.Adapter<CotacaoAdapter.CotacaoViewHolder> {
     private final List<CotacaoModel> cotacoes;
+
     CotacaoAdapter(List<CotacaoModel> cotacoes){
         this.cotacoes = cotacoes;
     }

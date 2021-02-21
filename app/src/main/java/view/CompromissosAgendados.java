@@ -17,6 +17,7 @@ public class CompromissosAgendados extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.Theme_CorretagemApp);
         setContentView(R.layout.activity_compromissos_agendados);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();

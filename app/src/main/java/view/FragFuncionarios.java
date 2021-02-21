@@ -22,6 +22,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
 public class FragFuncionarios extends Fragment {
+
     // Add RecyclerView member
     private RecyclerView recyclerViewFuncionario;
     private FuncionarioAdapter funcionarioAdapter;
@@ -30,6 +31,7 @@ public class FragFuncionarios extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         controller = new FuncionarioController(getActivity().getBaseContext());
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_funcionarios, container, false);
         FloatingActionButton fab = view.findViewById(R.id.fab_addfuncionarios);

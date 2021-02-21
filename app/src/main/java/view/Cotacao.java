@@ -38,6 +38,7 @@ public class Cotacao extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.Theme_CorretagemApp);
         setContentView(R.layout.activity_cotacao);
         try {
             Bundle args = new Bundle();
