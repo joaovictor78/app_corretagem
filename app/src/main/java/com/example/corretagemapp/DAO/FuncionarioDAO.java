@@ -58,7 +58,7 @@ public class FuncionarioDAO {
         try{
             db.execSQL(deleteFuncionario);
         } catch(Exception error){
-            Log.i("ERRO AO DELETAR",error.toString());
+            Log.i("ERRO AO EXCLUIR",error.toString());
             throw error;
         }
     }
