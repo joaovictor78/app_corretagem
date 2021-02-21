@@ -100,7 +100,7 @@ public class ValorTotalCotacao extends AppCompatActivity {
         Date now = new Date();
         CharSequence format = DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
         try {
-            String dirPath = view.getContext().getExternalFilesDir(Environment.DIRECTORY_DCIM).getAbsolutePath() + "/" + now + ".png";
+            String dirPath = view.getContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath() + "/" + now + ".png";
             File fileDir = new File(dirPath);
             if (!fileDir.exists()) {
                 fileDir.mkdirs();
