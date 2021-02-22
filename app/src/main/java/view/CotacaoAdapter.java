@@ -2,12 +2,15 @@ package view;
 
 
 
+import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.corretagemapp.R;
@@ -30,6 +33,7 @@ public class CotacaoAdapter extends RecyclerView.Adapter<CotacaoAdapter.CotacaoV
         return new CotacaoViewHolder(view);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull CotacaoViewHolder holder, int position) {
         holder.bind(cotacoes.get(position));
@@ -51,12 +55,11 @@ public class CotacaoAdapter extends RecyclerView.Adapter<CotacaoAdapter.CotacaoV
              enfermagem_preco = itemView.findViewById(R.id.preco_enfermagem);
 
          }
+
          public void bind(CotacaoModel cotacaoModel){
            idade.setText(cotacaoModel.getIdade());
-           //apartamento_preco.setText(cotacaoModel.getApartamento_preco());
-           //enfermagem_preco.setText(cotacaoModel.getEnfermaria_preco());
-
-
+           apartamento_preco.setText(cotacaoModel.getListApartamentoPreco().get(0).getTitle());
+           enfermagem_preco.setText(cotacaoModel.getListEnfermagemPreco().get(0).getTitle());
          }
      }
 

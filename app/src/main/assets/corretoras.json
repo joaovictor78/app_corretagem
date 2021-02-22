@@ -30,7 +30,7 @@
   {"nome" : "Unimed Rio de Janeiro",
     "image_url" : "unimed2",
     "precos": [
-      {"idade_min" : "00", "idade_max" : "18", "valor_por_tipo" : [ {"tipo"  : 1,"title" :"Enfermagem", "valor" :200.00 }, {"tipo"  :2,"title":"Apartaneto" , "valor" : 378.20}]},
+      {"idade_min" : "00", "idade_max" : "18", "valor_por_tipo" : [ {"tipo"  : 1,"title" :"Enfermagem", "valor" :200.00 }, {"tipo"  : 2,"title":"Apartaneto" , "valor" : 378.20}]},
       {"idade_min" : "19", "idade_max" : "23", "valor_por_tipo" : [ {"tipo"  : 1,"title" :"Enfermagem", "valor" : 388.90}, {"tipo"  : 2,"title":"Apartaneto" , "valor" : 410.20}]},
       {"idade_min" : "24", "idade_max" : "28", "valor_por_tipo" : [ {"tipo"  : 1,"title" :"Enfermagem", "valor" : 458.38}, {"tipo"  : 2,"title":"Apartaneto" ,"valor" : 499.80}]},
       {"idade_min" : "29", "idade_max" : "33", "valor_por_tipo" : [ {"tipo"  :1,"title" :"Enfermagem", "valor" : 506.52}, {"tipo"  :2,"title":"Apartaneto" , "valor" : 548.92}]},
