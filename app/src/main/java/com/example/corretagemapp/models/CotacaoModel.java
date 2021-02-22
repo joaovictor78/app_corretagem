@@ -3,13 +3,35 @@ package com.example.corretagemapp.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.List;
+
 public class CotacaoModel implements Parcelable {
     private String idade;
     private  String idade_min;
     private  String idade_max;
-    private String enfermaria_preco;
-    private String apartamento_preco;
+    private List<CotacaoModelPreco> listEnfermagemPreco;
+    private List<CotacaoModelPreco> listApartamentoPreco;
     private String imageUrl;
+
+
+
+    public List<CotacaoModelPreco> getListEnfermagemPreco() {
+        return listEnfermagemPreco;
+    }
+
+    public void setListEnfermagemPreco(List<CotacaoModelPreco> listEnfermagemPreco) {
+        this.listEnfermagemPreco = listEnfermagemPreco;
+    }
+
+    public List<CotacaoModelPreco> getListApartamentoPreco() {
+        return listApartamentoPreco;
+    }
+
+    public void setListApartamentoPreco(List<CotacaoModelPreco> listApartamentoPreco) {
+        this.listApartamentoPreco = listApartamentoPreco;
+    }
+
+
 
     public String getImageUrl() {
         return imageUrl;
@@ -40,8 +62,8 @@ public class CotacaoModel implements Parcelable {
         idade = in.readString();
         idade_max = in.readString();
         idade_min = in.readString();
-        enfermaria_preco = in.readString();
-        apartamento_preco = in.readString();
+        in.readList(listEnfermagemPreco, List.class.getClassLoader());
+        in.readList(listApartamentoPreco, List.class.getClassLoader());
         imageUrl = in.readString();
     }
 
@@ -53,21 +75,7 @@ public class CotacaoModel implements Parcelable {
         this.idade = idade;
     }
 
-    public String getEnfermaria_preco() {
-        return enfermaria_preco;
-    }
 
-    public void setEnfermaria_preco(String enfermaria_preco) {
-        this.enfermaria_preco = enfermaria_preco;
-    }
-
-    public String getApartamento_preco() {
-        return apartamento_preco;
-    }
-
-    public void setApartamento_preco(String apartamento_preco) {
-        this.apartamento_preco = apartamento_preco;
-    }
 
     @Override
     public int describeContents() {
@@ -79,8 +87,8 @@ public class CotacaoModel implements Parcelable {
         dest.writeString(idade);
         dest.writeString(idade_max);
         dest.writeString(idade_min);
-        dest.writeString(enfermaria_preco);
-        dest.writeString(apartamento_preco);
+        dest.writeList(listEnfermagemPreco);
+        dest.writeList(listApartamentoPreco);
         dest.writeString(imageUrl);
     }
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
@@ -97,8 +105,11 @@ public class CotacaoModel implements Parcelable {
         private String idade = "";
         private String idade_min;
         private String idade_max;
-        private String enfermaria_preco;
-        private String apartamento_preco;
+        private List<CotacaoModelPreco> listEnfermagemPreco;
+        private List<CotacaoModelPreco> listApartamentoPreco;
+
+
+
 
         public  CotacaoModel.CotacaoBuilder setImage_url(String image_url) {
             this.image_url = image_url;
@@ -115,13 +126,13 @@ public class CotacaoModel implements Parcelable {
             this.idade_max = idade_max;
             return this;
         }
-        public CotacaoModel.CotacaoBuilder setEnfermariaPreco(String enfermaria_preco) {
-            this.enfermaria_preco = enfermaria_preco;
+        public CotacaoModel.CotacaoBuilder setEnfermariaPreco(List<CotacaoModelPreco> listEnfermagemPreco) {
+            this.listEnfermagemPreco = listEnfermagemPreco;
             return this;
         }
 
-        public CotacaoModel.CotacaoBuilder setApartamentoPreco(String apartamento_preco) {
-            this.apartamento_preco = apartamento_preco;
+        public CotacaoModel.CotacaoBuilder setApartamentoPreco(List<CotacaoModelPreco> listApartamentoPreco) {
+            this.listApartamentoPreco = listApartamentoPreco;
             return this;
         }
 
@@ -136,8 +147,8 @@ public class CotacaoModel implements Parcelable {
         public CotacaoModel build(){
             CotacaoModel cotacao = new CotacaoModel();
             cotacao.idade = idade;
-            cotacao.apartamento_preco = apartamento_preco;
-            cotacao.enfermaria_preco = enfermaria_preco;
+            cotacao.listEnfermagemPreco = listEnfermagemPreco;
+            cotacao.listApartamentoPreco = listApartamentoPreco;
             cotacao.idade_min = idade_min;
             cotacao.idade_max = idade_max;
             cotacao.imageUrl = image_url;

@@ -3,6 +3,8 @@ package view;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +29,7 @@ public class FragFuncionarios extends Fragment {
     private RecyclerView recyclerViewFuncionario;
     private FuncionarioAdapter funcionarioAdapter;
     private FuncionarioController controller;
+    String ultimodigito = "";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,6 +49,40 @@ public class FragFuncionarios extends Fragment {
                 final EditText name = (EditText) mView.findViewById(R.id.userInputName);
                 final EditText email = (EditText) mView.findViewById(R.id.userInputEmail);
                 final EditText phone = (EditText) mView.findViewById(R.id.userInputPhone);
+               phone.addTextChangedListener(new TextWatcher() {
+                   @Override
+                   public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                        Integer digito = phone.getText().toString().length();
+                        if(digito > 1){
+                            ultimodigito = phone.getText().toString().substring(digito - 1);
+
+                        }
+                   }
+
+                   @Override
+                   public void onTextChanged(CharSequence s, int start, int before, int count) {
+                       Integer digito = phone.getText().toString().length();
+                       if(digito == 2){
+                           if(!ultimodigito.equals(" ")){
+                               phone.append(" ");
+                           } else {
+                               phone.getText().delete(digito -1, digito);
+                           }
+                       } else if (digito == 8){
+                           if(!ultimodigito.equals("-")){
+                               phone.append("-");
+                           } else {
+                               phone.getText().delete(digito -1, digito);
+                           }
+                       }
+                   }
+
+                   @Override
+                   public void afterTextChanged(Editable s) {
+
+                   }
+               });
+
                 alertDialogBuilderUserInput
                         .setCancelable(false)
                         .setPositiveButton("Adicionar", new DialogInterface.OnClickListener() {

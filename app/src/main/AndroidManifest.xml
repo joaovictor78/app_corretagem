@@ -16,7 +16,7 @@
 
         <activity
             android:name="view.homeActivity"
-            android:label="Corretagem"
+            android:label="Plan App"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -20,13 +20,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.corretagemapp.R;
 import com.example.corretagemapp.models.CotacaoModel;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -35,7 +33,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 
 
 public class ValorTotalCotacao extends AppCompatActivity {
@@ -63,12 +60,12 @@ public class ValorTotalCotacao extends AppCompatActivity {
         List listPrecosEnfermaria = new ArrayList();
         List listaPrecosApartamento = new ArrayList();
         for(int count = 0; count < cotacoes.size(); count ++){
-            Log.i("Verificando lista", cotacoes.get(count).getEnfermaria_preco());
-            listPrecosEnfermaria.add(Float.parseFloat(cotacoes.get(count).getEnfermaria_preco()));
+          //  Log.i("Verificando lista", cotacoes.get(count).getEnfermaria_preco());
+            //listPrecosEnfermaria.add(Float.parseFloat(cotacoes.get(count).getEnfermaria_preco()));
         }
         for(int count = 0; count < cotacoes.size(); count ++){
-            Log.i("Verificando lista", cotacoes.get(count).getEnfermaria_preco());
-            listaPrecosApartamento.add(Float.parseFloat(cotacoes.get(count).getApartamento_preco()));
+           // Log.i("Verificando lista", cotacoes.get(count).getEnfermaria_preco());
+            //listaPrecosApartamento.add(Float.parseFloat(cotacoes.get(count).getApartamento_preco()));
         }
         float soma_enfermaria = somarEnfermaria(listPrecosEnfermaria);
         Log.i("A Soma Enfermaria: ", String.valueOf(soma_enfermaria));
@@ -100,7 +97,7 @@ public class ValorTotalCotacao extends AppCompatActivity {
         Date now = new Date();
         CharSequence format = DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
         try {
-            String dirPath = view.getContext().getExternalFilesDir(Environment.DIRECTORY_DCIM).getAbsolutePath() + "/" + now + ".png";
+            String dirPath = view.getContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath() + "/" + now + ".png";
             File fileDir = new File(dirPath);
             if (!fileDir.exists()) {
                 fileDir.mkdirs();

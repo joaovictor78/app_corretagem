@@ -19,6 +19,8 @@ import android.widget.Toast;
 
 import com.example.corretagemapp.R;
 import com.example.corretagemapp.models.CotacaoModel;
+import com.example.corretagemapp.models.CotacaoModelPreco;
+import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -134,6 +136,8 @@ public class Cotacao extends AppCompatActivity {
 
         try {
             ArrayList<CotacaoModel> listCotacoes = new ArrayList<CotacaoModel>();
+            List<CotacaoModelPreco> cotacaoModelPrecoEnfermagemList = new ArrayList<>();
+            List<CotacaoModelPreco> cotacaoModelPrecoApartamentoList = new ArrayList<>();
             JSONArray array = jsonObjectCorretora.getJSONArray("precos");
             if (array != null) {
                 for (int i = 0; i < array.length(); i++) {
@@ -141,10 +145,17 @@ public class Cotacao extends AppCompatActivity {
                     String idade_min = operadora.getString("idade_min");
                     String idade_max = operadora.getString("idade_max");
                     JSONArray valorPorTipo = operadora.getJSONArray("valor_por_tipo");
-                    String preco_enfermaria = valorPorTipo.getJSONObject(0).getString("valor");
-                    String preco_apartamento = valorPorTipo.getJSONObject(1).getString("valor");
+                    if (valorPorTipo != null) {
+                        for (int count = 0; count <valorPorTipo.length(); count ++){
+                            if(valorPorTipo.getJSONObject(count).getString("tipo").equals("1")){
+                                cotacaoModelPrecoEnfermagemList.add(CotacaoModelPreco.CotacaoModelPrecoBuilder.builder().setTipo(valorPorTipo.getJSONObject(count).getInt("tipo")).setPreco(valorPorTipo.getJSONObject(count).getString("valor")).setTitle(valorPorTipo.getJSONObject(count).getString("title")).build());
+                            } else if(valorPorTipo.getJSONObject(count).getString("tipo").equals("2")){
+                                cotacaoModelPrecoApartamentoList.add(CotacaoModelPreco.CotacaoModelPrecoBuilder.builder().setTipo(valorPorTipo.getJSONObject(count).getInt("tipo")).setPreco(valorPorTipo.getJSONObject(count).getString("valor")).setTitle(valorPorTipo.getJSONObject(count).getString("title")).build());
+                            }
 
-                    listCotacoes.add(CotacaoModel.CotacaoBuilder.builder().setIdadeMin(idade_min).setIdadeMax(idade_max).setApartamentoPreco(preco_apartamento).setEnfermariaPreco(preco_enfermaria).build());
+                        }
+                    }
+                    listCotacoes.add(CotacaoModel.CotacaoBuilder.builder().setIdadeMin(idade_min).setIdadeMax(idade_max).setApartamentoPreco(cotacaoModelPrecoApartamentoList).setEnfermariaPreco(cotacaoModelPrecoEnfermagemList).build());
                 }
                 return listCotacoes;
             }

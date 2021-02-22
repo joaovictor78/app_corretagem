@@ -59,7 +59,6 @@ public class FuncionarioAdapter extends RecyclerView.Adapter<FuncionarioAdapter.
             email = itemView.findViewById(R.id.email_funcionario);
             phone = itemView.findViewById(R.id.phone_funcionario);
             text_icon = itemView.findViewById(R.id.text_circlericon);
-
         }
 
         public void bind(Funcionario funcionario) {
