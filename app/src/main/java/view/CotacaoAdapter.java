@@ -53,8 +53,8 @@ public class CotacaoAdapter extends RecyclerView.Adapter<CotacaoAdapter.CotacaoV
          }
          public void bind(CotacaoModel cotacaoModel){
            idade.setText(cotacaoModel.getIdade());
-           apartamento_preco.setText(cotacaoModel.getApartamento_preco());
-           enfermagem_preco.setText(cotacaoModel.getEnfermaria_preco());
+           //apartamento_preco.setText(cotacaoModel.getApartamento_preco());
+           //enfermagem_preco.setText(cotacaoModel.getEnfermaria_preco());
 
 
          }

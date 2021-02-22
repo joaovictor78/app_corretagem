@@ -60,12 +60,12 @@ public class ValorTotalCotacao extends AppCompatActivity {
         List listPrecosEnfermaria = new ArrayList();
         List listaPrecosApartamento = new ArrayList();
         for(int count = 0; count < cotacoes.size(); count ++){
-            Log.i("Verificando lista", cotacoes.get(count).getEnfermaria_preco());
-            listPrecosEnfermaria.add(Float.parseFloat(cotacoes.get(count).getEnfermaria_preco()));
+          //  Log.i("Verificando lista", cotacoes.get(count).getEnfermaria_preco());
+            //listPrecosEnfermaria.add(Float.parseFloat(cotacoes.get(count).getEnfermaria_preco()));
         }
         for(int count = 0; count < cotacoes.size(); count ++){
-            Log.i("Verificando lista", cotacoes.get(count).getEnfermaria_preco());
-            listaPrecosApartamento.add(Float.parseFloat(cotacoes.get(count).getApartamento_preco()));
+           // Log.i("Verificando lista", cotacoes.get(count).getEnfermaria_preco());
+            //listaPrecosApartamento.add(Float.parseFloat(cotacoes.get(count).getApartamento_preco()));
         }
         float soma_enfermaria = somarEnfermaria(listPrecosEnfermaria);
         Log.i("A Soma Enfermaria: ", String.valueOf(soma_enfermaria));
