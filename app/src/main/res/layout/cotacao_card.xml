@@ -43,17 +43,17 @@
                 android:textColor="@color/white" />
         </LinearLayout>
 
-        <TextView
+        <LinearLayout
             android:id="@+id/title_enfermagem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="10dp"
-            android:text="Enfermagem: R$ "
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:orientation="vertical" />
 
-        <TextView
+        <LinearLayout
             android:id="@+id/preco_enfermagem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -63,20 +63,20 @@
             android:layout_marginBottom="5dp"
             android:layout_toEndOf="@+id/title_enfermagem"
             android:layout_toRightOf="@+id/title_enfermagem"
-            android:text="0.00"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:orientation="vertical" />
 
-        <TextView
+        <LinearLayout
             android:id="@+id/title_apartamento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_toLeftOf="@+id/preco_apartamento"
-            android:text="Apartamento: R$ "
             android:layout_marginBottom="5dp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:orientation="vertical" />
 
-        <TextView
+        <LinearLayout
             android:id="@+id/preco_apartamento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -85,8 +85,8 @@
             android:layout_marginLeft="4dp"
             android:layout_alignParentRight="true"
             android:layout_marginBottom="5dp"
-            android:text=" 0.00"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:orientation="vertical" />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
