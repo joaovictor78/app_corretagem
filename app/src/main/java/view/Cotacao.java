@@ -49,7 +49,6 @@ public class Cotacao extends AppCompatActivity {
                 String value = extras.getString("corretoraSelected");
                 id_image = extras.getInt("id_image");
                 jsonObjectCorretora = new JSONObject(value);
-                Log.i("Teste", jsonObjectCorretora.toString());
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -62,10 +61,10 @@ public class Cotacao extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(!minhasCotacoes.isEmpty()){
-                Intent intent = new Intent(getApplicationContext(), ValorTotalCotacao.class);
-                intent.putExtra("dados", minhasCotacoes);
-                intent.putExtra("id_image", id_image);
-                startActivity(intent);
+                    Intent intent = new Intent(getApplicationContext(), ValorTotalCotacao.class);
+                    intent.putExtra("dados", minhasCotacoes);
+                    intent.putExtra("id_image", id_image);
+                    startActivity(intent);
                 } else{
                     Toast.makeText(getApplicationContext(), "Nenhuma cotação adicionada!",
                             Toast.LENGTH_LONG).show();
@@ -101,14 +100,14 @@ public class Cotacao extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(), "Idade Incorreta!!", Toast.LENGTH_LONG).show();
 
                                     }
-                                        if (minhasCotacoes.isEmpty()) {
-                                            recyclerView.setVisibility(View.GONE);
-                                            textEmpty.setVisibility(View.VISIBLE);
-                                        }
-                                        else {
-                                            recyclerView.setVisibility(View.VISIBLE);
-                                            textEmpty.setVisibility(View.GONE);
-                                        }
+                                    if (minhasCotacoes.isEmpty()) {
+                                        recyclerView.setVisibility(View.GONE);
+                                        textEmpty.setVisibility(View.VISIBLE);
+                                    }
+                                    else {
+                                        recyclerView.setVisibility(View.VISIBLE);
+                                        textEmpty.setVisibility(View.GONE);
+                                    }
                                 }
                                 else {
                                     Toast.makeText(getApplicationContext(), "Nenhuma idade adicionada!",
@@ -133,33 +132,33 @@ public class Cotacao extends AppCompatActivity {
 
 
     private ArrayList<CotacaoModel> initListCotacaoOperados() {
-
         try {
             ArrayList<CotacaoModel> listCotacoes = new ArrayList<CotacaoModel>();
-            List<CotacaoModelPreco> cotacaoModelPrecoEnfermagemList = new ArrayList<>();
-            List<CotacaoModelPreco> cotacaoModelPrecoApartamentoList = new ArrayList<>();
+
             JSONArray array = jsonObjectCorretora.getJSONArray("precos");
             if (array != null) {
                 for (int i = 0; i < array.length(); i++) {
+                    List<CotacaoModelPreco> cotacaoModelPrecoEnfermagemList = new ArrayList<>();
+                    List<CotacaoModelPreco> cotacaoModelPrecoApartamentoList = new ArrayList<>();
                     JSONObject operadora = array.getJSONObject(i);
                     String idade_min = operadora.getString("idade_min");
                     String idade_max = operadora.getString("idade_max");
                     JSONArray valorPorTipo = operadora.getJSONArray("valor_por_tipo");
                     if (valorPorTipo != null) {
-                        for (int count = 0; count <valorPorTipo.length(); count ++){
+                        for (int count = 0; count < valorPorTipo.length(); count ++){
                             if(valorPorTipo.getJSONObject(count).getString("tipo").equals("1")){
                                 cotacaoModelPrecoEnfermagemList.add(CotacaoModelPreco.CotacaoModelPrecoBuilder.builder().setTipo(valorPorTipo.getJSONObject(count).getInt("tipo")).setPreco(valorPorTipo.getJSONObject(count).getString("valor")).setTitle(valorPorTipo.getJSONObject(count).getString("title")).build());
                             } else if(valorPorTipo.getJSONObject(count).getString("tipo").equals("2")){
                                 cotacaoModelPrecoApartamentoList.add(CotacaoModelPreco.CotacaoModelPrecoBuilder.builder().setTipo(valorPorTipo.getJSONObject(count).getInt("tipo")).setPreco(valorPorTipo.getJSONObject(count).getString("valor")).setTitle(valorPorTipo.getJSONObject(count).getString("title")).build());
                             }
-
+                            listCotacoes.add(CotacaoModel.CotacaoBuilder.builder().setIdadeMin(idade_min).setIdadeMax(idade_max).setApartamentoPreco(cotacaoModelPrecoApartamentoList).setEnfermariaPreco(cotacaoModelPrecoEnfermagemList).build());
                         }
                     }
-                    listCotacoes.add(CotacaoModel.CotacaoBuilder.builder().setIdadeMin(idade_min).setIdadeMax(idade_max).setApartamentoPreco(cotacaoModelPrecoApartamentoList).setEnfermariaPreco(cotacaoModelPrecoEnfermagemList).build());
-                }
-                return listCotacoes;
-            }
 
+                }
+
+            }
+            return listCotacoes;
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -167,13 +166,9 @@ public class Cotacao extends AppCompatActivity {
         return null;
     }
     private Boolean filterCorretora(CotacaoModel cotacaoModel, int user_idade) {
-        if (!cotacaoModel.getIdade_max().equals("null")) {
             if (user_idade >= Integer.parseInt(cotacaoModel.getIdade_min()) && user_idade <= Integer.parseInt(cotacaoModel.getIdade_max())) {
                 return true;
             }
-        } else {
-            return false;
-        }
         return false;
     }
 

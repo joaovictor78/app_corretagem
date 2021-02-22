@@ -2,6 +2,7 @@ package view;
 
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
 import android.util.Log;
@@ -20,6 +21,8 @@ import com.example.corretagemapp.models.CotacaoModel;
 import com.example.corretagemapp.models.CotacaoModelPreco;
 
 import java.util.List;
+
+import static com.example.corretagemapp.R.color.orange_pure;
 
 public class CotacaoAdapter extends RecyclerView.Adapter<CotacaoAdapter.CotacaoViewHolder> {
     private final List<CotacaoModel> cotacoes;
@@ -53,7 +56,8 @@ public class CotacaoAdapter extends RecyclerView.Adapter<CotacaoAdapter.CotacaoV
          LinearLayout enfermangem_title;
          LinearLayout enfermagem_preco;
          private boolean isIdade = false;
-         TextView textViewDinamic;
+         TextView textEnfermagemTitle;
+         TextView textEnfermagemPreco;
          public CotacaoViewHolder(@NonNull View itemView) {
              super(itemView);
              idade = itemView.findViewById(R.id.idade);
@@ -63,17 +67,19 @@ public class CotacaoAdapter extends RecyclerView.Adapter<CotacaoAdapter.CotacaoV
              enfermangem_title = itemView.findViewById(R.id.title_enfermagem);
          }
 
+
          public void bind(CotacaoModel cotacaoModel){
            idade.setText(cotacaoModel.getIdade());
            List<CotacaoModelPreco> listApartamentoPreco = cotacaoModel.getListApartamentoPreco();
            for(int count = 0; count < listApartamentoPreco.size(); count++){
-               textViewDinamic = new TextView(itemView.getContext().getApplicationContext());
-               textViewDinamic.setText(listApartamentoPreco.get(count).getTitle());
-               apartamento_title.addView(textViewDinamic);
-           }
+               textEnfermagemTitle = new TextView(itemView.getContext().getApplicationContext());
+               textEnfermagemTitle.setText(listApartamentoPreco.get(count).getTitle());
+               textEnfermagemPreco = new TextView(itemView.getContext().getApplicationContext());
+               textEnfermagemPreco.setText(listApartamentoPreco.get(count).getPreco());
+               apartamento_title.addView(textEnfermagemTitle);
+               apartamento_preco.addView(textEnfermagemPreco);
 
-           //apartamento_preco.setText(cotacaoModel.getListApartamentoPreco().get(0).getTitle());
-           //enfermagem_preco.setText(cotacaoModel.getListEnfermagemPreco().get(0).getTitle());
+           }
          }
      }
 
