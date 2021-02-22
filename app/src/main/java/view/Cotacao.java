@@ -148,14 +148,13 @@ public class Cotacao extends AppCompatActivity {
                     if (valorPorTipo != null) {
                         for (int count = 0; count <valorPorTipo.length(); count ++){
                             if(valorPorTipo.getJSONObject(count).getString("tipo").equals("1")){
-                                cotacaoModelPrecoEnfermagemList.add(CotacaoModelPreco.CotacaoModelPrecoBuilder.builder().setTipo(valorPorTipo.getJSONObject(count).getString("tipo")).setPreco(valorPorTipo.getJSONObject(count).getString("valor")).setTitle(valorPorTipo.getJSONObject(count).getString("title")).build());
+                                cotacaoModelPrecoEnfermagemList.add(CotacaoModelPreco.CotacaoModelPrecoBuilder.builder().setTipo(valorPorTipo.getJSONObject(count).getInt("tipo")).setPreco(valorPorTipo.getJSONObject(count).getString("valor")).setTitle(valorPorTipo.getJSONObject(count).getString("title")).build());
                             } else if(valorPorTipo.getJSONObject(count).getString("tipo").equals("2")){
-                                cotacaoModelPrecoApartamentoList.add(CotacaoModelPreco.CotacaoModelPrecoBuilder.builder().setTipo(valorPorTipo.getJSONObject(count).getString("tipo")).setPreco(valorPorTipo.getJSONObject(count).getString("valor")).setTitle(valorPorTipo.getJSONObject(count).getString("title")).build());
+                                cotacaoModelPrecoApartamentoList.add(CotacaoModelPreco.CotacaoModelPrecoBuilder.builder().setTipo(valorPorTipo.getJSONObject(count).getInt("tipo")).setPreco(valorPorTipo.getJSONObject(count).getString("valor")).setTitle(valorPorTipo.getJSONObject(count).getString("title")).build());
                             }
 
                         }
                     }
-                    String preco_apartamento = valorPorTipo.getJSONObject(1).getString("valor");
                     listCotacoes.add(CotacaoModel.CotacaoBuilder.builder().setIdadeMin(idade_min).setIdadeMax(idade_max).setApartamentoPreco(cotacaoModelPrecoApartamentoList).setEnfermariaPreco(cotacaoModelPrecoEnfermagemList).build());
                 }
                 return listCotacoes;

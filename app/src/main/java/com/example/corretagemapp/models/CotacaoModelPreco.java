@@ -1,14 +1,14 @@
 package com.example.corretagemapp.models;
 
 public class CotacaoModelPreco {
-    private String tipo;
+    private int tipo;
     private String preco;
     private String title;
-    public String getTipo() {
+    public int getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(int tipo) {
         this.tipo = tipo;
     }
     public String getTitle() {
@@ -27,11 +27,11 @@ public class CotacaoModelPreco {
     }
     public CotacaoModelPreco(){}
     public static class CotacaoModelPrecoBuilder{
-        private String tipo;
+        private int tipo;
         private String preco;
         private String title;
         private CotacaoModelPrecoBuilder(){}
-        public CotacaoModelPreco.CotacaoModelPrecoBuilder setTipo(String tipo) {
+        public CotacaoModelPreco.CotacaoModelPrecoBuilder setTipo(int tipo) {
             this.tipo = tipo;
             return this;
         }
