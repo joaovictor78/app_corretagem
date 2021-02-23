@@ -58,6 +58,8 @@ public class CotacaoAdapter extends RecyclerView.Adapter<CotacaoAdapter.CotacaoV
          private boolean isIdade = false;
          TextView textEnfermagemTitle;
          TextView textEnfermagemPreco;
+         TextView textApartamentoTitle;
+         TextView textApartamentoPreco;
          public CotacaoViewHolder(@NonNull View itemView) {
              super(itemView);
              idade = itemView.findViewById(R.id.idade);
@@ -71,14 +73,24 @@ public class CotacaoAdapter extends RecyclerView.Adapter<CotacaoAdapter.CotacaoV
          public void bind(CotacaoModel cotacaoModel){
            idade.setText(cotacaoModel.getIdade());
            List<CotacaoModelPreco> listApartamentoPreco = cotacaoModel.getListApartamentoPreco();
-           for(int count = 0; count < listApartamentoPreco.size(); count++){
+           List<CotacaoModelPreco> listEnfermariaPreco = cotacaoModel.getListEnfermagemPreco();
+           for(int count = 0; count < listEnfermariaPreco.size(); count++){
                textEnfermagemTitle = new TextView(itemView.getContext().getApplicationContext());
-               textEnfermagemTitle.setText(listApartamentoPreco.get(count).getTitle());
+               textEnfermagemTitle.setText(listEnfermariaPreco.get(count).getTitle());
                textEnfermagemPreco = new TextView(itemView.getContext().getApplicationContext());
-               textEnfermagemPreco.setText(listApartamentoPreco.get(count).getPreco());
-               apartamento_title.addView(textEnfermagemTitle);
-               apartamento_preco.addView(textEnfermagemPreco);
+               textEnfermagemPreco.setText(listEnfermariaPreco.get(count).getPreco());
+               enfermangem_title.addView(textEnfermagemTitle);
+               enfermagem_preco.addView(textEnfermagemPreco);
 
+
+           }
+           for(int count = 0; count < listApartamentoPreco.size(); count ++){
+               textApartamentoTitle = new TextView(itemView.getContext().getApplicationContext());
+               textApartamentoTitle.setText(listApartamentoPreco.get(count).getTitle());
+               textApartamentoPreco = new TextView(itemView.getContext().getApplicationContext());
+               textApartamentoPreco.setText(listApartamentoPreco.get(count).getPreco());
+               apartamento_title.addView(textApartamentoTitle);
+               apartamento_preco.addView(textApartamentoPreco);
            }
          }
      }
