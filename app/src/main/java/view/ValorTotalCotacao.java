@@ -79,7 +79,7 @@ public class ValorTotalCotacao extends AppCompatActivity {
         ArrayList<CotacaoModel> cotacoes = getIntent().getParcelableArrayListExtra("dados");
         List<CotacaoModelPreco> listPrecosEnfermaria = new ArrayList();
         List<CotacaoModelPreco> listPrecosApartamento = new ArrayList();
-        List<CotacaoModelPreco> listCarencia = new ArrayList();
+        List<String> listCarencia = new ArrayList();
         List<String> listTitleApt = new ArrayList<>();
         List<String> listTitleEnferm = new ArrayList<>();
         cotacoes.forEach(cotacaoModel -> listPrecosEnfermaria.addAll(cotacaoModel.getListEnfermagemPreco()));
@@ -174,8 +174,11 @@ public class ValorTotalCotacao extends AppCompatActivity {
             }
             linearLayoutEnfermariaPrice.addView(textEnfermariaPrice);
         });
-
-
+        listCarencia.forEach(value -> {
+            textCarencia = new TextView(getApplicationContext());
+            textCarencia.setText(value);
+            linearViewcarencia.addView(textCarencia);
+        });
 
 
         printButton.setOnClickListener(new View.OnClickListener() {

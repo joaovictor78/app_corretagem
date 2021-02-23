@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.example.corretagemapp.R;
 import com.example.corretagemapp.models.CotacaoModel;
 import com.example.corretagemapp.models.CotacaoModelPreco;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
@@ -134,12 +135,13 @@ public class Cotacao extends AppCompatActivity {
     private ArrayList<CotacaoModel> initListCotacaoOperados() {
         try {
             ArrayList<CotacaoModel> listCotacoes = new ArrayList<CotacaoModel>();
-
             JSONArray array = jsonObjectCorretora.getJSONArray("precos");
+            JSONArray arrayCarencias = jsonObjectCorretora.getJSONArray("carencia");
             if (array != null) {
                 for (int i = 0; i < array.length(); i++) {
                     List<CotacaoModelPreco> cotacaoModelPrecoEnfermagemList = new ArrayList<>();
                     List<CotacaoModelPreco> cotacaoModelPrecoApartamentoList = new ArrayList<>();
+                    List<String> listCarencia = new ArrayList<>();
                     JSONObject operadora = array.getJSONObject(i);
                     String idade_min = operadora.getString("idade_min");
                     String idade_max = operadora.getString("idade_max");
@@ -151,7 +153,10 @@ public class Cotacao extends AppCompatActivity {
                             } else if(valorPorTipo.getJSONObject(count).getString("tipo").equals("2")){
                                 cotacaoModelPrecoApartamentoList.add(CotacaoModelPreco.CotacaoModelPrecoBuilder.builder().setTipo(valorPorTipo.getJSONObject(count).getInt("tipo")).setPreco(valorPorTipo.getJSONObject(count).getString("valor")).setTitle(valorPorTipo.getJSONObject(count).getString("title")).build());
                             }
-                            listCotacoes.add(CotacaoModel.CotacaoBuilder.builder().setIdadeMin(idade_min).setIdadeMax(idade_max).setApartamentoPreco(cotacaoModelPrecoApartamentoList).setEnfermariaPreco(cotacaoModelPrecoEnfermagemList).build());
+                            for(int x = 0; x < arrayCarencias.length(); x++){
+                                listCarencia.add(arrayCarencias.getJSONObject(x).getString("message").toString());
+                            }
+                            listCotacoes.add(CotacaoModel.CotacaoBuilder.builder().setIdadeMin(idade_min).setIdadeMax(idade_max).setApartamentoPreco(cotacaoModelPrecoApartamentoList).setEnfermariaPreco(cotacaoModelPrecoEnfermagemList).setCarencia(listCarencia).build());
                         }
                     }
 
@@ -159,7 +164,6 @@ public class Cotacao extends AppCompatActivity {
 
             }
             return listCotacoes;
-
         } catch (JSONException e) {
             e.printStackTrace();
         }

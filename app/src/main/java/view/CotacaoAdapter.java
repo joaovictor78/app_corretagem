@@ -74,7 +74,7 @@ public class CotacaoAdapter extends RecyclerView.Adapter<CotacaoAdapter.CotacaoV
            idade.setText(cotacaoModel.getIdade());
            List<CotacaoModelPreco> listApartamentoPreco = cotacaoModel.getListApartamentoPreco();
            List<CotacaoModelPreco> listEnfermariaPreco = cotacaoModel.getListEnfermagemPreco();
-           List<CotacaoModelPreco> listCarencia = cotacaoModel.getListCarencia();
+           List<String> listCarencia = cotacaoModel.getListCarencia();
            for(int count = 0; count < listEnfermariaPreco.size(); count++){
                textEnfermagemTitle = new TextView(itemView.getContext().getApplicationContext());
                textEnfermagemTitle.setText(listEnfermariaPreco.get(count).getTitle());
