@@ -27,6 +27,7 @@ import android.widget.Toast;
 
 import com.example.corretagemapp.R;
 import com.example.corretagemapp.models.CotacaoModel;
+import com.example.corretagemapp.models.CotacaoModelPreco;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -34,16 +35,24 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicReference;
 
 
 public class ValorTotalCotacao extends AppCompatActivity {
     ImageView imageViewBanner;
-    LinearLayout textViewenfermariaTitle;
-    LinearLayout textViewenfermariaPrice;
+    LinearLayout linearLayoutEnfermariaTitle;
+    LinearLayout linearLayoutEnfermariaPrice;
+    TextView textEnfermariaTitle;
+    TextView textEnfermariaPrice;
 
-    LinearLayout textViewapartamentoTitle;
-    LinearLayout textViewapartamentoPrice;
+    LinearLayout linearLayoutApartamentoTitle;
+    LinearLayout linearLayoutApartamentoPrice;
+    TextView textApartamentoTitle;
+    TextView textApartamentoPrice;
+
     LinearLayout textViewcarencia;
     @SuppressLint("WrongViewCast")
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -54,11 +63,11 @@ public class ValorTotalCotacao extends AppCompatActivity {
         setContentView(R.layout.activity_valor_total_cotacao);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         verifyStoragePermission(this);
-        textViewenfermariaTitle = findViewById(R.id.valor_enfe);
-        textViewenfermariaPrice = findViewById(R.id.valor_enfe);
-
-        textViewapartamentoTitle = findViewById(R.id.valor_apt);
-        textViewapartamentoPrice = findViewById(R.id.valor_apt);
+        Button printButton = findViewById(R.id.salve_print);
+        linearLayoutEnfermariaTitle = findViewById(R.id.title_enfe);
+        linearLayoutEnfermariaPrice = findViewById(R.id.valor_enfe);
+        linearLayoutApartamentoTitle = findViewById(R.id.title_apt);
+        linearLayoutApartamentoPrice = findViewById(R.id.valor_apt);
         textViewcarencia = findViewById(R.id.carencia_text);
         Bundle args = new Bundle();
         Bundle extras = getIntent().getExtras();
@@ -66,19 +75,105 @@ public class ValorTotalCotacao extends AppCompatActivity {
         imageViewBanner = findViewById(R.id.id_imageOperadoraSelecionada);
         imageViewBanner.setImageResource(id_image);
         ArrayList<CotacaoModel> cotacoes = getIntent().getParcelableArrayListExtra("dados");
-        List listPrecosEnfermaria = new ArrayList();
-        List listaPrecosApartamento = new ArrayList();
-        
-        float soma_enfermaria = somarEnfermaria(listPrecosEnfermaria);
-        Log.i("A Soma Enfermaria: ", String.valueOf(soma_enfermaria));
+        List<CotacaoModelPreco> listPrecosEnfermaria = new ArrayList();
+        List<CotacaoModelPreco> listPrecosApartamento = new ArrayList();
+        List<String> listTitleApt = new ArrayList<>();
+        List<String> listTitleEnferm = new ArrayList<>();
+        cotacoes.forEach(cotacaoModel -> listPrecosEnfermaria.addAll(cotacaoModel.getListEnfermagemPreco()));
+        cotacoes.forEach(cotacaoModel -> listPrecosApartamento.addAll(cotacaoModel.getListApartamentoPreco()));
+        listPrecosApartamento.forEach(cotacaoModelPreco ->   listTitleApt.add(cotacaoModelPreco.getTitle()));
+        listPrecosEnfermaria.forEach(cotacaoModelPreco ->   listTitleEnferm.add(cotacaoModelPreco.getTitle()));
+        Set<String> titleAptSet = new HashSet<String>(listTitleApt);
+        Set<String> titleEnfermSet = new HashSet<String>(listTitleEnferm);
 
-        float soma_apartamento = somarApartamento(listaPrecosApartamento);
-        Log.i("A Soma Apartamento", String.valueOf(soma_apartamento));
-        textViewenfermaria.setText(String.valueOf(soma_enfermaria));
-        textViewapartamento.setText(String.valueOf(soma_apartamento));
-        textViewcarencia.setText(String.valueOf(soma_apartamento));
+        List listApartamentoNacional = new ArrayList();
+        List listApartamentoEstadual = new ArrayList();
+        List listApartamentoMunicipal = new ArrayList();
 
-        Button printButton = findViewById(R.id.salve_print);
+        List listEnfermariaNacional = new ArrayList();
+        List listEnfermariaEstadual = new ArrayList();
+        List listEnfermariaMunicipal = new ArrayList();
+
+        float somaApartamentoNacional;
+        float somaApartamentoEstadual;
+        float somaApartamentoMunicipal;
+
+        float somaEnfermagemNacional;
+        float somaEnfermagemEstadual;
+        float somaEnfermagemMunicipal;
+
+        listTitleApt.clear();
+        listTitleApt.addAll(titleAptSet);
+
+        listTitleEnferm.clear();
+        listTitleEnferm.addAll(titleEnfermSet);
+
+        listPrecosApartamento.forEach(cotacaoModelPreco -> {
+            if(cotacaoModelPreco.getTitle().equals("Apartamento")){
+                listApartamentoNacional.add(Float.parseFloat(cotacaoModelPreco.getPreco()));
+
+            }
+            if(cotacaoModelPreco.getTitle().equals("Apt Mun.")){
+                listApartamentoMunicipal.add(Float.parseFloat(cotacaoModelPreco.getPreco()));
+            }
+            if(cotacaoModelPreco.getTitle().equals("Apt Est.")){
+                listApartamentoEstadual.add(Float.parseFloat(cotacaoModelPreco.getPreco()));
+            }
+        });
+        listPrecosEnfermaria.forEach(cotacaoModelPreco -> {
+            if(cotacaoModelPreco.getTitle().equals("Enfermagem")){
+                listEnfermariaNacional.add(Float.parseFloat(cotacaoModelPreco.getPreco()));
+
+            }
+            if(cotacaoModelPreco.getTitle().equals("Enf Mun.")){
+                listEnfermariaMunicipal.add(Float.parseFloat(cotacaoModelPreco.getPreco()));
+            }
+            if(cotacaoModelPreco.getTitle().equals("Enf Est.")){
+                listEnfermariaEstadual.add(Float.parseFloat(cotacaoModelPreco.getPreco()));
+            }
+        });
+        somaApartamentoNacional = somarCotacao(listApartamentoNacional);
+        somaApartamentoEstadual = somarCotacao(listApartamentoEstadual);
+        somaApartamentoMunicipal = somarCotacao(listApartamentoMunicipal);
+
+        somaEnfermagemNacional = somarCotacao(listEnfermariaNacional);
+        somaEnfermagemEstadual = somarCotacao(listEnfermariaEstadual);
+        somaEnfermagemMunicipal = somarCotacao(listEnfermariaMunicipal);
+
+        listTitleApt.forEach(title -> {
+            textApartamentoTitle = new TextView(getApplicationContext());
+            textApartamentoTitle.setText(title);
+            linearLayoutApartamentoTitle.addView(textApartamentoTitle);
+            textApartamentoPrice = new TextView(getApplicationContext());
+            if(title.equals("Apartamento")){
+                textApartamentoPrice.setText(String.valueOf(somaApartamentoNacional));
+            } else if(title.equals("Apt Mun.")){
+                textApartamentoPrice.setText(String.valueOf(somaApartamentoEstadual));
+            }
+            else if(title.equals("Apt Est.")){
+                textApartamentoPrice.setText(String.valueOf(somaApartamentoMunicipal));
+            }
+            linearLayoutApartamentoPrice.addView(textApartamentoPrice);
+        });
+        listTitleEnferm.forEach(title -> {
+            textEnfermariaTitle = new TextView(getApplicationContext());
+            textEnfermariaTitle.setText(title);
+            linearLayoutEnfermariaTitle.addView(textEnfermariaTitle);
+            textEnfermariaPrice = new TextView(getApplicationContext());
+            if(title.equals("Enfermagem")){
+                textEnfermariaPrice.setText(String.valueOf(somaEnfermagemNacional));
+            } else if(title.equals("Enf Mun.")){
+                textEnfermariaPrice.setText(String.valueOf(somaEnfermagemMunicipal));
+            }
+            else if(title.equals("Enf Est.")){
+                textEnfermariaPrice.setText(String.valueOf(somaEnfermagemEstadual));
+            }
+            linearLayoutEnfermariaPrice.addView(textEnfermariaPrice);
+        });
+
+
+
+
         printButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,9 +200,7 @@ public class ValorTotalCotacao extends AppCompatActivity {
                 fileDir.mkdirs();
             }
             String path = dirPath + "/" + fileName + "-" + format + ".png";
-            //view.setDrawingCacheEnabled(true);
             Bitmap bitmap = getBitmapFromView(view);
-            //view.setDrawingCacheEnabled(false);
             File imageFile = new File(path);
             FileOutputStream fileOutputStream = new FileOutputStream(imageFile);
             int quality = 100;
@@ -155,20 +248,12 @@ public class ValorTotalCotacao extends AppCompatActivity {
         return new CotacaoAdapter.CotacaoViewHolder(view);
     }
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public Float somarEnfermaria(List<Float> listPrecoEnfermaria){
-        float soma_enfermaria = 0;
-        for(int count = 0; count < listPrecoEnfermaria.size(); count++){
-            soma_enfermaria = soma_enfermaria + listPrecoEnfermaria.get(count);
+    public Float somarCotacao(List<Float> list){
+        float soma_cotacao = 0;
+        for(int count = 0; count < list.size(); count++){
+            soma_cotacao = soma_cotacao + list.get(count);
         }
-        return soma_enfermaria;
+        return soma_cotacao;
     }
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    public Float somarApartamento(List<Float> listPrecoApartamento){
-        float soma_apartamento = 0;
-        for(int count = 0; count < listPrecoApartamento.size(); count++){
-            soma_apartamento = soma_apartamento + listPrecoApartamento.get(count);
-        }
-        return soma_apartamento;
 
-}
 }

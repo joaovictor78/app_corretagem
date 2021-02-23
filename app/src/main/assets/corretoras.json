@@ -1,6 +1,10 @@
 [
   {"nome" : "Unimed Vertente do Caparáo",
     "image_url" : "unimed1",
+     "carencias" : [
+       {"message" :  "Assunto"},
+       {"message" :  "Mesagem bunitinha"}
+     ],
     "precos": [
       {"idade_min" : "00", "idade_max" : "18", "valor_por_tipo" : [ {"tipo"  : 1, "title" : "Enfermagem","valor" : 288.72}, {"tipo"  : 2,"title":"Apartamento","valor" : 373.25}]},
       {"idade_min" : "19", "idade_max" : "23", "valor_por_tipo" : [ {"tipo"  : 1, "title": "Enfermagem","valor" : 352.53}, {"tipo"  : 2,"title":"Apartamento" ,"valor" : 455.75}]},
