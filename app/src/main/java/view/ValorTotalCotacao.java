@@ -61,7 +61,7 @@ public class ValorTotalCotacao extends AppCompatActivity {
         List listaPrecosApartamento = new ArrayList();
         for(int count = 0; count < cotacoes.size(); count ++){
           //  Log.i("Verificando lista", cotacoes.get(count).getEnfermaria_preco());
-            //listPrecosEnfermaria.add(Float.parseFloat(cotacoes.get(count).getEnfermaria_preco()));
+          //  listPrecosEnfermaria.add(Float.parseFloat(cotacoes.get(count).getEnfermaria_preco()));
         }
         for(int count = 0; count < cotacoes.size(); count ++){
            // Log.i("Verificando lista", cotacoes.get(count).getEnfermaria_preco());

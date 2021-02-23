@@ -3,6 +3,7 @@ package com.example.corretagemapp.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CotacaoModel implements Parcelable {
@@ -62,8 +63,10 @@ public class CotacaoModel implements Parcelable {
         idade = in.readString();
         idade_max = in.readString();
         idade_min = in.readString();
-        in.readList(listEnfermagemPreco, List.class.getClassLoader());
-        in.readList(listApartamentoPreco, List.class.getClassLoader());
+        listEnfermagemPreco = new ArrayList<CotacaoModelPreco>();
+        listApartamentoPreco = new ArrayList<CotacaoModelPreco>();
+        in.readTypedList(listEnfermagemPreco, CotacaoModelPreco.CREATOR);
+        in.readTypedList(listApartamentoPreco, CotacaoModelPreco.CREATOR);
         imageUrl = in.readString();
     }
 
@@ -87,8 +90,8 @@ public class CotacaoModel implements Parcelable {
         dest.writeString(idade);
         dest.writeString(idade_max);
         dest.writeString(idade_min);
-        dest.writeList(listEnfermagemPreco);
-        dest.writeList(listApartamentoPreco);
+        dest.writeTypedList(listEnfermagemPreco);
+        dest.writeTypedList(listApartamentoPreco);
         dest.writeString(imageUrl);
     }
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
@@ -107,8 +110,6 @@ public class CotacaoModel implements Parcelable {
         private String idade_max;
         private List<CotacaoModelPreco> listEnfermagemPreco;
         private List<CotacaoModelPreco> listApartamentoPreco;
-
-
 
 
         public  CotacaoModel.CotacaoBuilder setImage_url(String image_url) {
