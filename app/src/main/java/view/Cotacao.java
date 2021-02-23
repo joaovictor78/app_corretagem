@@ -28,7 +28,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -156,6 +158,9 @@ public class Cotacao extends AppCompatActivity {
                             for(int x = 0; x < arrayCarencias.length(); x++){
                                 listCarencia.add(arrayCarencias.getJSONObject(x).getString("message").toString());
                             }
+                            Set<String> set = new HashSet<>(listCarencia);
+                            listCarencia.clear();
+                            listCarencia.addAll(set);
                             listCotacoes.add(CotacaoModel.CotacaoBuilder.builder().setIdadeMin(idade_min).setIdadeMax(idade_max).setApartamentoPreco(cotacaoModelPrecoApartamentoList).setEnfermariaPreco(cotacaoModelPrecoEnfermagemList).setCarencia(listCarencia).build());
                         }
                     }
