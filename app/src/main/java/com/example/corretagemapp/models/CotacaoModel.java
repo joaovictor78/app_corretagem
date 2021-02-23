@@ -13,6 +13,7 @@ public class CotacaoModel implements Parcelable {
     private List<CotacaoModelPreco> listEnfermagemPreco;
     private List<CotacaoModelPreco> listApartamentoPreco;
     private String imageUrl;
+    private List<CotacaoModelPreco> listCarencia;
 
 
 
@@ -30,6 +31,13 @@ public class CotacaoModel implements Parcelable {
 
     public void setListApartamentoPreco(List<CotacaoModelPreco> listApartamentoPreco) {
         this.listApartamentoPreco = listApartamentoPreco;
+    }
+    public List<CotacaoModelPreco> getListCarencia() {
+        return listCarencia;
+    }
+
+    public void setListCarencia(List<CotacaoModelPreco> listCarencia) {
+        this.listCarencia = listCarencia;
     }
 
 
@@ -65,8 +73,10 @@ public class CotacaoModel implements Parcelable {
         idade_min = in.readString();
         listEnfermagemPreco = new ArrayList<CotacaoModelPreco>();
         listApartamentoPreco = new ArrayList<CotacaoModelPreco>();
+        listCarencia = new ArrayList<CotacaoModelPreco>();
         in.readTypedList(listEnfermagemPreco, CotacaoModelPreco.CREATOR);
         in.readTypedList(listApartamentoPreco, CotacaoModelPreco.CREATOR);
+        in.readTypedList(listCarencia, CotacaoModelPreco.CREATOR);
         imageUrl = in.readString();
     }
 
@@ -92,6 +102,7 @@ public class CotacaoModel implements Parcelable {
         dest.writeString(idade_min);
         dest.writeTypedList(listEnfermagemPreco);
         dest.writeTypedList(listApartamentoPreco);
+        dest.writeTypedList(listCarencia);
         dest.writeString(imageUrl);
     }
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
@@ -110,6 +121,7 @@ public class CotacaoModel implements Parcelable {
         private String idade_max;
         private List<CotacaoModelPreco> listEnfermagemPreco;
         private List<CotacaoModelPreco> listApartamentoPreco;
+        private List<CotacaoModelPreco> listCarencia;
 
 
         public  CotacaoModel.CotacaoBuilder setImage_url(String image_url) {
@@ -141,6 +153,10 @@ public class CotacaoModel implements Parcelable {
             this.idade = idade;
             return this;
         }
+        public CotacaoModel.CotacaoBuilder setCarencia(List<CotacaoModelPreco> listCarencia) {
+            this.listCarencia = listCarencia;
+            return this;
+        }
         private CotacaoBuilder(){}
         public static CotacaoModel.CotacaoBuilder builder(){
             return new CotacaoBuilder();
@@ -153,6 +169,7 @@ public class CotacaoModel implements Parcelable {
             cotacao.idade_min = idade_min;
             cotacao.idade_max = idade_max;
             cotacao.imageUrl = image_url;
+            cotacao.listCarencia = listCarencia;
             return cotacao;
         }
     }

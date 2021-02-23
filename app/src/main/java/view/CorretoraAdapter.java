@@ -68,7 +68,6 @@ public class CorretoraAdapter extends RecyclerView.Adapter<CorretoraAdapter.Corr
                     Intent intent = new Intent(v.getContext(), Cotacao.class);
                     intent.putExtra("id_image", id);
                     intent.putExtra("corretoraSelected", corretoraSelected.toString());
-                    Log.i("", corretoraSelected.toString());
                     v.getContext().startActivity(intent);
                 }
             });
@@ -79,7 +78,6 @@ public class CorretoraAdapter extends RecyclerView.Adapter<CorretoraAdapter.Corr
             try {
                 corretoraSelected = corretora;
                 nome.setText(corretora.get("nome").toString());
-                //image_background.getResources(R.drawable.banner);
                 id = itemView.getContext().getResources().getIdentifier("com.example.corretagemapp:drawable/" + corretora.get("image_url").toString(), null, null);
                 image_background.setImageResource(id);
 

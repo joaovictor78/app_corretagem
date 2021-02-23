@@ -1,9 +1,12 @@
 [
   {"nome" : "Unimed Vertente do Caparáo",
     "image_url" : "unimed1",
-     "carencias" : [
-       {"message" :  "Assunto"},
-       {"message" :  "Mesagem bunitinha"}
+     "carencia" : [
+       {"message" :  "->Urgência e Emergência – 24 horas - Consultas Médicas - Exames Simples."},
+       {"message" :  "->Exames Complexos – 180 dias."},
+       {"message" :  "->Internações e Cirurgias – 180 dias."},
+       {"message" :  "->Partos e Termo – 300 dias."},
+       {"message" :  "->Doenças e lesões pré-existentes – 24 meses."}
      ],
     "precos": [
       {"idade_min" : "00", "idade_max" : "18", "valor_por_tipo" : [ {"tipo"  : 1, "title" : "Enfermagem","valor" : 288.72}, {"tipo"  : 2,"title":"Apartamento","valor" : 373.25}]},
@@ -19,6 +22,10 @@
     ]},
   {"nome" : "Seguros Unimed",
     "image_url" : "seguros",
+    "carencia" : [
+      {"message" :  "->Partos e Termo – 10 Meses"},
+      {"message" :  "->Doenças e lesões pré-existentes – 2 Anos"}
+    ],
     "precos": [
       {"idade_min" : "00", "idade_max" : "18", "valor_por_tipo" : [ {"tipo"  : 1,"title" :"Enfermagem","valor" : 348.50}, {"tipo"  : 2,"title":"Apartamento" ,"valor" : 378.20}]},
       {"idade_min" : "19", "idade_max" : "23", "valor_por_tipo" : [ {"tipo"  : 1,"title" :"Enfermagem","valor" : 388.90}, {"tipo"  : 2,"title":"Apartamento" ,"valor" : 410.20}]},
@@ -33,6 +40,13 @@
     ]},
   {"nome" : "Unimed Rio de Janeiro",
     "image_url" : "unimed2",
+    "carencia" : [
+      {"message" :  "->Urgência e Emergência – 24 horas - Consultas Médicas - Exames Simples."},
+      {"message" :  "->Exames Complexos – 180 dias."},
+      {"message" :  "->Internações e Cirurgias – 180 dias."},
+      {"message" :  "->Partos e Termo – 300 dias."},
+      {"message" :  "->Doenças e lesões pré-existentes – 24 meses."}
+    ],
     "precos": [
       {"idade_min" : "00", "idade_max" : "18", "valor_por_tipo" : [ {"tipo"  : 1,"title" :"Enfermagem", "valor" :200.00 }, {"tipo"  : 2,"title":"Apartamento" , "valor" : 378.20}]},
       {"idade_min" : "19", "idade_max" : "23", "valor_por_tipo" : [ {"tipo"  : 1,"title" :"Enfermagem", "valor" : 388.90}, {"tipo"  : 2,"title":"Apartamento" , "valor" : 410.20}]},
@@ -47,6 +61,10 @@
     ]},
   {"nome" : "Bradesco Saúde",
     "image_url" : "bradesco1",
+    "carencia" : [
+      {"message" :  "->Partos e Termo – 10 Meses"},
+      {"message" :  "->Doenças e lesões pré-existentes – 2 Anos"}
+    ],
     "precos": [
       {"idade_min" : "00", "idade_max" : "18", "valor_por_tipo" : [ {"tipo"  : 1,"title" :"Enfermagem", "valor" : 437.80}, {"tipo"  : 2,"title":"Apartamento" , "valor" : 506.50}]},
       {"idade_min" : "19", "idade_max" : "23", "valor_por_tipo" : [ {"tipo"  : 1,"title" :"Enfermagem", "valor" : 530.50}, {"tipo"  : 2,"title":"Apartamento" , "valor" : 617.90}]},
@@ -61,6 +79,10 @@
     ]},
   {"nome" : "Bradesco QualyCorp",
     "image_url" : "bradesco2",
+    "carencia" : [
+      {"message" :  "->Partos e Termo – 10 Meses"},
+      {"message" :  "->Doenças e lesões pré-existentes – 2 Anos"}
+    ],
     "precos": [
       {"idade_min" : "00", "idade_max" : "18", "valor_por_tipo" : [ {"tipo"  : 1,"title" :"Enfermagem", "valor" : 369.31}, {"tipo"  : 2,"title":"Apartamento", "valor" : 434.5}]},
       {"idade_min" : "19", "idade_max" : "23", "valor_por_tipo" : [ {"tipo"  : 1,"title" :"Enfermagem", "valor" : 459.47}, {"tipo"  : 2,"title":"Apartamento", "valor" : 540.54}]},
@@ -74,6 +96,13 @@
       {"idade_min" : "59", "idade_max" : "99", "valor_por_tipo" : [ {"tipo"  : 1,"title" :"Enfermagem", "valor" : 2215.73}, {"tipo"  : 2,"title":"Apartamento", "valor" : 2606.8}]}
     ]},
   {"nome" : "Ameron Comerciário",
+    "carencia" : [
+      {"message" :  "->Urgência e Emergência – 24 horas - Consultas Médicas - Exames Simples."},
+      {"message" :  "->Exames Complexos – 180 dias."},
+      {"message" :  "->Internações e Cirurgias – 180 dias."},
+      {"message" :  "->Partos e Termo – 300 dias."},
+      {"message" :  "->Doenças e lesões pré-existentes – 24 meses."}
+    ],
     "image_url" : "ameron1",
     "precos": [
       {"idade_min" : "00", "idade_max" : "18", "valor_por_tipo" : [ {"tipo"  : 1,"title" :"Enf Mun.", "valor" : 181.16}, {"tipo" :  2,"title" :"Apt Mun.","valor" : 179.63},{"tipo" : 1,"title" :"Enf Est.", "valor" : 179.63},{"tipo" : 2,"title" :"Apt Est.", "valor" : 215.50}]},
@@ -89,6 +118,13 @@
 
     ]},
   {"nome" : "Ameron Estudantes",
+    "carencia" : [
+      {"message" :  "->Urgência e Emergência – 24 horas - Consultas Médicas - Exames Simples."},
+      {"message" :  "->Exames Complexos – 180 dias."},
+      {"message" :  "->Internações e Cirurgias – 180 dias."},
+      {"message" :  "->Partos e Termo – 300 dias."},
+      {"message" :  "->Doenças e lesões pré-existentes – 24 meses."}
+    ],
     "image_url" : "ameron2",
     "precos": [
       {"idade_min" : "00", "idade_max" : "18", "valor_por_tipo" : [ {"tipo"  : 1,"title" :"Enf Mun.", "valor" : 147.70}, {"tipo"  : 2,"title" :"Apt Mun.", "valor" : 177.19},{"tipo" : 1,"title" :"Enf Est.", "valor" : 175.68},{"tipo" : 2,"title" :"Apt Est.", "valor" : 210.81}]},
@@ -105,6 +141,13 @@
     ]},
   {"nome" : "Ameron Servidore Público",
     "image_url" : "ameron4",
+    "carencia" : [
+      {"message" :  "->Urgência e Emergência – 24 horas - Consultas Médicas - Exames Simples."},
+      {"message" :  "->Exames Complexos – 180 dias."},
+      {"message" :  "->Internações e Cirurgias – 180 dias."},
+      {"message" :  "->Partos e Termo – 300 dias."},
+      {"message" :  "->Doenças e lesões pré-existentes – 24 meses."}
+    ],
     "precos": [
       {"idade_min" : "00", "idade_max" : "18", "valor_por_tipo" : [ {"tipo"  : 1,"title" :"Enf Mun.", "valor" : 134.25}, {"tipo"  : 2,"title" :"Apt Mun.", "valor" : 161.04},{"tipo" : 1,"title" :"Enf Est.", "valor" : 159.68},{"tipo" : 2,"title" :"Apt Est.", "valor" : 191.57}]},
       {"idade_min" : "19", "idade_max" : "23", "valor_por_tipo" : [ {"tipo"  : 1,"title" :"Enf Mun.", "valor" : 153.02}, {"tipo"  :2,"title" :"Apt Mun.", "valor" : 183.58},{"tipo" : 1,"title" :"Enf Est.", "valor" : 182.01},{"tipo" : 2,"title" :"Apt Est.", "valor" : 218.38}]},
@@ -120,6 +163,13 @@
     ]},
   {"nome" : "Ameron Profissional Liberal",
     "image_url" : "ameron3",
+    "carencia" : [
+      {"message" :  "->Urgência e Emergência – 24 horas - Consultas Médicas - Exames Simples."},
+      {"message" :  "->Exames Complexos – 180 dias."},
+      {"message" :  "->Internações e Cirurgias – 180 dias."},
+      {"message" :  "->Partos e Termo – 300 dias."},
+      {"message" :  "->Doenças e lesões pré-existentes – 24 meses."}
+    ],
     "precos": [
       {"idade_min" : "00", "idade_max" : "18", "valor_por_tipo" : [ {"tipo"  : 1,"title" :"Enf Mun.", "valor" : 144.65}, {"tipo"  : 2,"title" :"Apt Mun.","valor" : 173.53},{"tipo" : 1,"title" :"Enf Est.", "valor" : 178.95},{"tipo" : 2,"title" :"Apt Est.", "valor" : 214.68}]},
       {"idade_min" : "19", "idade_max" : "23", "valor_por_tipo" : [ {"tipo"  : 1,"title" :"Enf Mun.", "valor" : 164.90}, {"tipo"  : 2,"title" :"Apt Mun.", "valor" : 197.83},{"tipo" : 1,"title" :"Enf Est.", "valor" : 203.98},{"tipo" : 2,"title" :"Apt Est.", "valor" : 244.74}]},

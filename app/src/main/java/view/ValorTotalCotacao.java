@@ -53,7 +53,9 @@ public class ValorTotalCotacao extends AppCompatActivity {
     TextView textApartamentoTitle;
     TextView textApartamentoPrice;
 
-    LinearLayout textViewcarencia;
+    LinearLayout linearViewcarencia;
+    TextView textCarencia;
+
     @SuppressLint("WrongViewCast")
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -68,7 +70,7 @@ public class ValorTotalCotacao extends AppCompatActivity {
         linearLayoutEnfermariaPrice = findViewById(R.id.valor_enfe);
         linearLayoutApartamentoTitle = findViewById(R.id.title_apt);
         linearLayoutApartamentoPrice = findViewById(R.id.valor_apt);
-        textViewcarencia = findViewById(R.id.carencia_text);
+        linearViewcarencia = findViewById(R.id.carencia_text);
         Bundle args = new Bundle();
         Bundle extras = getIntent().getExtras();
         int id_image = extras.getInt("id_image");
@@ -77,10 +79,12 @@ public class ValorTotalCotacao extends AppCompatActivity {
         ArrayList<CotacaoModel> cotacoes = getIntent().getParcelableArrayListExtra("dados");
         List<CotacaoModelPreco> listPrecosEnfermaria = new ArrayList();
         List<CotacaoModelPreco> listPrecosApartamento = new ArrayList();
+        List<CotacaoModelPreco> listCarencia = new ArrayList();
         List<String> listTitleApt = new ArrayList<>();
         List<String> listTitleEnferm = new ArrayList<>();
         cotacoes.forEach(cotacaoModel -> listPrecosEnfermaria.addAll(cotacaoModel.getListEnfermagemPreco()));
         cotacoes.forEach(cotacaoModel -> listPrecosApartamento.addAll(cotacaoModel.getListApartamentoPreco()));
+        cotacoes.forEach(cotacaoModel -> listCarencia.addAll(cotacaoModel.getListCarencia()));
         listPrecosApartamento.forEach(cotacaoModelPreco ->   listTitleApt.add(cotacaoModelPreco.getTitle()));
         listPrecosEnfermaria.forEach(cotacaoModelPreco ->   listTitleEnferm.add(cotacaoModelPreco.getTitle()));
         Set<String> titleAptSet = new HashSet<String>(listTitleApt);
@@ -190,11 +194,12 @@ public class ValorTotalCotacao extends AppCompatActivity {
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     protected static File takeScreenShot(View view, String fileName) {
         Date now = new Date();
         CharSequence format = DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
         try {
-            String dirPath = view.getContext().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/" + now + ".png";
+            String dirPath = view.getContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath() + "/" + now + ".png";
             File fileDir = new File(dirPath);
             if (!fileDir.exists()) {
                 fileDir.mkdirs();

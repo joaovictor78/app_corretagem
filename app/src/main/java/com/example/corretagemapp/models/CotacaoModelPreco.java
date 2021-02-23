@@ -7,11 +7,13 @@ public class CotacaoModelPreco implements Parcelable {
     private int tipo;
     private String preco;
     private String title;
+    private String carencia;
 
     protected CotacaoModelPreco(Parcel in) {
         tipo = in.readInt();
         preco = in.readString();
         title = in.readString();
+        carencia = in.readString();
     }
 
     public static final Creator<CotacaoModelPreco> CREATOR = new Creator<CotacaoModelPreco>() {
@@ -47,7 +49,11 @@ public class CotacaoModelPreco implements Parcelable {
     public void setPreco(String preco) {
         this.preco = preco;
     }
+
+    public void setCarencia(String carencia) {this.carencia = carencia;}
+
     public CotacaoModelPreco(){}
+
 
     @Override
     public int describeContents() {
@@ -59,12 +65,14 @@ public class CotacaoModelPreco implements Parcelable {
         dest.writeInt(tipo);
         dest.writeString(preco);
         dest.writeString(title);
+        dest.writeString(carencia);
     }
 
     public static class CotacaoModelPrecoBuilder{
         private int tipo;
         private String preco;
         private String title;
+        private String carencia;
         private CotacaoModelPrecoBuilder(){}
         public CotacaoModelPreco.CotacaoModelPrecoBuilder setTipo(int tipo) {
             this.tipo = tipo;
@@ -78,6 +86,10 @@ public class CotacaoModelPreco implements Parcelable {
             this.preco = preco;
             return this;
         }
+        public CotacaoModelPreco.CotacaoModelPrecoBuilder setCarencia(String carencia) {
+            this.carencia = carencia;
+            return this;
+        }
         public static CotacaoModelPreco.CotacaoModelPrecoBuilder builder(){
             return new CotacaoModelPreco.CotacaoModelPrecoBuilder();
         }
@@ -86,6 +98,7 @@ public class CotacaoModelPreco implements Parcelable {
             cotacaoModelPreco.preco = preco;
             cotacaoModelPreco.tipo = tipo;
             cotacaoModelPreco.title = title;
+            cotacaoModelPreco.carencia = carencia;
             return cotacaoModelPreco;
         }
     }
