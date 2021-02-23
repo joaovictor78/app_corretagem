@@ -1,9 +1,31 @@
 package com.example.corretagemapp.models;
 
-public class CotacaoModelPreco {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class CotacaoModelPreco implements Parcelable {
     private int tipo;
     private String preco;
     private String title;
+
+    protected CotacaoModelPreco(Parcel in) {
+        tipo = in.readInt();
+        preco = in.readString();
+        title = in.readString();
+    }
+
+    public static final Creator<CotacaoModelPreco> CREATOR = new Creator<CotacaoModelPreco>() {
+        @Override
+        public CotacaoModelPreco createFromParcel(Parcel in) {
+            return new CotacaoModelPreco(in);
+        }
+
+        @Override
+        public CotacaoModelPreco[] newArray(int size) {
+            return new CotacaoModelPreco[size];
+        }
+    };
+
     public int getTipo() {
         return tipo;
     }
@@ -26,6 +48,19 @@ public class CotacaoModelPreco {
         this.preco = preco;
     }
     public CotacaoModelPreco(){}
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(tipo);
+        dest.writeString(preco);
+        dest.writeString(title);
+    }
+
     public static class CotacaoModelPrecoBuilder{
         private int tipo;
         private String preco;
