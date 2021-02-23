@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -20,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,9 +39,13 @@ import java.util.List;
 
 public class ValorTotalCotacao extends AppCompatActivity {
     ImageView imageViewBanner;
-    TextView textViewenfermaria;
-    TextView textViewapartamento;
-    TextView textViewcarencia;
+    LinearLayout textViewenfermariaTitle;
+    LinearLayout textViewenfermariaPrice;
+
+    LinearLayout textViewapartamentoTitle;
+    LinearLayout textViewapartamentoPrice;
+    LinearLayout textViewcarencia;
+    @SuppressLint("WrongViewCast")
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +54,11 @@ public class ValorTotalCotacao extends AppCompatActivity {
         setContentView(R.layout.activity_valor_total_cotacao);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         verifyStoragePermission(this);
-        textViewenfermaria = findViewById(R.id.valor_enfe);
-        textViewapartamento = findViewById(R.id.valor_apt);
+        textViewenfermariaTitle = findViewById(R.id.valor_enfe);
+        textViewenfermariaPrice = findViewById(R.id.valor_enfe);
+
+        textViewapartamentoTitle = findViewById(R.id.valor_apt);
+        textViewapartamentoPrice = findViewById(R.id.valor_apt);
         textViewcarencia = findViewById(R.id.carencia_text);
         Bundle args = new Bundle();
         Bundle extras = getIntent().getExtras();
@@ -59,14 +68,7 @@ public class ValorTotalCotacao extends AppCompatActivity {
         ArrayList<CotacaoModel> cotacoes = getIntent().getParcelableArrayListExtra("dados");
         List listPrecosEnfermaria = new ArrayList();
         List listaPrecosApartamento = new ArrayList();
-        for(int count = 0; count < cotacoes.size(); count ++){
-          //  Log.i("Verificando lista", cotacoes.get(count).getEnfermaria_preco());
-          //  listPrecosEnfermaria.add(Float.parseFloat(cotacoes.get(count).getEnfermaria_preco()));
-        }
-        for(int count = 0; count < cotacoes.size(); count ++){
-           // Log.i("Verificando lista", cotacoes.get(count).getEnfermaria_preco());
-            //listaPrecosApartamento.add(Float.parseFloat(cotacoes.get(count).getApartamento_preco()));
-        }
+        
         float soma_enfermaria = somarEnfermaria(listPrecosEnfermaria);
         Log.i("A Soma Enfermaria: ", String.valueOf(soma_enfermaria));
 
