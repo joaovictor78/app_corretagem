@@ -89,7 +89,7 @@ public class ValorTotalCotacao extends AppCompatActivity {
         listPrecosEnfermaria.forEach(cotacaoModelPreco ->   listTitleEnferm.add(cotacaoModelPreco.getTitle()));
         Set<String> titleAptSet = new HashSet<String>(listTitleApt);
         Set<String> titleEnfermSet = new HashSet<String>(listTitleEnferm);
-
+        Set<String> carenciaSet = new HashSet<String>(listCarencia);
         List listApartamentoNacional = new ArrayList();
         List listApartamentoEstadual = new ArrayList();
         List listApartamentoMunicipal = new ArrayList();
@@ -112,6 +112,8 @@ public class ValorTotalCotacao extends AppCompatActivity {
         listTitleEnferm.clear();
         listTitleEnferm.addAll(titleEnfermSet);
 
+        listCarencia.clear();
+        listCarencia.addAll(carenciaSet);
         listPrecosApartamento.forEach(cotacaoModelPreco -> {
             if(cotacaoModelPreco.getTitle().equals("Apartamento")){
                 listApartamentoNacional.add(Float.parseFloat(cotacaoModelPreco.getPreco()));
