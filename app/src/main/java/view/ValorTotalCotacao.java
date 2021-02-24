@@ -33,6 +33,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -89,7 +90,7 @@ public class ValorTotalCotacao extends AppCompatActivity {
         listPrecosEnfermaria.forEach(cotacaoModelPreco ->   listTitleEnferm.add(cotacaoModelPreco.getTitle()));
         Set<String> titleAptSet = new HashSet<String>(listTitleApt);
         Set<String> titleEnfermSet = new HashSet<String>(listTitleEnferm);
-
+        Set<String> carenciaSet = new HashSet<String>(listCarencia);
         List listApartamentoNacional = new ArrayList();
         List listApartamentoEstadual = new ArrayList();
         List listApartamentoMunicipal = new ArrayList();
@@ -98,13 +99,15 @@ public class ValorTotalCotacao extends AppCompatActivity {
         List listEnfermariaEstadual = new ArrayList();
         List listEnfermariaMunicipal = new ArrayList();
 
-        float somaApartamentoNacional;
-        float somaApartamentoEstadual;
-        float somaApartamentoMunicipal;
+        DecimalFormat df = new DecimalFormat("#.00");
 
-        float somaEnfermagemNacional;
-        float somaEnfermagemEstadual;
-        float somaEnfermagemMunicipal;
+        double somaApartamentoNacional;
+        double somaApartamentoEstadual;
+        double somaApartamentoMunicipal;
+
+        double somaEnfermagemNacional;
+        double somaEnfermagemEstadual;
+        double somaEnfermagemMunicipal;
 
         listTitleApt.clear();
         listTitleApt.addAll(titleAptSet);
@@ -112,37 +115,39 @@ public class ValorTotalCotacao extends AppCompatActivity {
         listTitleEnferm.clear();
         listTitleEnferm.addAll(titleEnfermSet);
 
+        listCarencia.clear();
+        listCarencia.addAll(carenciaSet);
         listPrecosApartamento.forEach(cotacaoModelPreco -> {
             if(cotacaoModelPreco.getTitle().equals("Apartamento")){
-                listApartamentoNacional.add(Float.parseFloat(cotacaoModelPreco.getPreco()));
+                listApartamentoNacional.add(Double.parseDouble(cotacaoModelPreco.getPreco()));
 
             }
             if(cotacaoModelPreco.getTitle().equals("Apt Mun.")){
-                listApartamentoMunicipal.add(Float.parseFloat(cotacaoModelPreco.getPreco()));
+                listApartamentoMunicipal.add(Double.parseDouble(cotacaoModelPreco.getPreco()));
             }
             if(cotacaoModelPreco.getTitle().equals("Apt Est.")){
-                listApartamentoEstadual.add(Float.parseFloat(cotacaoModelPreco.getPreco()));
+                listApartamentoEstadual.add(Double.parseDouble(cotacaoModelPreco.getPreco()));
             }
         });
         listPrecosEnfermaria.forEach(cotacaoModelPreco -> {
             if(cotacaoModelPreco.getTitle().equals("Enfermagem")){
-                listEnfermariaNacional.add(Float.parseFloat(cotacaoModelPreco.getPreco()));
+                listEnfermariaNacional.add(Double.parseDouble(cotacaoModelPreco.getPreco()));
 
             }
             if(cotacaoModelPreco.getTitle().equals("Enf Mun.")){
-                listEnfermariaMunicipal.add(Float.parseFloat(cotacaoModelPreco.getPreco()));
+                listEnfermariaMunicipal.add(Double.parseDouble(cotacaoModelPreco.getPreco()));
             }
             if(cotacaoModelPreco.getTitle().equals("Enf Est.")){
-                listEnfermariaEstadual.add(Float.parseFloat(cotacaoModelPreco.getPreco()));
+                listEnfermariaEstadual.add(Double.parseDouble(cotacaoModelPreco.getPreco()));
             }
         });
-        somaApartamentoNacional = somarCotacao(listApartamentoNacional);
-        somaApartamentoEstadual = somarCotacao(listApartamentoEstadual);
-        somaApartamentoMunicipal = somarCotacao(listApartamentoMunicipal);
+        df.format(somaApartamentoNacional = somarCotacao(listApartamentoNacional));
+        df.format(somaApartamentoEstadual = somarCotacao(listApartamentoEstadual));
+        df.format(somaApartamentoMunicipal = somarCotacao(listApartamentoMunicipal));
 
-        somaEnfermagemNacional = somarCotacao(listEnfermariaNacional);
-        somaEnfermagemEstadual = somarCotacao(listEnfermariaEstadual);
-        somaEnfermagemMunicipal = somarCotacao(listEnfermariaMunicipal);
+        df.format(somaEnfermagemNacional = somarCotacao(listEnfermariaNacional));
+        df.format(somaEnfermagemEstadual = somarCotacao(listEnfermariaEstadual));
+        df.format(somaEnfermagemMunicipal = somarCotacao(listEnfermariaMunicipal));
 
         listTitleApt.forEach(title -> {
             textApartamentoTitle = new TextView(getApplicationContext());
@@ -256,8 +261,8 @@ public class ValorTotalCotacao extends AppCompatActivity {
         return new CotacaoAdapter.CotacaoViewHolder(view);
     }
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public Float somarCotacao(List<Float> list){
-        float soma_cotacao = 0;
+    public Double somarCotacao(List<Double> list){
+        double soma_cotacao = 0;
         for(int count = 0; count < list.size(); count++){
             soma_cotacao = soma_cotacao + list.get(count);
         }
