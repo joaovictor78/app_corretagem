@@ -8,6 +8,7 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -176,7 +177,7 @@ public class ValorTotalCotacao extends AppCompatActivity {
             linearLayoutEnfermariaPrice.addView(textEnfermariaPrice);
         });
         listCarencia.forEach(value -> {
-            textCarencia = new TextView(getApplicationContext());
+            textCarencia = new TextView(getApplication().getApplicationContext());
             textCarencia.setText(value);
             linearViewcarencia.addView(textCarencia);
         });
@@ -185,7 +186,7 @@ public class ValorTotalCotacao extends AppCompatActivity {
         printButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                File result = takeScreenShot(getWindow().getDecorView().getRootView(), "result");
+                File result = takeScreenShot(getWindow().getDecorView().getRootView(), getApplicationContext(), "result");
                 if (result != null) {
                     Toast.makeText(getApplicationContext(), "Comprovante salvo com sucesso!",
                             Toast.LENGTH_LONG).show();
@@ -199,11 +200,11 @@ public class ValorTotalCotacao extends AppCompatActivity {
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    protected static File takeScreenShot(View view, String fileName) {
+    protected static File takeScreenShot(View view, Context context, String fileName) {
         Date now = new Date();
         CharSequence format = DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
         try {
-            String dirPath = view.getContext().getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS).getAbsolutePath() + "/" + now + ".jpeg";
+            String dirPath = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES).getPath() + "/" + now + ".jpeg";
             File fileDir = new File(dirPath);
             if (!fileDir.exists()) {
                 fileDir.mkdirs();
@@ -258,13 +259,12 @@ public class ValorTotalCotacao extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public Double somarCotacao(List<Double> list) {
-        DecimalFormat df = new DecimalFormat("#.##");
+    public double somarCotacao(List<Double> list) {
         double soma_cotacao = 0.0;
         for (int count = 0; count < list.size(); count++) {
             soma_cotacao = soma_cotacao + list.get(count);
         }
-        return Double.valueOf(df.format(soma_cotacao));
+        return Math.rint(soma_cotacao * 100.0) / 100.0;
     }
 }
 
