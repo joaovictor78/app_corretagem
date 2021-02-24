@@ -99,7 +99,6 @@ public class ValorTotalCotacao extends AppCompatActivity {
         List listEnfermariaEstadual = new ArrayList();
         List listEnfermariaMunicipal = new ArrayList();
 
-        DecimalFormat df = new DecimalFormat("#.##");
 
         double somaApartamentoNacional;
         double somaApartamentoEstadual;
@@ -142,14 +141,12 @@ public class ValorTotalCotacao extends AppCompatActivity {
                 listEnfermariaEstadual.add(Double.valueOf(cotacaoModelPreco.getPreco()));
             }
         });
-
-        df.format(somaApartamentoNacional = somarCotacao(listApartamentoNacional));
-        df.format(somaApartamentoEstadual = somarCotacao(listApartamentoEstadual));
-        df.format(somaApartamentoMunicipal = somarCotacao(listApartamentoMunicipal));
-
-        df.format(somaEnfermagemNacional = somarCotacao(listEnfermariaNacional));
-        df.format(somaEnfermagemEstadual = somarCotacao(listEnfermariaEstadual));
-        df.format(somaEnfermagemMunicipal = somarCotacao(listEnfermariaMunicipal));
+        somaApartamentoNacional = somarCotacao(listApartamentoNacional);
+        somaApartamentoEstadual = somarCotacao(listApartamentoEstadual);
+        somaApartamentoMunicipal = somarCotacao(listApartamentoMunicipal);
+        somaEnfermagemNacional = somarCotacao(listEnfermariaNacional);
+        somaEnfermagemEstadual = somarCotacao(listEnfermariaEstadual);
+        somaEnfermagemMunicipal = somarCotacao(listEnfermariaMunicipal);
 
         listTitleApt.forEach(title -> {
             textApartamentoTitle = new TextView(getApplicationContext());
@@ -264,10 +261,12 @@ public class ValorTotalCotacao extends AppCompatActivity {
     }
     @RequiresApi(api = Build.VERSION_CODES.N)
     public Double somarCotacao(List<Double> list){
+        DecimalFormat df = new DecimalFormat("#.##");
         double soma_cotacao = 0;
         for(int count = 0; count < list.size(); count++){
            soma_cotacao = soma_cotacao + list.get(count);
         }
+        soma_cotacao = Double.valueOf(df.format(soma_cotacao));
         return soma_cotacao;
     }
 
