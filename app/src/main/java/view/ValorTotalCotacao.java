@@ -99,7 +99,7 @@ public class ValorTotalCotacao extends AppCompatActivity {
         List listEnfermariaEstadual = new ArrayList();
         List listEnfermariaMunicipal = new ArrayList();
 
-        DecimalFormat df = new DecimalFormat("0.00");
+        DecimalFormat df = new DecimalFormat("#.##");
 
         double somaApartamentoNacional;
         double somaApartamentoEstadual;
@@ -117,30 +117,32 @@ public class ValorTotalCotacao extends AppCompatActivity {
 
         listCarencia.clear();
         listCarencia.addAll(carenciaSet);
+
         listPrecosApartamento.forEach(cotacaoModelPreco -> {
             if(cotacaoModelPreco.getTitle().equals("Apartamento")){
-                listApartamentoNacional.add(Double.parseDouble(cotacaoModelPreco.getPreco()));
+                listApartamentoNacional.add(Double.valueOf(cotacaoModelPreco.getPreco()));
 
             }
             if(cotacaoModelPreco.getTitle().equals("Apt Mun.")){
-                listApartamentoMunicipal.add(Double.parseDouble(cotacaoModelPreco.getPreco()));
+                listApartamentoMunicipal.add(Double.valueOf(cotacaoModelPreco.getPreco()));
             }
             if(cotacaoModelPreco.getTitle().equals("Apt Est.")){
-                listApartamentoEstadual.add(Double.parseDouble(cotacaoModelPreco.getPreco()));
+                listApartamentoEstadual.add(Double.valueOf(cotacaoModelPreco.getPreco()));
             }
         });
         listPrecosEnfermaria.forEach(cotacaoModelPreco -> {
             if(cotacaoModelPreco.getTitle().equals("Enfermagem")){
-                listEnfermariaNacional.add(Double.parseDouble(cotacaoModelPreco.getPreco()));
+                listEnfermariaNacional.add(Double.valueOf(cotacaoModelPreco.getPreco()));
 
             }
             if(cotacaoModelPreco.getTitle().equals("Enf Mun.")){
-                listEnfermariaMunicipal.add(Double.parseDouble(cotacaoModelPreco.getPreco()));
+                listEnfermariaMunicipal.add(Double.valueOf(cotacaoModelPreco.getPreco()));
             }
             if(cotacaoModelPreco.getTitle().equals("Enf Est.")){
-                listEnfermariaEstadual.add(Double.parseDouble(cotacaoModelPreco.getPreco()));
+                listEnfermariaEstadual.add(Double.valueOf(cotacaoModelPreco.getPreco()));
             }
         });
+
         df.format(somaApartamentoNacional = somarCotacao(listApartamentoNacional));
         df.format(somaApartamentoEstadual = somarCotacao(listApartamentoEstadual));
         df.format(somaApartamentoMunicipal = somarCotacao(listApartamentoMunicipal));
