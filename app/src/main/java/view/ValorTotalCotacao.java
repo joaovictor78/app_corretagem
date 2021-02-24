@@ -99,7 +99,7 @@ public class ValorTotalCotacao extends AppCompatActivity {
         List listEnfermariaEstadual = new ArrayList();
         List listEnfermariaMunicipal = new ArrayList();
 
-        DecimalFormat df = new DecimalFormat("#.00");
+        DecimalFormat df = new DecimalFormat("0.00");
 
         double somaApartamentoNacional;
         double somaApartamentoEstadual;
@@ -207,17 +207,17 @@ public class ValorTotalCotacao extends AppCompatActivity {
         Date now = new Date();
         CharSequence format = DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
         try {
-            String dirPath = view.getContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath() + "/" + now + ".png";
+            String dirPath = view.getContext().getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS).getAbsolutePath() + "/" + now + ".jpeg";
             File fileDir = new File(dirPath);
             if (!fileDir.exists()) {
                 fileDir.mkdirs();
             }
-            String path = dirPath + "/" + fileName + "-" + format + ".png";
+            String path = dirPath + "/" + fileName + "-" + format + ".jpeg";
             Bitmap bitmap = getBitmapFromView(view);
             File imageFile = new File(path);
             FileOutputStream fileOutputStream = new FileOutputStream(imageFile);
             int quality = 100;
-            bitmap.compress(Bitmap.CompressFormat.PNG, quality, fileOutputStream);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, quality, fileOutputStream);
             fileOutputStream.flush();
             fileOutputStream.close();
             return imageFile;
@@ -264,7 +264,7 @@ public class ValorTotalCotacao extends AppCompatActivity {
     public Double somarCotacao(List<Double> list){
         double soma_cotacao = 0;
         for(int count = 0; count < list.size(); count++){
-            soma_cotacao = soma_cotacao + list.get(count);
+           soma_cotacao = soma_cotacao + list.get(count);
         }
         return soma_cotacao;
     }
