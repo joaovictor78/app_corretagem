@@ -262,12 +262,11 @@ public class ValorTotalCotacao extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public Double somarCotacao(List<Double> list){
         DecimalFormat df = new DecimalFormat("#.##");
-        double soma_cotacao = 0;
+        double soma_cotacao = 0.0;
         for(int count = 0; count < list.size(); count++){
            soma_cotacao = soma_cotacao + list.get(count);
         }
         soma_cotacao = Double.valueOf(df.format(soma_cotacao));
         return soma_cotacao;
     }
-
 }
