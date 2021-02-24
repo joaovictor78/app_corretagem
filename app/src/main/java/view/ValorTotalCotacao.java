@@ -56,6 +56,13 @@ public class ValorTotalCotacao extends AppCompatActivity {
 
     LinearLayout linearViewcarencia;
     TextView textCarencia;
+    double somaApartamentoNacional;
+    double somaApartamentoEstadual;
+    double somaApartamentoMunicipal;
+
+    double somaEnfermagemNacional;
+    double somaEnfermagemEstadual;
+    double somaEnfermagemMunicipal;
 
     @SuppressLint("WrongViewCast")
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -86,27 +93,19 @@ public class ValorTotalCotacao extends AppCompatActivity {
         cotacoes.forEach(cotacaoModel -> listPrecosEnfermaria.addAll(cotacaoModel.getListEnfermagemPreco()));
         cotacoes.forEach(cotacaoModel -> listPrecosApartamento.addAll(cotacaoModel.getListApartamentoPreco()));
         cotacoes.forEach(cotacaoModel -> listCarencia.addAll(cotacaoModel.getListCarencia()));
-        listPrecosApartamento.forEach(cotacaoModelPreco ->   listTitleApt.add(cotacaoModelPreco.getTitle()));
-        listPrecosEnfermaria.forEach(cotacaoModelPreco ->   listTitleEnferm.add(cotacaoModelPreco.getTitle()));
+        listPrecosApartamento.forEach(cotacaoModelPreco -> listTitleApt.add(cotacaoModelPreco.getTitle()));
+        listPrecosEnfermaria.forEach(cotacaoModelPreco -> listTitleEnferm.add(cotacaoModelPreco.getTitle()));
         Set<String> titleAptSet = new HashSet<String>(listTitleApt);
         Set<String> titleEnfermSet = new HashSet<String>(listTitleEnferm);
         Set<String> carenciaSet = new HashSet<String>(listCarencia);
-        List listApartamentoNacional = new ArrayList();
-        List listApartamentoEstadual = new ArrayList();
-        List listApartamentoMunicipal = new ArrayList();
+        List<Double> listApartamentoNacional = new ArrayList();
+        List<Double> listApartamentoEstadual = new ArrayList();
+        List<Double> listApartamentoMunicipal = new ArrayList();
 
-        List listEnfermariaNacional = new ArrayList();
-        List listEnfermariaEstadual = new ArrayList();
-        List listEnfermariaMunicipal = new ArrayList();
+        List<Double> listEnfermariaNacional = new ArrayList();
+        List<Double> listEnfermariaEstadual = new ArrayList();
+        List<Double> listEnfermariaMunicipal = new ArrayList();
 
-
-        double somaApartamentoNacional;
-        double somaApartamentoEstadual;
-        double somaApartamentoMunicipal;
-
-        double somaEnfermagemNacional;
-        double somaEnfermagemEstadual;
-        double somaEnfermagemMunicipal;
 
         listTitleApt.clear();
         listTitleApt.addAll(titleAptSet);
@@ -118,26 +117,26 @@ public class ValorTotalCotacao extends AppCompatActivity {
         listCarencia.addAll(carenciaSet);
 
         listPrecosApartamento.forEach(cotacaoModelPreco -> {
-            if(cotacaoModelPreco.getTitle().equals("Apartamento")){
+            if (cotacaoModelPreco.getTitle().equals("Apartamento")) {
                 listApartamentoNacional.add(Double.valueOf(cotacaoModelPreco.getPreco()));
 
             }
-            if(cotacaoModelPreco.getTitle().equals("Apt Mun.")){
+            if (cotacaoModelPreco.getTitle().equals("Apt Mun.")) {
                 listApartamentoMunicipal.add(Double.valueOf(cotacaoModelPreco.getPreco()));
             }
-            if(cotacaoModelPreco.getTitle().equals("Apt Est.")){
+            if (cotacaoModelPreco.getTitle().equals("Apt Est.")) {
                 listApartamentoEstadual.add(Double.valueOf(cotacaoModelPreco.getPreco()));
             }
         });
         listPrecosEnfermaria.forEach(cotacaoModelPreco -> {
-            if(cotacaoModelPreco.getTitle().equals("Enfermagem")){
+            if (cotacaoModelPreco.getTitle().equals("Enfermagem")) {
                 listEnfermariaNacional.add(Double.parseDouble(cotacaoModelPreco.getPreco()));
 
             }
-            if(cotacaoModelPreco.getTitle().equals("Enf Mun.")){
+            if (cotacaoModelPreco.getTitle().equals("Enf Mun.")) {
                 listEnfermariaMunicipal.add(Double.parseDouble(cotacaoModelPreco.getPreco()));
             }
-            if(cotacaoModelPreco.getTitle().equals("Enf Est.")){
+            if (cotacaoModelPreco.getTitle().equals("Enf Est.")) {
                 listEnfermariaEstadual.add(Double.parseDouble(cotacaoModelPreco.getPreco()));
             }
         });
@@ -153,12 +152,11 @@ public class ValorTotalCotacao extends AppCompatActivity {
             textApartamentoTitle.setText(title);
             linearLayoutApartamentoTitle.addView(textApartamentoTitle);
             textApartamentoPrice = new TextView(getApplicationContext());
-            if(title.equals("Apartamento")){
+            if (title.equals("Apartamento")) {
                 textApartamentoPrice.setText(String.valueOf(somaApartamentoNacional));
-            } else if(title.equals("Apt Mun.")){
+            } else if (title.equals("Apt Mun.")) {
                 textApartamentoPrice.setText(String.valueOf(somaApartamentoEstadual));
-            }
-            else if(title.equals("Apt Est.")){
+            } else if (title.equals("Apt Est.")) {
                 textApartamentoPrice.setText(String.valueOf(somaApartamentoMunicipal));
             }
             linearLayoutApartamentoPrice.addView(textApartamentoPrice);
@@ -168,12 +166,11 @@ public class ValorTotalCotacao extends AppCompatActivity {
             textEnfermariaTitle.setText(title);
             linearLayoutEnfermariaTitle.addView(textEnfermariaTitle);
             textEnfermariaPrice = new TextView(getApplicationContext());
-            if(title.equals("Enfermagem")){
+            if (title.equals("Enfermagem")) {
                 textEnfermariaPrice.setText(String.valueOf(somaEnfermagemNacional));
-            } else if(title.equals("Enf Mun.")){
+            } else if (title.equals("Enf Mun.")) {
                 textEnfermariaPrice.setText(String.valueOf(somaEnfermagemMunicipal));
-            }
-            else if(title.equals("Enf Est.")){
+            } else if (title.equals("Enf Est.")) {
                 textEnfermariaPrice.setText(String.valueOf(somaEnfermagemEstadual));
             }
             linearLayoutEnfermariaPrice.addView(textEnfermariaPrice);
@@ -259,14 +256,15 @@ public class ValorTotalCotacao extends AppCompatActivity {
         );
         return new CotacaoAdapter.CotacaoViewHolder(view);
     }
+
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public Double somarCotacao(List<Double> list){
+    public Double somarCotacao(List<Double> list) {
         DecimalFormat df = new DecimalFormat("#.##");
         double soma_cotacao = 0.0;
-        for(int count = 0; count < list.size(); count++){
-           soma_cotacao = soma_cotacao + list.get(count);
+        for (int count = 0; count < list.size(); count++) {
+            soma_cotacao = soma_cotacao + list.get(count);
         }
-        soma_cotacao = Double.valueOf(df.format(soma_cotacao));
-        return soma_cotacao;
+        return Double.valueOf(df.format(soma_cotacao));
     }
 }
+
