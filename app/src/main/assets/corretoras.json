@@ -173,7 +173,7 @@
   {"message" :  "-> Exames Complexos – 180 dias."},
   {"message" :  "-> Internações e Cirurgias – 180 dias."},
   {"message" :  "-> Partos e Termo – 300 dias."},
-  {"message" :  "-> Doenças e lesões pré-existentes – 24 meses."},
+  {"message" :  "-> Doenças e lesões pré-existentes – 24 meses."}
       ],
     "precos": [
       {"idade_min" : "00", "idade_max" : "18", "valor_por_tipo" : [ {"tipo"  : 1,"title" :"Enf Mun.", "valor" : 144.65}, {"tipo"  : 2,"title" :"Apt Mun.","valor" : 173.53},{"tipo" : 1,"title" :"Enf Est.", "valor" : 178.95},{"tipo" : 2,"title" :"Apt Est.", "valor" : 214.68}]},
