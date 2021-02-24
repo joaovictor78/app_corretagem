@@ -31,41 +31,42 @@
         android:id="@+id/title_enfe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/id_imageOperadoraSelecionada"
         android:orientation="vertical"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="20dp"
         android:fontFamily="sans-serif" />
+
     <LinearLayout
         android:id="@+id/valor_enfe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="220dp"
-        android:layout_toEndOf="@+id/title_enfe"
-        android:layout_toRightOf="@+id/title_enfe"
-        android:fontFamily="sans-serif" />
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="25dp"
+        android:layout_below="@id/id_imageOperadoraSelecionada"
+        android:layout_toRightOf="@id/title_enfe"
+        android:fontFamily="sans-serif"
+        android:orientation="vertical" />
+
     <LinearLayout
         android:id="@+id/title_apt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/title_enfe"
-        android:layout_alignParentLeft="true"
-        android:orientation="vertical"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="5dp"
-        android:fontFamily="sans-serif" />
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/id_imageOperadoraSelecionada"
+        android:layout_toRightOf="@id/valor_enfe"
+        android:fontFamily="sans-serif"
+        android:orientation="vertical" />
     <LinearLayout
         android:id="@+id/valor_apt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/valor_enfe"
-        android:layout_marginLeft="10dp"
+        android:layout_below="@id/id_imageOperadoraSelecionada"
         android:orientation="vertical"
-        android:layout_marginTop="5dp"
-        android:layout_toEndOf="@+id/title_apt"
-        android:layout_toRightOf="@+id/title_apt"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/title_apt"
+        android:layout_marginTop="20dp"
         android:fontFamily="sans-serif"/>
 
     <TextView
@@ -76,7 +77,7 @@
         android:fontFamily="sans-serif"
         android:text="Carências"
         android:layout_alignParentLeft="true"
-        android:layout_below="@id/title_apt"
+        android:layout_below="@id/title_enfe"
         android:layout_marginLeft="21dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="#fb8500"
@@ -88,12 +89,13 @@
         android:layout_width="356dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_below="@id/carencia"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="295dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="sans-serif"/>
     <Button
         android:id="@+id/salve_print"
