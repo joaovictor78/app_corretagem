@@ -58,11 +58,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="-1dp"
-            android:layout_marginLeft="-1dp"
+            android:layout_marginRight="205dp"
+            android:layout_alignParentRight="true"
             android:layout_marginBottom="5dp"
-            android:layout_toEndOf="@+id/title_enfermagem"
-            android:layout_toRightOf="@+id/title_enfermagem"
             android:textColor="@color/black"
             android:orientation="vertical" />
 
@@ -83,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginRight="10dp"
-            android:layout_marginLeft="4dp"
+            android:layout_marginLeft="5dp"
             android:layout_alignParentRight="true"
             android:layout_marginBottom="5dp"
             android:textColor="@color/black"

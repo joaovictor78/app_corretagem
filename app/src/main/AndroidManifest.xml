@@ -38,6 +38,10 @@
             android:parentActivityName="view.homeActivity" />
         <activity android:name="view.CompromissosAgendados" android:label="Compromissos Agendados" android:parentActivityName="view.Agenda"></activity>
         <activity android:name="view.AdicionarCompromisso" android:label="Adicionar Compromisso" android:parentActivityName="view.CompromissosAgendados"/>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
