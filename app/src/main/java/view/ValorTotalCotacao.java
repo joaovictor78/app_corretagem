@@ -131,14 +131,14 @@ public class ValorTotalCotacao extends AppCompatActivity {
         });
         listPrecosEnfermaria.forEach(cotacaoModelPreco -> {
             if(cotacaoModelPreco.getTitle().equals("Enfermagem")){
-                listEnfermariaNacional.add(Double.valueOf(cotacaoModelPreco.getPreco()));
+                listEnfermariaNacional.add(Double.parseDouble(cotacaoModelPreco.getPreco()));
 
             }
             if(cotacaoModelPreco.getTitle().equals("Enf Mun.")){
-                listEnfermariaMunicipal.add(Double.valueOf(cotacaoModelPreco.getPreco()));
+                listEnfermariaMunicipal.add(Double.parseDouble(cotacaoModelPreco.getPreco()));
             }
             if(cotacaoModelPreco.getTitle().equals("Enf Est.")){
-                listEnfermariaEstadual.add(Double.valueOf(cotacaoModelPreco.getPreco()));
+                listEnfermariaEstadual.add(Double.parseDouble(cotacaoModelPreco.getPreco()));
             }
         });
         somaApartamentoNacional = somarCotacao(listApartamentoNacional);
