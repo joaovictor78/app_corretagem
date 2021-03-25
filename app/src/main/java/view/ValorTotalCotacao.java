@@ -10,7 +10,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -20,7 +19,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,16 +34,13 @@ import com.example.corretagemapp.models.CotacaoModelPreco;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicReference;
 
 
 public class ValorTotalCotacao extends AppCompatActivity {
@@ -76,7 +71,7 @@ public class ValorTotalCotacao extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.Theme_CorretagemApp);
-        setContentView(R.layout.activity_valor_total_cotacao);
+        setContentView(R.layout.activity_proof_payment);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         verifyStoragePermission(this);
         Button printButton = findViewById(R.id.salve_print);
@@ -259,7 +254,7 @@ public class ValorTotalCotacao extends AppCompatActivity {
 
     public CotacaoAdapter.CotacaoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(
-                R.layout.cotacao_card, parent, false
+                R.layout.card_price, parent, false
         );
         return new CotacaoAdapter.CotacaoViewHolder(view);
     }

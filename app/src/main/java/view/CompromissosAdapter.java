@@ -11,9 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.corretagemapp.R;
 import com.example.corretagemapp.models.CompromissoModel;
 
-import org.json.JSONObject;
-import org.w3c.dom.Text;
-
 import java.util.List;
 
 public class CompromissosAdapter  extends RecyclerView.Adapter<CompromissosAdapter.CompromissosViewHolder> {
@@ -25,7 +22,7 @@ public class CompromissosAdapter  extends RecyclerView.Adapter<CompromissosAdapt
     @Override
     public CompromissosViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(
-                R.layout.card_compromisso, parent, false
+                R.layout.card_schedule, parent, false
         );
         return new CompromissosViewHolder(view);
     }

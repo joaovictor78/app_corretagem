@@ -2,10 +2,7 @@ package view;
 
 
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.Build;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +10,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.corretagemapp.R;
@@ -21,8 +17,6 @@ import com.example.corretagemapp.models.CotacaoModel;
 import com.example.corretagemapp.models.CotacaoModelPreco;
 
 import java.util.List;
-
-import static com.example.corretagemapp.R.color.orange_pure;
 
 public class CotacaoAdapter extends RecyclerView.Adapter<CotacaoAdapter.CotacaoViewHolder> {
     private final List<CotacaoModel> cotacoes;
@@ -33,7 +27,7 @@ public class CotacaoAdapter extends RecyclerView.Adapter<CotacaoAdapter.CotacaoV
     @Override
     public CotacaoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(
-                R.layout.cotacao_card, parent, false
+                R.layout.card_price, parent, false
         );
         return  new CotacaoViewHolder(view);
     }

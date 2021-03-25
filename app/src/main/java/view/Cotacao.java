@@ -9,7 +9,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -20,17 +19,13 @@ import android.widget.Toast;
 import com.example.corretagemapp.R;
 import com.example.corretagemapp.models.CotacaoModel;
 import com.example.corretagemapp.models.CotacaoModelPreco;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -44,7 +39,7 @@ public class Cotacao extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.Theme_CorretagemApp);
-        setContentView(R.layout.activity_cotacao);
+        setContentView(R.layout.activity_member_price);
         try {
             Bundle args = new Bundle();
             Bundle extras = getIntent().getExtras();
@@ -82,7 +77,7 @@ public class Cotacao extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 LayoutInflater layoutInflaterAndroid = LayoutInflater.from(Cotacao.this);
-                View mView = layoutInflaterAndroid.inflate(R.layout.add_membro, null);
+                View mView = layoutInflaterAndroid.inflate(R.layout.dialog_new_member, null);
                 AlertDialog.Builder alertDialogBuilderUserInput = new AlertDialog.Builder(Cotacao.this);
                 alertDialogBuilderUserInput.setView(mView);
                 final EditText idade = (EditText) mView.findViewById(R.id.userInputIdade);

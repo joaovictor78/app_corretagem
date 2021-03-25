@@ -36,13 +36,13 @@ public class FragFuncionarios extends Fragment {
         controller = new FuncionarioController(getActivity().getBaseContext());
 
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_funcionarios, container, false);
+        View view = inflater.inflate(R.layout.fragment_employees, container, false);
         FloatingActionButton fab = view.findViewById(R.id.fab_addfuncionarios);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 LayoutInflater layoutInflaterAndroid = LayoutInflater.from(getContext());
-                View mView = layoutInflaterAndroid.inflate(R.layout.add_funcionario, null);
+                View mView = layoutInflaterAndroid.inflate(R.layout.diagol_new_employees, null);
                 AlertDialog.Builder alertDialogBuilderUserInput = new AlertDialog.Builder(getContext());
                 alertDialogBuilderUserInput.setView(mView);
 

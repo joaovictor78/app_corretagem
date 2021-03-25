@@ -1,7 +1,6 @@
 package view;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +16,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.WeakHashMap;
-
 public class CorretoraAdapter extends RecyclerView.Adapter<CorretoraAdapter.CorretoraViewHolder> {
     private final JSONArray corretoras;
     public CorretoraAdapter(JSONArray corretoras) {
@@ -30,7 +27,7 @@ public class CorretoraAdapter extends RecyclerView.Adapter<CorretoraAdapter.Corr
     @Override
     public CorretoraViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(
-                R.layout.card_item, parent, false
+                R.layout.card_operator, parent, false
         );
 
         return new CorretoraViewHolder(view);

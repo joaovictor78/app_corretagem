@@ -14,6 +14,8 @@ import com.example.corretagemapp.R;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import repositories.Utils;
+
 public class Home extends Fragment {
 
     // Add RecyclerView member
